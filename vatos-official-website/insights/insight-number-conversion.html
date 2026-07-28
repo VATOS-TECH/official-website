@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숫자형 타입 변환: 당신의 스키마를 설계한 건 당신이 아니다 - VATOS</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/content.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo"><img src="../assets/images/vatos-logo-mark.png" alt="VATOS logo" class="logo-mark"><span class="logo-text">VAT<span>OS</span></span></a>
+
+    <nav>
+      <!-- About VATOS -->
+      <div class="nav-item">
+        <a href="#" class="nav-link" data-menu="about">
+          About VATOS
+          <span class="arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="dropdown">
+          <a href="../about/company.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            <span class="di-text"><span class="di-label">Company</span><span class="di-sub">회사소개</span></span>
+          </a>
+          <a href="../about/history.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span class="di-text"><span class="di-label">History</span><span class="di-sub">연혁</span></span>
+          </a>
+          <a href="../about/location.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="di-text"><span class="di-label">Location</span><span class="di-sub">오시는 길</span></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Business Areas -->
+      <div class="nav-item">
+        <a href="#" class="nav-link" data-menu="business">
+          Business Areas
+          <span class="arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="dropdown dropdown-wide">
+          <a href="../business/business-license.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <span class="di-text"><span class="di-label">License</span><span class="di-sub">라이선스</span></span>
+          </a>
+          <a href="../business/business-operations-technical-support.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></span>
+            <span class="di-text"><span class="di-label">Operations &amp; Technical Support</span><span class="di-sub">운영 &amp; 기술지원</span></span>
+          </a>
+          <a href="../business/business-performance-consulting.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+            <span class="di-text"><span class="di-label">Performance Consulting</span><span class="di-sub">성능 컨설팅</span></span>
+          </a>
+          <a href="../business/business-migration-conversion.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></span>
+            <span class="di-text"><span class="di-label">Migration &amp; Conversion</span><span class="di-sub">마이그레이션 &amp; 전환</span></span>
+          </a>
+          <a href="../business/business-training.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <span class="di-text"><span class="di-label">Training</span><span class="di-sub">교육</span></span>
+          </a>
+        </div>
+      </div>
+      <!-- Crew -->
+      <div class="nav-item">
+        <a href="#" class="nav-link active" data-menu="crew">
+          Crew
+          <span class="arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="dropdown">
+          <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="dropdown-item" target="_blank" rel="noopener noreferrer">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <span class="di-text"><span class="di-label">VATOS Log</span><span class="di-sub">바토스 블로그</span></span>
+          </a>
+          <a href="../crew/culture.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+            <span class="di-text"><span class="di-label">Culture</span><span class="di-sub">바토스 문화</span></span>
+          </a>
+          <a href="../insights/tech-insights.html" class="dropdown-item active">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-2.8-2.8L7 14"/></svg></span>
+            <span class="di-text"><span class="di-label">Tech Insights</span><span class="di-sub">기술 인사이트</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <a href="../contact.html" class="btn-contact-header">서비스 문의하기</a>
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mnav-section-label">ABOUT VATOS</div>
+  <a href="#" class="mnav-link" data-menu="about" style="padding-left:28px; font-size:14px;">About VATOS</a>
+  <a href="../about/company.html" class="mnav-sub">Company</a>
+  <a href="../about/history.html" class="mnav-sub">History</a>
+  <a href="../about/location.html" class="mnav-sub">Location</a>
+  <div class="mnav-divider"></div>
+  <a href="#" class="mnav-link" data-menu="business" style="padding-left:28px; font-size:14px;">Business Areas</a>
+  <a href="../business/business-license.html" class="mnav-sub">License</a>
+  <a href="../business/business-operations-technical-support.html" class="mnav-sub">Operations &amp; Technical Support</a>
+  <a href="../business/business-performance-consulting.html" class="mnav-sub">Performance Consulting</a>
+  <a href="../business/business-migration-conversion.html" class="mnav-sub">Migration &amp; Conversion</a>
+  <a href="../business/business-training.html" class="mnav-sub">Training</a>
+  <div class="mnav-divider"></div>
+  <a href="#" class="mnav-link active" data-menu="crew" style="padding-left:28px; font-size:14px;">Crew</a>
+  <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="mnav-sub" target="_blank" rel="noopener noreferrer">VATOS Log</a>
+  <a href="../crew/culture.html" class="mnav-sub">Culture</a>
+  <a href="../insights/tech-insights.html" class="mnav-sub active">Tech Insights 기술 인사이트</a>
+  <div class="mnav-divider"></div>
+</div>
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <div class="section-inner">
+    <a href="../insights/tech-insights.html" class="article-back-link article-back-top">← Tech Insights</a>
+    <div class="section-label">TECH INSIGHTS</div>
+    <h1>숫자형 타입 변환: 당신의 스키마를 설계한 건 당신이 아니다</h1>
+    <p class="article-summary">NUMBER와 정수·실수 타입 간 정밀도·표시 차이가 만드는 실무 이슈와 검증 기준을 정리합니다.</p>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<section class="article-wrap">
+  <div class="section-inner">
+  <article class="article-content">
+      <h2>숫자형 변환은 실패하지 않는다. 그래서 가장 위험하다.</h2>
+      <p>장면은 대부분 비슷합니다. 개발이 마무리되고 업무 담당자가 직접 화면을 검증하는 시점, 이런 말을 꺼냅니다. "Oracle에서는 12로 보이던 값이 왜 12.0000000000으로 나와요?"</p>
+      <p>기술팀 입장에서 이건 간단해 보입니다. 타입 하나 고치면 되는 것 아닌가. 그런데 실제로 고쳐보려고 하면 금방 복잡해집니다. 그 컬럼을 쓰는 화면이 몇 개인지, 외부 연계 전문에 이 값이 포함되어 있는지, 동일한 패턴으로 매핑된 컬럼이 몇 개나 더 있는지를 파악하는 순간, 이건 타입 하나의 문제가 아니라는 걸 알게 됩니다.</p>
+      <p>그리고 이 시점에서 가장 먼저 나오는 질문이 있습니다. "이 컬럼 타입을 누가 결정했죠?" 답은 대개 이렇습니다. "도구 기본값이요."</p>
+      <p>이것이 숫자형 타입 변환 문제의 실체입니다. 기술적 실수가 아니라, 초기에 아무도 결정하지 않은 항목이 도구의 기본값으로 채워진 것입니다. Oracle이 암묵적으로 처리하던 결정을 타겟 DB의 명시적 선택으로 전환하지 못해 발생하는 이 공백이 바로 <strong>Implicit Decision Gap</strong>입니다.</p>
+      <hr class="article-hr">
+      <h2>왜 숫자형만 이렇게 되는가</h2>
+      <p>문자형이 깨지면 바로 보입니다. 날짜형이 맞지 않으면 예외가 발생합니다. 그런데 숫자형은 정수 값이 소수점 이하 열 자리를 달고 출력되어도 <code>INSERT</code>는 성공하고, 건수는 맞고, 마이그레이션 리포트는 성공이라 표시됩니다.</p>
+      <p>바로 이 성공이라는 메시지 때문에 숫자형 타입 변환은 검증 대상에서 빠집니다. 실패처럼 보이지 않으니, 점검할 이유를 느끼지 못하는 것입니다.</p>
+      <p>그런데 숫자형 타입에서의 성공 메시지가 문제가 없다고는 말할 수 없습니다. 애플리케이션은 숫자를 항상 수학적 값으로만 다루지 않습니다. 화면 출력, 문자열 변환, 외부 연계 전문의 자릿수 규약, 다운스트림 시스템의 파싱 로직 — 이 레이어들은 숫자의 표현 방식에 민감합니다. 수학적으로 같은 값이 시스템 동작 관점에서는 다른 값이 될 수 있습니다.</p>
+      <p>특히 외부 전문 연계가 있는 시스템에서는 이 문제가 더 직접적으로 나타납니다. 전문의 자릿수와 타입은 우리 쪽에서 임의로 바꿀 수 있는 속성이 아닙니다. 상대 시스템과 사전에 합의된 규약이기 때문에, 숫자 표현이 바뀌는 순간 그 규약이 깨집니다. 이건 내부 표현의 문제가 아니라 외부 계약의 문제입니다.</p>
+      <p>이 문제는 장애가 아니라 데이터 왜곡입니다. 그리고 데이터 왜곡은 로그에 남지 않습니다. 그래서 발견이 늦고, 발견될 때는 영향 범위가 이미 넓어져 있습니다.</p>
+      <hr class="article-hr">
+      <h2>왜 이 문제가 구조적으로 발생하는가</h2>
+      <p>이 문제를 단순한 실수로 볼 수 없는 이유가 있습니다. Oracle과 오픈소스 DB 사이에는 숫자형 타입을 다루는 방식에서 근본적인 설계 철학 차이가 있습니다.</p>
+      <p>Oracle의 <code>NUMBER</code>는 정밀도와 스케일 없이 정의할 수 있습니다. 이 경우 저장 방식은 타입이 아니라 값이 결정합니다. 정수는 정수로, 소수는 실제 자릿수에 맞게 저장됩니다. DDL이 느슨해도 Oracle은 값의 의미를 스스로 보존했기 때문에, 현장에서 그냥 <code>NUMBER</code>로만 정의해두는 관행이 수십 년간 아무 문제없이 이어졌습니다. 그러나 DDL만 봐서는 이 컬럼이 정수인지 소수인지, 값의 범위가 어느 정도인지 알 수가 없습니다. Oracle 입장에서는 값이 알아서 저장되니 문제가 없었지만, 이 모호함은 마이그레이션 과정에서 누군가가 반드시 결정해야 할 공백이 됩니다.</p>
+      <p>오픈소스 DB는 다릅니다. 스키마에 명시된 precision과 scale이 곧 저장 방식을 결정합니다. <code>NUMERIC(38,10)</code>으로 정의된 컬럼에 정수를 넣으면 앞서 언급한 표현 왜곡이 그대로 재현됩니다. <strong>Oracle이 값에게 맡겼던 결정을, 오픈소스 DB는 스키마에서 받아야 합니다.</strong></p>
+      <p>이 차이가 의미하는 바는 명확합니다. Oracle이 암묵적으로 처리해주던 "타입 정의의 유연성"은 오픈소스 DB로 넘어오는 순간 <strong>"명시적 결정의 의무"</strong>로 전환됩니다. Oracle에서는 모호하게 두어도 괜찮았던 것이, 대상 DB에서는 구체적인 선택으로 굳어집니다. 그리고 그 공백을 도구가 채우는 순간, 스키마의 결정이 우리의 결정이 아니게 됩니다.</p>
+      <p>마이그레이션 도구는 이 의무를 대신 수행해주지 않습니다. 도구는 가장 일반적인 변환 규칙을 적용할 뿐, 이 컬럼이 금액인지 수량인지 식별자인지, 소수 허용 여부가 업무적으로 어떤 의미를 가지는지 판단하지 못합니다. 도구가 내린 기본값은 어떤 시스템에도 적용 가능한 보수적 선택이지, 우리 시스템의 의도를 반영한 선택이 아닙니다. 그리고 DDL만으로는 그 의도를 읽어낼 수 없습니다.</p>
+      <hr class="article-hr">
+      <h2>숫자형 컬럼은 하나가 아니다</h2>
+      <p>마이그레이션 도구가 모든 <code>NUMBER</code> 컬럼을 동일하게 취급하는 것이 문제의 출발점입니다. 실제로 숫자형 컬럼은 업무적 성격에 따라 세 가지로 구분됩니다.</p>
+      <p><strong>계산되는 값(금액, 비율)</strong> 은 정밀도가 생명입니다. 반올림 방식 하나, 소수점 자릿수 하나가 정산 결과를 바꿉니다. 이 유형에서는 <code>NUMERIC</code>으로 스케일을 명시하는 것이 유일한 선택입니다. <code>FLOAT</code> 계열 타입을 쓰는 순간 rounding 차이와 집계 오차가 동시에 예약됩니다.</p>
+      <p><strong>카운트 값(수량, 횟수)</strong> 은 정수 범위와 증가 추세가 핵심입니다. 현재 최댓값이 <code>INTEGER</code> 범위 안에 있더라도, 운영 기간 동안 얼마나 쌓일지를 함께 판단해야 합니다. 마이그레이션 시점에는 문제가 없어 보이지만, 증가 추세를 확인하지 않은 타입 선택은 수년 후 overflow로 돌아옵니다.</p>
+      <p><strong>식별자(ID, 코드)</strong> 는 계산하지 않는 값입니다. 정밀도보다 범위가 중요하고, 소수 허용 여부는 애초에 의미가 없습니다. 그러나 시퀀스로 채번하는 PK라면 증가 속도를 반드시 확인해야 합니다. <code>BIGINT</code>로 잡는 것이 원칙이지만, <code>SMALLINT</code>로 충분한 코드성 컬럼까지 <code>BIGINT</code>로 통일하면 인덱스 비용이 불필요하게 커집니다.</p>
+      <p>같은 <code>NUMBER</code>여도 금액 컬럼과 식별자 컬럼의 올바른 타입은 다르고, 그 차이를 결정하는 건 DDL이 아니라 업무 맥락과 데이터입니다.</p>
+      <hr class="article-hr">
+      <h2>올바른 결정은 소스 데이터 분석에서 시작된다</h2>
+      <p>Oracle <code>NUMBER</code>의 유연성이 오픈소스 DB에서 명시적 결정의 의무로 전환된다면, 그 결정의 근거는 어디서 가져와야 할까요. 답은 하나입니다. <strong>소스 데이터</strong> 자체입니다.</p>
+      <p>타입 매핑을 결정할 때 흔히 저지르는 실수는 "안전하게 크게 잡자"는 논리로 모든 숫자형 컬럼을 <code>BIGINT</code>로 매핑하는 것입니다. 오버플로우 걱정은 없어지지만, 그 대가로 스토리지 낭비와 불필요한 인덱스 비용이 따라옵니다. 컬럼이 수백 개인 시스템에서 이 선택이 누적되면 무시할 수 없는 규모가 됩니다. 반대로 너무 작게 잡으면 운영 중 오버플로우가 발생합니다. 이 역시 마이그레이션 이후에야 문제로 인식되는 경우가 많습니다.</p>
+      <p>적절한 타입을 결정하려면 소스에서 세 가지를 확인해야 합니다. <strong>실제 최댓값과 최솟값</strong>입니다. 컬럼 정의가 <code>NUMBER(10,0)</code>이라도 실제 데이터가 어느 범위 안에 있는지가 타입 선택의 기준이 됩니다. <code>INTEGER</code> 범위(약 21억)로 충분한지, <code>BIGINT</code>가 필요한지는 정의가 아니라 데이터가 말해줍니다. <strong>음수 존재 여부</strong>도 확인해야 합니다. MySQL/MariaDB라면 <code>UNSIGNED</code> 속성으로 같은 바이트 수에서 두 배의 양수 범위를 확보할 수 있고, PostgreSQL은 <code>UNSIGNED</code>를 네이티브로 지원하지 않으므로 한 단계 더 큰 타입을 선택하거나 <code>CHECK</code> 제약조건을 활용하는 판단이 필요합니다. 마지막으로 <strong>소수 사용 여부와 실제 스케일</strong>입니다. 컬럼 정의에 스케일이 없더라도 실제 데이터가 소수를 포함하는지 확인해야 합니다. 이 확인을 건너뛰면, 스케일이 고정된 타입이 그대로 적용되어 불필요한 소수점 패딩이 발생합니다.</p>
+      <p>소스 데이터 분석 없이 내린 타입 결정은 근거 없는 결정입니다.</p>
+      <hr class="article-hr">
+      <h2>타입 선택은 정확성만의 문제가 아니다</h2>
+      <p>소스 데이터 분석을 거쳐 적절한 타입을 선택해야 하는 이유는 두 가지 축으로 나뉩니다. 잘못된 타입 선택은 데이터 정확성 문제로 먼저 드러나고, 운영이 길어질수록 성능 문제로도 돌아옵니다.</p>
+      <h3>정확성 문제: 실무에서 실제로 발생하는 4가지 패턴</h3>
+      <div class="article-callout"><p>소수점 표현 문제</p></div>
+      <p>가장 흔하게 발생하고, 가장 늦게 발견됩니다. Oracle에서 순수한 정수로 저장되던 값이 타겟 DB에서 스케일(Scale)이 고정된 <code>NUMERIC</code> 타입으로 매핑되면, 원래의 값 뒤에 스케일의 길이만큼 불필요한 0이 강제로 패딩(Padding)되어 출력됩니다. 업무 담당자가 화면 검수를 시작할 때까지 아무도 모릅니다. 외부 연계 전문에 이 값이 포함되어 있다면, 수학적 동일성과 무관하게 자릿수 규약이 깨집니다.</p>
+      <div class="article-callout"><p>rounding 차이 → 정산 오류</p></div>
+      <p><code>NUMERIC</code> 타입의 <code>ROUND(2.5)</code>는 3이지만, <code>FLOAT</code> 타입으로 저장된 값의 <code>ROUND(2.5)</code>는 PostgreSQL에서 2가 됩니다. 이는 <code>FLOAT</code>이 banker's rounding(round half to even)을 따르기 때문입니다. Oracle에서 <code>NUMBER</code>로 통일해서 쓰던 컬럼이 마이그레이션 후 <code>FLOAT</code>으로 바뀌면, 반올림 결과가 달라지는 케이스가 발생합니다. 건당 오차는 미미하지만 수백만 건이 누적되면 합계가 달라집니다. 정산 시스템이나 회계 연동이 있는 테이블에서 <code>FLOAT</code> 계열 타입을 쓰는 순간, 이 문제는 예약된 것이나 다름없습니다.</p>
+      <div class="article-callout"><p>float 오차 → 집계 누적 오류</p></div>
+      <p><code>FLOAT</code>, <code>DOUBLE</code>은 이진 부동소수점 방식으로 저장됩니다. 0.1을 이진수로 정확하게 표현할 수 없기 때문에, 이 타입으로 저장된 값을 수천만 건 집계하면 오차가 누적됩니다. Oracle에서 <code>NUMBER</code>로 정밀하게 다루던 금액, 비율, 수량 컬럼을 <code>DOUBLE</code>로 매핑하면 집계 쿼리 결과가 Oracle과 미세하게 달라집니다. 건수 검증은 통과하지만 합계 검증에서 차이가 납니다. 이 문제는 마이그레이션 직후가 아니라 첫 번째 월마감이나 정기 집계 시점에 발견됩니다.</p>
+      <div class="article-callout"><p>overflow → 운영 중 범위 초과 오류</p></div>
+      <p><code>INTEGER</code> 범위(약 21억)로 잡은 컬럼이 운영 중 한계에 도달하면 <code>INSERT</code>가 실패합니다. 마이그레이션 시점에는 문제가 없었지만 데이터가 누적되면서 수년 후에 타입 한계에 도달하게 됩니다. 특히 <code>AUTO_INCREMENT</code>나 시퀀스로 채번하는 PK 컬럼, 또는 트랜잭션 로그 성격의 테이블에서 자주 발생합니다. 소스 데이터의 최댓값과 증가 추세를 확인하지 않고 타입을 결정하면, 시간이 해결해주는 문제가 아니라 시간이 만드는 문제가 됩니다.</p>
+      <h3>성능 문제: 운영이 길어질수록 누적되는 비용</h3>
+      <p>잘못된 타입 선택은 성능으로도 돌아옵니다. 정수 데이터임에도 <code>NUMERIC</code>으로 매핑된 컬럼은 사칙연산, 집계, 조건 비교마다 불필요한 연산 오버헤드를 발생시킵니다. <code>NUMERIC</code>은 내부적으로 가변 길이 십진수로 처리되는 반면, <code>INTEGER</code>나 <code>BIGINT</code>는 CPU가 직접 처리하는 고정 길이 이진 연산이기 때문입니다. 타입 크기가 필요 이상으로 크면 인덱스 엔트리가 커지고, 버퍼 캐시 효율이 떨어지며, 정렬과 그룹핑 비용도 함께 올라갑니다. PK나 FK처럼 조인에 자주 쓰이는 컬럼일수록 이 영향이 직접적이고, 대용량 배치나 빈번한 집계가 있는 시스템에서는 이 비용이 누적됩니다.</p>
+      <p>결국 "안전하게 크게 잡자"는 결정은 정확성을 피하는 대신 성능을 내주는 선택입니다. 안전한 기본값은 없습니다.</p>
+      <hr class="article-hr">
+      <h2>숫자형은 "데이터 타입"이 아니라 "비즈니스 의미"다</h2>
+      <p>숫자형 타입 변환의 본질은 타입을 무엇으로 바꿀 것인가가 아니라, 그 값이 무엇을 의미하는지를 누가 결정할 것인가의 문제입니다.</p>
+      <p>도구는 그 질문을 던지지 않습니다. <code>NUMBER</code>를 보면 규칙을 적용할 뿐, 이 값이 금액인지 수량인지 식별자인지 묻지 않습니다. 그 질문을 아무도 하지 않으면, 도구의 기본값이 답이 됩니다. 그리고 그 답은 시스템이 멈추지 않는 한 틀렸다는 신호를 보내지 않습니다.</p>
+      <p>지금 이관을 준비 중인 시스템에서 숫자형 컬럼 하나를 골라보십시오. 그 컬럼의 타입을 누가, 어떤 근거로 정의했는지 추적할 수 있습니까. 추적할 수 없다면, 그 컬럼은 도구가 결정을 대신하게 됩니다. 도구는 데이터를 옮기지만, 의미는 옮기지 않습니다.</p>
+      <p>데이터 타입을 살펴본 여섯 편이 끝났습니다. 다음 글부터는 데이터를 담는 그릇이 아니라 <strong>그 그릇을 누가 소유하고 어떻게 접근하는가</strong> — 사용자·스키마·권한 — 으로 넘어갑니다.</p>
+  </article>
+  <div class="article-foot">
+    <a href="../insights/tech-insights.html" class="article-back-link">← 목록으로 돌아가기</a>
+  </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo"><span class="logo-text">VAT<span>OS</span></span></a>
+        <p>더 편한 IT 세상을 함께 만들어 나가는<br>데이터베이스 전문 기업</p>
+        <p class="footer-address" style="margin-top:16px; font-size:12px; line-height:1.9;">서울특별시 성동구 뚝섬로1길 63, 영창디지털타워 <span class="nobr">401-3호</span><br>Tel: 010-6787-7223 &nbsp;|&nbsp; sales@vatos.co.kr</p>
+        <a href="../assets/files/vatos-company-profile.pdf" target="_blank" rel="noopener noreferrer" class="footer-contact-icon">
+          <span class="fci-ico"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          <span>회사소개서</span>
+        </a>
+      </div>
+      <div class="footer-col">
+        <h5>회사</h5>
+        <a href="../about/company.html">회사소개</a>
+        <a href="../about/history.html">연혁</a>
+        <a href="../about/location.html">오시는 길</a>
+      </div>
+      <div class="footer-col">
+        <h5>사업분야</h5>
+        <a href="../business/business-license.html">라이선스</a>
+        <a href="../business/business-operations-technical-support.html">운영 &amp; 기술지원</a>
+        <a href="../business/business-performance-consulting.html">성능 컨설팅</a>
+        <a href="../business/business-migration-conversion.html">마이그레이션 &amp; 전환</a>
+        <a href="../business/business-training.html">교육</a>
+      </div>
+      <div class="footer-col">
+        <h5>크루</h5>
+        <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" target="_blank" rel="noopener noreferrer">바로그</a>
+        <a href="../crew/culture.html">바토스 문화</a>
+        <a href="../insights/tech-insights.html">기술 인사이트</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 VATOS Co., Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/common.js"></script>
+</body>
