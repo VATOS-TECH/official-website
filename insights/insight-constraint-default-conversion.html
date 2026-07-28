@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제약조건과 DEFAULT: 데이터의 의미는 어디에서 결정되는가 - VATOS</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/content.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo"><img src="../assets/images/vatos-logo-mark.png" alt="VATOS logo" class="logo-mark"><span class="logo-text">VAT<span>OS</span></span></a>
+
+    <nav>
+      <!-- About VATOS -->
+      <div class="nav-item">
+        <a href="#" class="nav-link" data-menu="about">
+          About VATOS
+          <span class="arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="dropdown">
+          <a href="../about/company.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            <span class="di-text"><span class="di-label">Company</span><span class="di-sub">회사소개</span></span>
+          </a>
+          <a href="../about/history.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span class="di-text"><span class="di-label">History</span><span class="di-sub">연혁</span></span>
+          </a>
+          <a href="../about/location.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="di-text"><span class="di-label">Location</span><span class="di-sub">오시는 길</span></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Business Areas -->
+      <div class="nav-item">
+        <a href="#" class="nav-link" data-menu="business">
+          Business Areas
+          <span class="arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="dropdown dropdown-wide">
+          <a href="../business/business-license.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <span class="di-text"><span class="di-label">License</span><span class="di-sub">라이선스</span></span>
+          </a>
+          <a href="../business/business-operations-technical-support.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></span>
+            <span class="di-text"><span class="di-label">Operations &amp; Technical Support</span><span class="di-sub">운영 &amp; 기술지원</span></span>
+          </a>
+          <a href="../business/business-performance-consulting.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+            <span class="di-text"><span class="di-label">Performance Consulting</span><span class="di-sub">성능 컨설팅</span></span>
+          </a>
+          <a href="../business/business-migration-conversion.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></span>
+            <span class="di-text"><span class="di-label">Migration &amp; Conversion</span><span class="di-sub">마이그레이션 &amp; 전환</span></span>
+          </a>
+          <a href="../business/business-training.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <span class="di-text"><span class="di-label">Training</span><span class="di-sub">교육</span></span>
+          </a>
+        </div>
+      </div>
+      <!-- Crew -->
+      <div class="nav-item">
+        <a href="#" class="nav-link active" data-menu="crew">
+          Crew
+          <span class="arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="dropdown">
+          <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="dropdown-item" target="_blank" rel="noopener noreferrer">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <span class="di-text"><span class="di-label">VATOS Log</span><span class="di-sub">바토스 블로그</span></span>
+          </a>
+          <a href="../crew/culture.html" class="dropdown-item">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+            <span class="di-text"><span class="di-label">Culture</span><span class="di-sub">바토스 문화</span></span>
+          </a>
+          <a href="../insights/tech-insights.html" class="dropdown-item active">
+            <span class="di-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-2.8-2.8L7 14"/></svg></span>
+            <span class="di-text"><span class="di-label">Tech Insights</span><span class="di-sub">기술 인사이트</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <a href="../contact.html" class="btn-contact-header">서비스 문의하기</a>
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mnav-section-label">ABOUT VATOS</div>
+  <a href="#" class="mnav-link" data-menu="about" style="padding-left:28px; font-size:14px;">About VATOS</a>
+  <a href="../about/company.html" class="mnav-sub">Company</a>
+  <a href="../about/history.html" class="mnav-sub">History</a>
+  <a href="../about/location.html" class="mnav-sub">Location</a>
+  <div class="mnav-divider"></div>
+  <a href="#" class="mnav-link" data-menu="business" style="padding-left:28px; font-size:14px;">Business Areas</a>
+  <a href="../business/business-license.html" class="mnav-sub">License</a>
+  <a href="../business/business-operations-technical-support.html" class="mnav-sub">Operations &amp; Technical Support</a>
+  <a href="../business/business-performance-consulting.html" class="mnav-sub">Performance Consulting</a>
+  <a href="../business/business-migration-conversion.html" class="mnav-sub">Migration &amp; Conversion</a>
+  <a href="../business/business-training.html" class="mnav-sub">Training</a>
+  <div class="mnav-divider"></div>
+  <a href="#" class="mnav-link active" data-menu="crew" style="padding-left:28px; font-size:14px;">Crew</a>
+  <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="mnav-sub" target="_blank" rel="noopener noreferrer">VATOS Log</a>
+  <a href="../crew/culture.html" class="mnav-sub">Culture</a>
+  <a href="../insights/tech-insights.html" class="mnav-sub active">Tech Insights 기술 인사이트</a>
+  <div class="mnav-divider"></div>
+</div>
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <div class="section-inner">
+    <a href="../insights/tech-insights.html" class="article-back-link article-back-top">← Tech Insights</a>
+    <div class="section-label">TECH INSIGHTS</div>
+    <h1>제약조건과 DEFAULT: 데이터의 의미는 어디에서 결정되는가</h1>
+    <p class="article-summary">제약조건과 기본값이 데이터 의미를 규정하는 방식과 이관 시 검증 포인트를 정리합니다.</p>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<section class="article-wrap">
+  <div class="section-inner">
+  <article class="article-content">
+      <p>앞 글에서 객체가 어디에 어떻게 놓이는지 — 저장구조를 다뤘습니다. 이제 그 객체에 데이터가 들어오고 변할 때 따라야 할 규칙으로 넘어옵니다. 제약조건과 DEFAULT입니다.</p>
+      <p>DDL 변환은 대부분 성공합니다. 제약조건과 DEFAULT도 문제없이 생성됩니다. 그런데 운영에 들어가면 데이터가 달라집니다.</p>
+      <p>제약조건은 단순히 데이터를 막는 장치가 아니라, <strong>데이터의 의미를 강제하는 규칙</strong>입니다. 제약조건 이관이 어려운 이유는 구문의 복잡함이 아닙니다. <strong>정의는 복사되지만, 그 정의가 데이터를 통제하던 방식은 복사되지 않는다는 점입니다.</strong> Oracle에서 당연하게 작동하던 규칙이 오픈소스에서는 다르게 작동하거나, 아예 작동하지 않습니다. 그리고 그 차이는 DDL이 아니라 데이터 안에서 드러납니다.</p>
+      <p>이 글은 양방향, 즉 Oracle의 제약조건·DEFAULT 패턴을 오픈소스로 옮기는 방향과, 반대로 오픈소스에서 운영되던 규칙을 Oracle로 옮기는 방향을 모두 다룹니다.</p>
+      <hr class="article-hr">
+      <h3>세 DB의 제약조건·DEFAULT 모델</h3>
+      <div class="article-table-wrap"><table><thead><tr><th>항목</th><th>Oracle</th><th>PostgreSQL</th><th>MySQL</th></tr></thead><tbody><tr><td>DEFAULT (컬럼 생략 시)</td><td>지원</td><td>지원</td><td>지원</td></tr><tr><td>명시 NULL 가로채기</td><td><code>DEFAULT ON NULL</code> (12c+)</td><td>미지원 (일반 DEFAULT는 명시 NULL을 가로채지 않음; trigger로만 재현)</td><td>미지원</td></tr><tr><td>표현식 DEFAULT (함수/식)</td><td>함수 호출 자유</td><td>함수 호출 자유</td><td><strong>8.0.13+</strong> 표현식 DEFAULT 지원</td></tr><tr><td>갱신 시각 자동 갱신</td><td>trigger</td><td>trigger</td><td><code>ON UPDATE CURRENT_TIMESTAMP</code> 컬럼 속성</td></tr><tr><td>시간 함수 평가 시점</td><td><code>SYSDATE</code>/<code>SYSTIMESTAMP</code> 호출 시점의 현재 시각</td><td><code>now()</code> 트랜잭션 시작 시점 / <code>clock_timestamp()</code> 호출 순간</td><td><code>NOW()</code>/<code>CURRENT_TIMESTAMP</code> statement 시작 시점</td></tr><tr><td>CHECK 상태</td><td>ENABLE/DISABLE × VALIDATE/NOVALIDATE 4조합</td><td>상시 활성, 적재 시 NOT VALID로 검증 유예 가능</td><td><strong>8.0.16+</strong> 정식 지원(이전엔 파싱만)</td></tr><tr><td>UNIQUE에서의 NULL</td><td>NULL 중복 허용 (NULL은 중복으로 보지 않음)</td><td>NULL 중복 허용 (기본 <code>NULLS DISTINCT</code>); <strong>15+ <code>UNIQUE NULLS NOT DISTINCT</code></strong> 옵션</td><td>NULL 중복 허용</td></tr><tr><td>FK 동작 옵션</td><td>CASCADE/SET NULL/NO ACTION (SET DEFAULT 미지원)</td><td>CASCADE/SET NULL/SET DEFAULT/RESTRICT/NO ACTION</td><td>CASCADE/SET NULL/RESTRICT/NO ACTION (SET DEFAULT 파싱은 되나 무시)</td></tr><tr><td>FK 검증 시점</td><td>IMMEDIATE / DEFERRABLE INITIALLY DEFERRED</td><td>지원하지만 DDL에 <code>DEFERRABLE</code> 절 명시 필요(아래 참조)</td><td>DEFERRABLE 미지원 (항상 즉시 검증)</td></tr><tr><td>EXCLUDE 제약</td><td>(없음)</td><td>지원 (GiST 인덱스 기반)</td><td>(없음)</td></tr></tbody></table></div>
+      <p>표가 보여주는 핵심은 <strong>같은 이름의 제약조건이 같은 의미로 작동하지 않는다</strong>는 점입니다. Oracle의 <code>DEFAULT ON NULL</code>, PostgreSQL의 <code>EXCLUDE</code>, MySQL의 <code>ON UPDATE CURRENT_TIMESTAMP</code>는 각 DB가 가진 고유 기능이고, 이름이 비슷한 옵션도 검증 시점·기본값·지원 범위가 다릅니다. DDL이 옮겨졌다고 동작이 따라오지는 않습니다.</p>
+      <hr class="article-hr">
+      <h3>DDL은 복사됐지만 의미가 달라지는 것들</h3>
+      <p>정의는 그대로인데 데이터가 담는 의미가 달라진다면, 복사는 성공했지만 이관은 실패한 것입니다.</p>
+      <p><strong>갱신 시각 컬럼.</strong> Oracle에서 갱신일시를 관리하는 일반적인 패턴은 trigger입니다. 행이 UPDATE될 때마다 trigger가 발동해 해당 컬럼에 현재 시각을 기록합니다. 이 패턴은 DDL에 명시되지 않습니다. 이관 도구는 테이블 정의와 DEFAULT 구문을 옮기지만, <strong>trigger는 별도 객체</strong>이므로 누락되거나 타겟 DB에 맞게 재작성되지 않으면 이관 후 갱신일시 컬럼은 INSERT 시점 이후로 더 이상 갱신되지 않습니다. <strong>MySQL은 <code>ON UPDATE CURRENT_TIMESTAMP</code>라는 컬럼 속성으로 trigger 없이 이 동작을 처리</strong>하지만, 그 동작은 <code>explicit_defaults_for_timestamp</code> 설정과 <code>TIMESTAMP</code>/<code>DATETIME</code> 타입 선택에 따라 미묘하게 갈립니다(특히 테이블의 첫 TIMESTAMP 컬럼에 대한 자동 초기화 동작은 이 시스템 변수에 따라 달라지며, 구버전 호환 모드에서는 명시하지 않아도 자동 적용되는 케이스가 있습니다). 방향이 바뀌어 <strong>MySQL → Oracle/PostgreSQL</strong>이라면 컬럼 속성에 담겨 있던 동작을 <strong><code>BEFORE UPDATE</code> trigger</strong>로 풀어내야 하고(AFTER 시점에서는 컬럼 값을 수정할 수 없습니다), 이 변환이 빠지면 데이터는 들어가 있고 오류도 없지만 이력 추적의 의미가 사라진 상태가 됩니다.</p>
+      <p><strong>시간 함수의 평가 시점.</strong> PostgreSQL의 <code>now()</code>/<code>CURRENT_TIMESTAMP</code>는 <strong>트랜잭션 시작 시점으로 고정</strong>됩니다. 하나의 트랜잭션 안에서 수십만 건을 INSERT해도 timestamp는 동일합니다. <strong>Oracle의 <code>SYSDATE</code>/<code>SYSTIMESTAMP</code>는 호출 시점의 현재 시각을 반환</strong>하므로 같은 SQL 안에서는 같은 값처럼 보일 수 있지만, PostgreSQL <code>now()</code>처럼 트랜잭션 시작 시점으로 고정되는 모델과는 다릅니다. MySQL의 <code>NOW()</code>/<code>CURRENT_TIMESTAMP</code>는 statement 시작 시점에 평가되어 같은 statement 안에서는 동일한 값을 반환합니다. 행 단위로 다른 시각이 찍혀야 하는 이력 테이블이라면, PostgreSQL에서는 <code>clock_timestamp()</code>를 명시적으로 써야 합니다. DEFAULT에 어떤 함수를 쓰느냐가 아니라, 그 함수가 어떤 시점 기준으로 평가되는지를 확인하지 않으면 이 차이는 데이터 안에 그대로 반영됩니다.</p>
+      <p><strong>명시 NULL 가로채기.</strong> Oracle 12c+의 <code>DEFAULT ... ON NULL</code>은 애플리케이션이 명시적으로 NULL을 보내더라도 DB가 기본값으로 가로채는 동작입니다. <strong>오픈소스의 일반 DEFAULT는 컬럼이 생략됐을 때만 작동</strong>하고, 표현식 DEFAULT 역시 마찬가지여서 <strong>명시 NULL을 가로채지 못합니다.</strong> 명시적으로 NULL을 보내면 그대로 저장되거나, NOT NULL 제약이 걸려 있다면 에러로 돌아옵니다. 같은 INSERT 문이 Oracle에서는 성공하고 오픈소스에서는 실패하는 상황이 여기서 발생합니다. 오픈소스에서 이 동작을 재현하려면 <code>BEFORE INSERT</code> trigger로 NULL을 가로채는 방법밖에 없습니다. Oracle → 오픈소스 방향에서는 애플리케이션의 NULL 전송 로직을 함께 점검하거나, trigger 설계를 추가해야 합니다.</p>
+      <p><strong>표현식 DEFAULT.</strong> MySQL은 5.x까지 <code>CURRENT_TIMESTAMP</code>를 제외한 표현식 DEFAULT를 지원하지 않았습니다. <strong>8.0.13부터 정식 지원</strong>됩니다. PostgreSQL/Oracle에서 자유롭게 쓰던 함수 DEFAULT(예: <code>DEFAULT lpad(...)</code>)를 5.x MySQL로 옮기려면 trigger로 재구성해야 했지만, 8.x로 가는 경우라면 그대로 옮길 수 있습니다. 다만 함수 가용성과 결정성(deterministic) 요건은 별도로 확인해야 합니다.</p>
+      <p><strong>더미값 관행.</strong> NOT NULL을 통과시키기 위해 넣어두었던 빈 문자열, 0, 9999-12-31 같은 값들은 결측치를 통과시키기 위한 장치였지만, 이 값들이 실제 데이터처럼 저장되면 집계와 통계에서 왜곡이 발생합니다. 이관은 이 관행을 정리할 수 있는 시점이기도 합니다. 하지만 더미값을 그대로 넘기면서 DEFAULT만 바꾸면, 기존 데이터의 왜곡은 그대로 남습니다.</p>
+      <div class="article-callout"><p>DEFAULT는 이관을 편하게 만드는 도구가 아니라, 데이터의 의미를 결정하는 통제 수단입니다.</p></div>
+      <hr class="article-hr">
+      <h3>CHECK — 존재한다고 작동하는 것은 아니다</h3>
+      <p>CHECK 제약조건은 제약조건 이관에서 가장 단순해 보이지만, 먼저 확인해야 할 대상입니다.</p>
+      <p>Oracle에서 CHECK는 <strong>ENABLE/DISABLE과 VALIDATE/NOVALIDATE의 네 가지 조합</strong> 상태를 가집니다. 정의만 해두고 DISABLE 상태로 관리하던 경우, 이관 후 PostgreSQL에서 해당 CHECK가 활성화되면서 기존 데이터나 배치 SQL이 갑자기 제약 위반으로 실패합니다. <strong>기존 환경에서 사실상 죽어있던 규칙이 이관 후 살아나는 것입니다.</strong> 반대로, Oracle에서 작동하던 CHECK가 이관 과정에서 누락되면 무결성 통제 없이 데이터가 들어가는 상태가 됩니다. 어느 쪽이든 이관 전에 각 CHECK 제약조건이 실제로 작동하고 있었는지를 확인하지 않으면, 타겟 환경에서 의도하지 않은 동작이 나옵니다. <strong>CHECK는 정의가 아니라 실행 상태가 기준입니다.</strong></p>
+      <p><strong>MySQL → Oracle/PostgreSQL 방향에서는 정반대 함정</strong>이 기다립니다. <strong>MySQL은 8.0.16에 와서야 CHECK 제약조건을 정식 지원</strong>했습니다. 그 이전 버전은 CHECK를 파싱만 하고 실제로는 무시했습니다. 따라서 5.x나 8.0 초기 버전에서 운영되던 시스템에는 <strong>CHECK 정의는 존재하지만 실제로는 한 번도 검증된 적 없는 데이터가 광범위하게 쌓여 있을 수 있습니다.</strong> 이 데이터를 Oracle이나 PostgreSQL로 옮기면 정의된 CHECK가 정상 작동하면서 적재가 실패하거나, NOT VALID 상태로 통과시킨 뒤 운영 중 신규 데이터에서만 거절이 발생합니다. 이관 전 CHECK 조건에 위배되는 기존 데이터를 전수 점검하고, 정제하거나 제약을 재정의하는 결정이 필요합니다.</p>
+      <p>PostgreSQL은 <code>NOT VALID</code>로 제약을 정의하면 기존 데이터는 검증하지 않고 신규 데이터에만 적용할 수 있습니다. 이후 <code>VALIDATE CONSTRAINT</code>로 기존 데이터까지 확장 검증합니다. 이관 적재 단계에서 유용하지만, <strong><code>NOT VALID</code> 상태를 정리하지 않은 채 운영에 들어가면 옵티마이저가 이 제약을 신뢰하지 않아 일부 최적화 기회를 잃습니다.</strong></p>
+      <hr class="article-hr">
+      <h3>UNIQUE — NULL의 처리는 DB마다 다르다</h3>
+      <p>UNIQUE 제약은 단순해 보이지만, NULL 값을 어떻게 취급하는지에서 세 DB의 동작이 갈립니다.</p>
+      <p><strong>기본 동작은 세 DB 모두 같습니다</strong> — NULL 값은 서로 중복으로 보지 않습니다. UNIQUE 컬럼에 NULL을 갖는 행은 여러 개 들어갈 수 있고, 복합 UNIQUE에서도 마찬가지로 부분 NULL인 행이 여러 개 공존할 수 있습니다. 이는 SQL 표준의 <code>NULLS DISTINCT</code> 모델을 세 DB가 모두 따르기 때문입니다.</p>
+      <p>차이는 두 곳에서 생깁니다.</p>
+      <p>첫째, <strong>PostgreSQL 15부터 <code>UNIQUE NULLS NOT DISTINCT</code> 옵션</strong>이 추가되었습니다. NULL도 같은 값으로 취급해 중복으로 거절하도록 제약 정의 시점에 선택할 수 있습니다. Oracle/MySQL에는 이 옵션이 없습니다. PostgreSQL 15+ 환경이라면 "NULL이 곧 미입력이므로 중복 검사 대상이 아니다"라는 기본 의도가 맞는지 다시 묻는 기회이고, 다른 DB에서 옮겨 올 때는 의도와 무관하게 기본값 <code>NULLS DISTINCT</code>를 따르게 됩니다.</p>
+      <p>둘째, <strong>Oracle은 현재 <code>VARCHAR2</code>의 빈 문자열을 NULL처럼 처리하지만, Oracle 문서는 이 동작에 장기 호환성을 기대하지 말라고 권고</strong>합니다.. 이 차이가 양방향 이관에서 가장 큰 함정을 만듭니다. 오픈소스에서 <code>(A, B)</code> UNIQUE 인덱스가 있고 B가 Nullable일 때, <code>A=1, B=''</code> 행과 <code>A=1, B=NULL</code> 행이 별개의 값으로 공존할 수 있습니다. 이 데이터를 Oracle로 이관하면 <code>''</code>가 NULL로 변환되면서 두 행 모두 <code>A=1, B=NULL</code>이 되고, Oracle UNIQUE는 NULL 조합의 중복을 허용하므로 <strong>적재는 성공하지만 업무적으로는 의도하지 않은 중복이 생긴 상태</strong>가 됩니다. 에러는 없고, 건수도 맞고, 로그에도 흔적이 없습니다. 이 함정의 더 자세한 분석은 인덱스 편(11)에서 다룹니다.</p>
+      <p>방향별 함의가 다릅니다.</p>
+      <ul class="article-list"><li><strong>Oracle → PostgreSQL/MySQL</strong>: 기본 동작이 같아 큰 변경은 없습니다. PostgreSQL 15+ 환경이라면 <code>NULLS NOT DISTINCT</code> 도입을 검토할 수 있습니다.</li><li><strong>PostgreSQL/MySQL → Oracle</strong>: UNIQUE 컬럼 중 Nullable + 빈 문자열이 들어 있는 것을 이관 전에 전수 점검하고, 정제 또는 제약 재설계를 결정해야 합니다. 이관 후로 미루면 에러 없이 들어간 중복 데이터를 운영 중에 추적해야 합니다.</li></ul>
+      <hr class="article-hr">
+      <h3>FK — 존재보다 동작이 중요하다</h3>
+      <p>Oracle 환경에서도 대규모 시스템에서는 FK를 DISABLE 상태로 관리하는 경우가 적지 않습니다. 대량 배치 작업에서의 락 경합, CASCADE 동작의 예측 범위 문제가 이유입니다. 오픈소스에서는 이 부담이 더 직접적입니다. PostgreSQL은 FK 검증 과정에서 참조 무결성 확인을 위한 잠금과 추가 읽기 비용이 발생하고, <strong>MySQL InnoDB는 FK 컬럼에 적절한 인덱스가 필요하며, 없을 경우 인덱스가 자동 생성되거나 생성 조건에 맞지 않으면 제약 생성 자체가 실패</strong>합니다. <strong>Oracle에서 죽어있던 FK를 살려서 가져갈 이유는 없고, 살아있던 FK도 오픈소스에서 같은 방식으로 작동하지 않습니다.</strong></p>
+      <p>ON DELETE / ON UPDATE 액션도 DDL이 복사됐다고 안심할 수 없는 영역입니다. <strong>이름이 같아 보여도 지원 여부와 동작이 다릅니다.</strong></p>
+      <ul class="article-list"><li><strong><code>SET DEFAULT</code></strong>: PostgreSQL은 정식 지원, Oracle은 미지원, MySQL은 InnoDB에서 파싱만 되고 실제로는 무시(NDB만 동작). PostgreSQL → Oracle 방향에서 <code>ON DELETE SET DEFAULT</code>가 정의되어 있다면 Oracle에서는 trigger 또는 <code>SET NULL</code> + DEFAULT 컬럼 정의 조합으로 재현해야 합니다.</li><li><strong><code>CASCADE</code> / <code>SET NULL</code> / <code>RESTRICT</code> / <code>NO ACTION</code></strong>: 세 DB 모두 지원하지만 <strong>검증 시점 차이</strong>가 결과를 가릅니다(다음 절).</li><li><strong><code>ON UPDATE</code> 액션</strong>: Oracle은 <code>ON UPDATE</code> 액션을 지원하지 않습니다. 부모 키 변경 자체를 trigger로 차단하는 패턴이 일반적입니다. PostgreSQL/MySQL → Oracle 방향에서 <code>ON UPDATE CASCADE</code>가 있다면 trigger 또는 애플리케이션 로직으로 재설계해야 합니다.</li></ul>
+      <p>이관 도구가 적재 편의를 위해 FK를 끄고 데이터를 넣은 뒤, Oracle의 NOVALIDATE나 PostgreSQL의 NOT VALID 상태로 재활성화하는 경우도 있습니다. 이 상태에서 새로 들어오는 데이터는 통제를 받지만, <strong>기존 데이터는 무결성이 보장되지 않습니다.</strong> 옵티마이저도 이 상태를 신뢰하지 않습니다. FK가 완전히 검증된 상태라면 Join Elimination 같은 최적화를 적용할 수 있지만, NOVALIDATE/NOT VALID에서는 그 가능성이 사라집니다. 껍데기만 켜진 제약조건은 데이터 무결성도, 성능 이점도 주지 못합니다.</p>
+      <div class="article-callout"><p>FK는 관계를 표현하는 정의가 아니라, 관계를 강제하는 실행 규칙입니다.</p></div>
+      <hr class="article-hr">
+      <h3>FK는 언제 검사되는가 — DEFERRABLE의 비대칭</h3>
+      <p>FK를 유지한다고 판단했더라도, 그 FK가 언제 발동하는지는 다시 확인해야 합니다.</p>
+      <p>Oracle에서 FK를 <code>DEFERRABLE INITIALLY DEFERRED</code>로 설정하고 배치를 돌리는 패턴이 있습니다. 부모-자식 관계의 데이터를 순서 상관없이 넣고, COMMIT 시점에 한 번만 검증하는 방식입니다. 이 패턴에 의존하는 비즈니스 로직이 있다면, 이관 후 동작이 달라집니다.</p>
+      <div class="article-callout"><p>PostgreSQL은 DEFERRABLE을 지원하지만, 검증 시점을 미루려면 두 단계가 모두 필요합니다.</p></div>
+      <p>첫째, <strong>제약 정의 시점에 <code>DEFERRABLE</code> 절을 DDL에 명시</strong>해야 합니다. <code>DEFERRABLE</code> 절 없이 만든 제약은 이후 <code>SET CONSTRAINTS</code>로도 미룰 수 없습니다. 즉 이관 시점에 DDL을 어떻게 생성하느냐가 첫 결정입니다.</p>
+      <p>둘째, <strong>검증 시점을 정합니다.</strong> <code>DEFERRABLE INITIALLY DEFERRED</code>로 만들면 트랜잭션 끝까지 자동으로 미뤄집니다. <code>DEFERRABLE INITIALLY IMMEDIATE</code>(<code>DEFERRABLE</code>만 명시하면 이쪽이 기본)로 만들면 평소에는 즉시 검증되고, 필요한 트랜잭션에서 런타임에 <code>SET CONSTRAINTS ... DEFERRED</code>를 호출해야 미뤄집니다. Oracle의 <code>DEFERRABLE INITIALLY DEFERRED</code> 동작을 그대로 재현하려면 DDL에 <code>INITIALLY DEFERRED</code>까지 포함시키거나, 애플리케이션 코드가 매 배치 시작 시 <code>SET CONSTRAINTS</code>를 호출하도록 보장해야 합니다.</p>
+      <p><strong>MySQL은 DEFERRABLE 자체를 지원하지 않습니다.</strong> 검증은 항상 즉시 일어납니다. 이관 후 같은 배치 SQL이 중간에 FK 위반으로 실패하는 케이스가 여기서 나옵니다. 비즈니스 로직이 "트랜잭션 끝에 정합성을 맞추면 된다"는 전제로 작성되어 있었는데, 타겟 DB가 "매 문장마다 즉시 검증한다"로 바뀐 것입니다. MySQL로 가는 경우는 우회 자체가 어렵고, 적재 순서를 보장하는 배치 재설계 또는 FK 일시 해제·재활성화 절차로 풀어야 합니다.</p>
+      <p>NO ACTION과 RESTRICT도 이 맥락에서 갈립니다. 이름이 비슷하지만 DEFERRABLE 여부에 따라 동작이 다릅니다. <strong>NO ACTION은 DEFERRED 상태에서 COMMIT 시점까지 검증을 미룰 수 있지만, RESTRICT는 항상 즉시 검증합니다.</strong> 이 차이를 인식하지 못한 채 이관하면, 검증 시점이 바뀌면서 같은 트랜잭션이 성공하거나 실패하는 결과가 달라집니다.</p>
+      <hr class="article-hr">
+      <h3>오픈소스 고유 제약 — EXCLUDE의 부재</h3>
+      <p><strong>PostgreSQL의 <code>EXCLUDE</code> 제약</strong>은 Oracle/MySQL에 직접 대응이 없는 고유 기능입니다. UNIQUE가 동등 비교만 처리한다면, EXCLUDE는 임의의 연산자(<code>&amp;&amp;</code> 범위 겹침, <code>&lt;&gt;</code> 비동일 등)로 행 간 충돌을 정의합니다. 예약 시스템에서 시간 범위가 겹치지 않도록 보장하는 패턴이 대표적입니다.</p>
+      <p>PostgreSQL → Oracle/MySQL 방향에서 EXCLUDE 제약이 정의되어 있다면, 타겟 DB에서는 trigger로 재구현하거나 애플리케이션 레벨에서 직렬화하는 방식으로 우회해야 합니다. 둘 다 동시성과 정확성 측면에서 EXCLUDE의 native 성능에는 미치지 못하므로, <strong>이관 시 EXCLUDE에 의존하던 비즈니스 규칙은 별도 설계 항목으로 다뤄야 합니다.</strong></p>
+      <hr class="article-hr">
+      <h3>결론</h3>
+      <p>제약조건 이관은 DDL을 옮기는 작업이 아닙니다. 정의 뒤에 숨어 있는 <strong>상태(ENABLE/DISABLE), 검증 시점(IMMEDIATE/DEFERRED), 평가 시점(statement/transaction), 그리고 NULL과 명시값의 경계</strong>가 모두 함께 옮겨져야 의미가 보존됩니다.</p>
+      <p>결국 다섯 가지 질문으로 수렴됩니다.</p>
+      <p>첫째, 이 DEFAULT는 타겟 DB에서도 원래 의도한 시점 기준으로 작동하는가. 그리고 <code>DEFAULT ON NULL</code> 같은 명시 NULL 가로채기 동작이 사라지면 애플리케이션은 영향을 받지 않는가.</p>
+      <p>둘째, NOT NULL을 통과시키기 위해 넣은 기본값이나 더미값이 데이터의 원래 의미를 위장하고 있지는 않은가. 이관이 정리의 기회가 될 수 있는가.</p>
+      <p>셋째, 이관 전 소스에서 각 제약조건이 실제로 작동하던 상태(Oracle의 ENABLE/VALIDATE, MySQL 5.x의 묵음 무시, PostgreSQL의 NOT VALID)와 이관 후 상태가 의도적으로 일치하는가.</p>
+      <p>넷째, <strong>UNIQUE 컬럼에서 NULL과 빈 문자열의 경계가 이관 후에도 유지되는가</strong>. 특히 오픈소스 → Oracle 방향에서 <code>''</code>가 NULL로 합쳐지면서 의도하지 않은 중복이 생기는 경우는 점검되었는가. PostgreSQL 15+ 환경이라면 <code>NULLS NOT DISTINCT</code> 도입 여부는 결정되었는가.</p>
+      <p>다섯째, 검증 시점에 의존하는 비즈니스 로직(Oracle DEFERRABLE 배치, PostgreSQL EXCLUDE)이 타겟 DB의 검증 모델에서도 같은 결과를 만드는가. PostgreSQL로 가는 경우 DDL에 <code>DEFERRABLE</code> 절이 포함되어 있는가. MySQL처럼 DEFERRABLE이 없는 환경이라면 배치 순서나 FK 일시 해제 절차로 대체되었는가.</p>
+      <p>이 질문에 답하지 못한 상태에서의 이관은, 제약조건의 복사가 아니라 추정입니다. 그리고 그 추정이 틀렸다는 사실은 데이터를 직접 확인한 사람만 알 수 있습니다.</p>
+      <p>규칙이 정해졌다면, 그 규칙 안에서 가장 자주 사고가 나는 영역이 다음 글의 주제입니다. <strong>시퀀스와 식별자 채번</strong> — 같은 번호가 두 번 찍히는 사고가 가장 자주 나는 곳을 다음 글에서 살펴봅니다.</p>
+  </article>
+  <div class="article-foot">
+    <a href="../insights/tech-insights.html" class="article-back-link">← 목록으로 돌아가기</a>
+  </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo"><span class="logo-text">VAT<span>OS</span></span></a>
+        <p>더 편한 IT 세상을 함께 만들어 나가는<br>데이터베이스 전문 기업</p>
+        <p class="footer-address" style="margin-top:16px; font-size:12px; line-height:1.9;">서울특별시 성동구 뚝섬로1길 63, 영창디지털타워 <span class="nobr">401-3호</span><br>Tel: 010-6787-7223 &nbsp;|&nbsp; sales@vatos.co.kr</p>
+        <a href="../assets/files/vatos-company-profile.pdf" target="_blank" rel="noopener noreferrer" class="footer-contact-icon">
+          <span class="fci-ico"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          <span>회사소개서</span>
+        </a>
+      </div>
+      <div class="footer-col">
+        <h5>회사</h5>
+        <a href="../about/company.html">회사소개</a>
+        <a href="../about/history.html">연혁</a>
+        <a href="../about/location.html">오시는 길</a>
+      </div>
+      <div class="footer-col">
+        <h5>사업분야</h5>
+        <a href="../business/business-license.html">라이선스</a>
+        <a href="../business/business-operations-technical-support.html">운영 &amp; 기술지원</a>
+        <a href="../business/business-performance-consulting.html">성능 컨설팅</a>
+        <a href="../business/business-migration-conversion.html">마이그레이션 &amp; 전환</a>
+        <a href="../business/business-training.html">교육</a>
+      </div>
+      <div class="footer-col">
+        <h5>크루</h5>
+        <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" target="_blank" rel="noopener noreferrer">바로그</a>
+        <a href="../crew/culture.html">바토스 문화</a>
+        <a href="../insights/tech-insights.html">기술 인사이트</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 VATOS Co., Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/common.js"></script>
+</body>
