@@ -1,0 +1,5 @@
+/* 우피 편집기 코드를 줄이기 위한 진입 파일 */
+@import url("./common.css");
+@import url("./main.css");
+@import url("./content.css");
+@import url("./subpages.css");
