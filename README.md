@@ -96,20 +96,6 @@ Oopy HTML 편집기의 `<body>` 영역에는 초기화 파일만 호출합니다
 4. 메인 페이지에서만 GSAP 호출
 5. `vatos-interact.js` 호출
 
-## 로컬 실행
-
-브라우저에서 파일을 직접 여는 것보다 로컬 웹 서버 사용을 권장합니다.
-
-```bash
-python -m http.server 8000
-```
-
-실행 후 다음 주소로 접속합니다.
-
-```text
-http://localhost:8000
-```
-
 ## 수정 및 배포
 
 1. 로컬에서 HTML, CSS, JavaScript 수정
@@ -117,16 +103,6 @@ http://localhost:8000
 3. GitHub 저장소에 변경사항 반영
 4. GitHub Pages 배포 완료 확인
 5. Oopy 화면에서 최종 확인
-
-CSS 또는 Oopy Loader 수정사항이 바로 반영되지 않으면 Oopy HTML 편집기의 버전 값을 변경합니다.
-
-```html
-<!-- 변경 전 -->
-?v=0.1
-
-<!-- 변경 후 -->
-?v=0.2
-```
 
 ## 경로 및 관리 규칙
 
