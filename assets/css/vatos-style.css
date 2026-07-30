@@ -41,6 +41,11 @@
   --border: rgba(255,255,255,0.08);
   --border-dark: rgba(11,27,61,0.1);
 
+  /* Page surfaces */
+  --surface-white: #FFFFFF;
+  --surface-page: #F5F7F9;
+  --dark-navy: #192F55;
+
   /* Motion tokens */
   --motion-fast: 200ms;
   --motion-base: 400ms;
@@ -1680,3 +1685,95 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   .vatos-insights-card:hover, .vatos-insights-card.visible:hover { transform: none; }
   .vatos-insights-list { transition: none; }
 }
+
+/* ============================================================
+   CONTACT PAGE — light surface overrides
+   `vatos-page-contact` 범위 안에서만 적용되어 다른 페이지에는 영향이 없다.
+   ============================================================ */
+body.vatos-page-contact {
+  background: var(--surface-page);
+  color: var(--text-dark);
+}
+
+/* Header on the white contact hero */
+body.vatos-page-contact .vatos-header {
+  background: rgba(255,255,255,0.88);
+  border-color: var(--gray-200);
+  box-shadow: 0 6px 24px rgba(11,27,61,0.06);
+}
+body.vatos-page-contact .vatos-header.scrolled {
+  background: rgba(255,255,255,0.94);
+  border-color: var(--gray-200);
+  box-shadow: 0 8px 32px rgba(11,27,61,0.12);
+}
+body.vatos-page-contact .vatos-logo-text,
+body.vatos-page-contact .vatos-logo-text span { color: var(--text-dark); }
+body.vatos-page-contact .vatos-nav-link { color: var(--text-mid); }
+body.vatos-page-contact .vatos-nav-link:hover {
+  color: var(--text-dark);
+  background: var(--gray-100);
+}
+body.vatos-page-contact .vatos-btn-contact-header { color: var(--text-dark); }
+body.vatos-page-contact .vatos-hamburger span { background: var(--text-dark); }
+
+/* Top introduction: --surface-white */
+body.vatos-page-contact .vatos-page-hero {
+  background: var(--surface-white);
+  border-bottom-color: var(--gray-200);
+}
+body.vatos-page-contact .vatos-page-hero::before { display: none; }
+body.vatos-page-contact .vatos-page-hero h1 { color: var(--text-dark); }
+body.vatos-page-contact .vatos-page-hero p { color: var(--text-muted); }
+
+/* Contact details and form: --surface-page */
+body.vatos-page-contact .vatos-contact { background: var(--surface-page); }
+body.vatos-page-contact .vatos-contact-info .vatos-section-title,
+body.vatos-page-contact .vatos-contact-detail-text p { color: var(--text-dark); }
+body.vatos-page-contact .vatos-contact-detail-text h5 { color: var(--text-muted); }
+body.vatos-page-contact .vatos-contact-detail-icon {
+  background: var(--surface-white);
+  border-color: var(--gray-200);
+}
+body.vatos-page-contact .vatos-contact-form {
+  background: var(--surface-white);
+  border-color: var(--gray-200);
+  box-shadow: 0 8px 28px rgba(11,27,61,0.05);
+}
+body.vatos-page-contact .vatos-contact-form-title { color: var(--text-dark); }
+body.vatos-page-contact .vatos-form-group label { color: var(--text-mid); }
+body.vatos-page-contact .vatos-form-group input,
+body.vatos-page-contact .vatos-form-group select,
+body.vatos-page-contact .vatos-form-group textarea {
+  color: var(--text-dark);
+  background: var(--surface-page);
+  border-color: var(--gray-200);
+}
+body.vatos-page-contact .vatos-form-group input::placeholder,
+body.vatos-page-contact .vatos-form-group textarea::placeholder { color: var(--gray-400); }
+body.vatos-page-contact .vatos-form-group select { color: var(--text-mid); }
+body.vatos-page-contact .vatos-form-group select option {
+  background: var(--surface-white);
+  color: var(--text-dark);
+}
+body.vatos-page-contact .vatos-form-group input:focus,
+body.vatos-page-contact .vatos-form-group select:focus,
+body.vatos-page-contact .vatos-form-group textarea:focus {
+  background: var(--surface-white);
+  border-color: var(--cyan);
+}
+body.vatos-page-contact .vatos-btn-submit {
+  background: var(--cyan);
+  color: var(--surface-white);
+}
+body.vatos-page-contact .vatos-btn-submit:hover {
+  background: var(--cyan-dark);
+  color: var(--surface-white);
+}
+
+/* Footer: --dark-navy */
+body.vatos-page-contact .vatos-footer {
+  background: var(--dark-navy);
+  border-top-color: rgba(255,255,255,0.08);
+}
+body.vatos-page-contact .vatos-footer .vatos-logo-text,
+body.vatos-page-contact .vatos-footer .vatos-logo-text span { color: var(--cyan); }
