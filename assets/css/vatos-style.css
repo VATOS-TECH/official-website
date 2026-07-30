@@ -296,7 +296,7 @@ body > #vatos-layout-footer { margin-top: auto; }
    ============================================================ */
 html body .notion-scroller,
 html body .notion-page-content {
-  /* background: var(--bg-black) !important; */
+  background: var(--bg-black) !important;
   color: var(--white);
 }
 
