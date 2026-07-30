@@ -9,6 +9,8 @@
   window.__VATOS_OOPY_INITIALIZED__ = true;
 
   const BASE_URL = 'https://vatos-tech.github.io/official-website';
+  let pageClassTimer = null;
+  let pageObserver = null;
 
   /* GitHub Pages URL 생성 */
   function createUrl(path) {
@@ -28,10 +30,14 @@
 
   /* Header와 Footer의 assets 상대경로를 GitHub Pages 절대경로로 변경 */
   function fixAssetPaths(container) {
-    if (!container) { return; }
+    if (!container) {
+      return;
+    }
 
     function convertAssetPath(value) {
-      if (!value) { return value; }
+      if (!value) {
+        return value;
+      }
 
       /* 이미 완성된 URL이나 특수 주소는 변경하지 않음 */
       if (/^(?:https?:|data:|blob:|mailto:|tel:)/i.test(value)) {
@@ -41,19 +47,25 @@
       const normalized = value.replace(/^(?:\.\.\/)+/, '').replace(/^\/+/, '');
 
       /* assets 경로가 아니면 Clean URL을 그대로 유지 */
-      if (normalized.indexOf('assets/') !== 0) { return value; }
+      if (normalized.indexOf('assets/') !== 0) {
+        return value;
+      }
 
       return BASE_URL + '/' + normalized;
     }
 
     container.querySelectorAll('[src], [href]').forEach(function (element) {
       ['src', 'href'].forEach(function (attribute) {
-        if (!element.hasAttribute(attribute)) { return; }
+        if (!element.hasAttribute(attribute)) {
+          return;
+        }
 
         const original = element.getAttribute(attribute);
         const converted = convertAssetPath(original);
 
-        if (converted !== original) { element.setAttribute(attribute, converted); }
+        if (converted !== original) {
+          element.setAttribute(attribute, converted);
+        }
       });
     });
   }
@@ -61,7 +73,9 @@
   /* JavaScript 파일 동적 호출 */
   function loadScript(path, key) {
     return new Promise(function (resolve, reject) {
-      const existing = document.querySelector( 'script[data-vatos-script="' + key + '"]' );
+      const existing = document.querySelector(
+        'script[data-vatos-script="' + key + '"]'
+      );
 
       /* 이미 호출한 스크립트는 다시 추가하지 않음 */
       if (existing) {
@@ -102,12 +116,15 @@
       'vatos-contact-light',
       'vatos-page-sub',
       'vatos-page-culture',
-      'vatos-page-insights'
+      'vatos-page-insights',
+      'vatos-page-article'
     ];
 
     pageClasses.forEach(function (className) {
       document.body.classList.remove(className);
     });
+
+    document.body.classList.add('vatos-oopy');
 
     /* 메인 페이지 */
     if (document.querySelector('.vatos-main-hero')) {
@@ -135,17 +152,69 @@
 
     /* 일반 서브페이지 */
     if (document.querySelector('.vatos-sub-content, .vatos-sub-hero')) {
+      document.body.classList.add('vatos-page-sub');
       return 'sub';
     }
 
+    /* 게시글 페이지 */
+    document.body.classList.add('vatos-page-article');
     return 'article';
+  }
+
+  /* 페이지 유형 재판별 예약 */
+  function schedulePageClassUpdate() {
+    window.clearTimeout(pageClassTimer);
+
+    pageClassTimer = window.setTimeout(function () {
+      applyPageClass();
+    }, 150);
+  }
+
+  /* 우피의 React 화면 변경 감지 */
+  function observeOopyPageChanges() {
+    if (pageObserver) {
+      return;
+    }
+
+    pageObserver = new MutationObserver(function (mutations) {
+      const hasContentChange = mutations.some(function (mutation) {
+        return mutation.type === 'childList' &&
+          (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0);
+      });
+
+      if (hasContentChange) {
+        schedulePageClassUpdate();
+      }
+    });
+
+    pageObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  /* 브라우저 이전 및 다음 페이지 이동 감지 */
+  function observeHistoryNavigation() {
+    window.addEventListener('popstate', schedulePageClassUpdate);
+
+    ['pushState', 'replaceState'].forEach(function (methodName) {
+      const originalMethod = window.history[methodName];
+
+      window.history[methodName] = function () {
+        const result = originalMethod.apply(this, arguments);
+        schedulePageClassUpdate();
+        return result;
+      };
+    });
   }
 
   /* header.html 삽입 */
   function insertHeader(html) {
     const oldHeader = document.getElementById('vatos-layout-header');
 
-    if (oldHeader) { oldHeader.remove(); }
+    if (oldHeader) {
+      oldHeader.remove();
+    }
 
     const container = document.createElement('div');
     container.id = 'vatos-layout-header';
@@ -159,7 +228,9 @@
   function insertFooter(html) {
     const oldFooter = document.getElementById('vatos-layout-footer');
 
-    if (oldFooter) { oldFooter.remove(); }
+    if (oldFooter) {
+      oldFooter.remove();
+    }
 
     const container = document.createElement('div');
     container.id = 'vatos-layout-footer';
@@ -179,7 +250,10 @@
   /* VATOS 페이지 초기화 */
   async function initializeVatosPage() {
     try {
-      const result = await Promise.all([ fetchHtml('header.html'), fetchHtml('footer.html') ]);
+      const result = await Promise.all([
+        fetchHtml('header.html'),
+        fetchHtml('footer.html')
+      ]);
 
       insertHeader(result[0]);
       insertFooter(result[1]);
@@ -187,17 +261,25 @@
       const pageType = applyPageClass();
 
       /* 메인 페이지에서만 GSAP 호출 */
-      if (pageType === 'main') { await loadScript('assets/vendor/gsap.min.js', 'gsap'); }
+      if (pageType === 'main') {
+        await loadScript('assets/vendor/gsap.min.js', 'gsap');
+      }
 
       /* 공통 및 페이지별 기능 실행 */
       await loadScript('assets/js/vatos-interact.js', 'vatos-interact');
+
+      /* 우피 내부 페이지 전환 감지 시작 */
+      observeHistoryNavigation();
+      observeOopyPageChanges();
     } catch (error) {
       console.error('[VATOS Initialize]', error);
     }
   }
 
   /* 우피 React 렌더링 이후 초기화 */
-  function startAfterReactRender() { window.setTimeout(initializeVatosPage, 800); }
+  function startAfterReactRender() {
+    window.setTimeout(initializeVatosPage, 800);
+  }
 
   if (document.readyState === 'complete') {
     startAfterReactRender();
