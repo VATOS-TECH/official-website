@@ -38,21 +38,6 @@ vatos-official-website/
 ├── contact.html
 ├── header.html
 ├── footer.html
-├── about/
-│   ├── company.html
-│   ├── history.html
-│   └── location.html
-├── business/
-│   ├── business-license.html
-│   ├── business-operations-technical-support.html
-│   ├── business-performance-consulting.html
-│   ├── business-migration-conversion.html
-│   └── business-training.html
-├── crew/
-│   └── culture.html
-├── insights/
-│   ├── tech-insights.html
-│   └── insight_0.html ~ insight_14.html
 └── assets/
     ├── css/
     │   └── vatos-style.css
@@ -76,17 +61,6 @@ vatos-official-website/
 | `assets/vendor/gsap.min.js` | 메인 화면 애니메이션 라이브러리 |
 | `header.html` | 공통 Header와 Navigation |
 | `footer.html` | 공통 Footer |
-
-## Pages
-
-| 분류 | 페이지 |
-|---|---|
-| Main | Home |
-| About VATOS | Company, History, Location |
-| Business Areas | License, Operations & Technical Support, Performance Consulting, Migration & Conversion, Training |
-| Crew | Culture |
-| Insights | Tech Insights, Insight 상세 게시글 |
-| Contact | 서비스 문의 |
 
 ## Interaction Features
 
@@ -159,22 +133,6 @@ vatos-official-website/
 <link rel="stylesheet" href="../assets/css/vatos-style.css">
 <script src="../assets/js/vatos-interact.js"></script>
 ```
-
-## Local Development
-
-브라우저에서 파일을 직접 여는 것보다 VS Code Live Server와 같은 로컬 서버 사용을 권장합니다.
-
-```text
-http://127.0.0.1:5500/
-```
-
-확인 순서는 다음과 같습니다.
-
-1. 저장소를 내려받습니다.
-2. 프로젝트 루트를 VS Code에서 엽니다.
-3. Live Server로 `index.html`을 실행합니다.
-4. 변경한 페이지를 PC와 모바일 너비에서 확인합니다.
-5. Console 오류와 Network의 404 응답을 확인합니다.
 
 ## Update Checklist
 
