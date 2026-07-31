@@ -1770,7 +1770,7 @@ body.vatos-contact-light .vatos-btn-submit:hover {
 
 /* Footer: --dark-navy */
 body.vatos-contact-light .vatos-footer {
-  background: var(--dark-navy);
+  background: var(--navy-dark);
   border-top-color: rgba(255,255,255,0.08);
 }
 body.vatos-contact-light .vatos-footer .vatos-logo-text,
