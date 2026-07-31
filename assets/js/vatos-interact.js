@@ -19,6 +19,20 @@
     return Array.prototype.slice.call(items || []);
   }
 
+  document.addEventListener('click', function (event) {
+    var target = event.target;
+    var logo = target && target.closest
+      ? target.closest('.vatos-logo[data-vatos-skip-intro]')
+      : null;
+    if (!logo) return;
+
+    try {
+      window.sessionStorage.setItem('vatosSkipIntroOnce', 'true');
+    } catch (error) {
+      console.warn('[VATOS] 인트로 생략 상태를 저장하지 못했습니다.', error);
+    }
+  });
+
   function observeOnce(elements, callback, options) {
     var targets = toArray(elements);
     if (!targets.length) return null;
@@ -518,6 +532,24 @@
         return;
       }
 
+      var skipIntro = false;
+      try {
+        skipIntro =
+          window.sessionStorage.getItem('vatosSkipIntroOnce') === 'true';
+        window.sessionStorage.removeItem('vatosSkipIntroOnce');
+      } catch (error) {
+        skipIntro = false;
+      }
+
+      if (skipIntro) {
+        if (introElement.parentNode) {
+          introElement.parentNode.removeChild(introElement);
+        }
+        if (header) header.classList.add('visible');
+        markIntroDone();
+        return;
+      }
+
       root.classList.add('vatos-intro-lock');
 
       function finish() {
@@ -944,6 +976,20 @@
       var dots = toArray(
         carousel.querySelectorAll('.vatos-carousel-dot')
       );
+      var content = carousel.querySelector(
+        '.vatos-performance-coverflow-content'
+      );
+      var contentNumber = content
+        ? content.querySelector('.vatos-performance-coverflow-num')
+        : null;
+      var contentTitle = content
+        ? content.querySelector('.vatos-performance-coverflow-title')
+        : null;
+      var contentDescription = content
+        ? content.querySelector('.vatos-performance-coverflow-desc')
+        : null;
+      var hoverActivate =
+        carousel.getAttribute('data-hover-activate') === 'true';
       var count = cards.length;
       if (count < 2) return;
 
@@ -967,6 +1013,7 @@
       var downX = 0;
       var dragX = 0;
       var dragShifted = false;
+      var contentFrame = null;
 
       var slotClasses = {
         '0': 'center',
@@ -1016,6 +1063,30 @@
         dots.forEach(function (dot, index) {
           dot.classList.toggle('active', index === active);
         });
+
+        if (content) {
+          var activeCard = cards[active];
+          content.classList.remove('visible');
+          if (contentFrame) {
+            window.cancelAnimationFrame(contentFrame);
+          }
+          contentFrame = window.requestAnimationFrame(function () {
+            if (contentNumber) {
+              contentNumber.textContent =
+                activeCard.getAttribute('data-number') || '';
+            }
+            if (contentTitle) {
+              contentTitle.textContent =
+                activeCard.getAttribute('data-title') || '';
+            }
+            if (contentDescription) {
+              contentDescription.textContent =
+                activeCard.getAttribute('data-description') || '';
+            }
+            content.classList.add('visible');
+            contentFrame = null;
+          });
+        }
       }
 
       function go(index) {
@@ -1152,6 +1223,14 @@
           go(index);
           start();
         });
+
+        if (hoverActivate) {
+          card.addEventListener('mouseenter', function () {
+            if (dragging) return;
+            stop();
+            go(index);
+          });
+        }
       });
 
       dots.forEach(function (dot, index) {
@@ -1164,6 +1243,9 @@
 
       carousel.addEventListener('focusin', stop);
       carousel.addEventListener('focusout', start);
+      if (hoverActivate) {
+        carousel.addEventListener('mouseleave', start);
+      }
 
       var viewport =
         carousel.querySelector('.vatos-carousel-viewport') || carousel;
