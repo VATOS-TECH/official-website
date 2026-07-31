@@ -733,6 +733,8 @@
     if (!bodies.length) return;
 
     bodies.forEach(function (body) {
+      if (body.closest('[data-vatos-service]')) return;
+
       var dot = document.createElement('span');
       dot.className = 'vatos-sub-intro-dot';
       dot.setAttribute('aria-hidden', 'true');
@@ -896,6 +898,515 @@
         }, 200 + index * 220);
       });
     }, { threshold: 0.35 });
+  })();
+
+  /* ── Business 상세 페이지 ──────────────────────────────── */
+  function initBusinessFlows(scope) {
+    var root = scope || document;
+    var flows = toArray(root.querySelectorAll('.vatos-business-flow'));
+
+    flows.forEach(function (flow) {
+      if (flow.dataset.vatosFlowInitialized === 'true') return;
+      flow.dataset.vatosFlowInitialized = 'true';
+
+      observeOnce([flow], function () {
+        flow.classList.add('drawn');
+      }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      revealElements(
+        flow.querySelectorAll('.vatos-business-flow-step'),
+        {
+          className: 'visible',
+          delay: function (index) {
+            return index * 120;
+          },
+          threshold: 0.15,
+          rootMargin: '0px 0px -6% 0px'
+        }
+      );
+    });
+  }
+
+  function initBusinessCarousels(scope) {
+    var root = scope || document;
+    var carousels = toArray(root.querySelectorAll('.vatos-carousel-3d'));
+
+    carousels.forEach(function (carousel) {
+      if (carousel.dataset.vatosCarouselInitialized === 'true') return;
+      carousel.dataset.vatosCarouselInitialized = 'true';
+
+      var cards = toArray(
+        carousel.querySelectorAll('.vatos-service-card')
+      );
+      var dots = toArray(
+        carousel.querySelectorAll('.vatos-carousel-dot')
+      );
+      var count = cards.length;
+      if (count < 2) return;
+
+      var interval = parseInt(
+        carousel.getAttribute('data-interval') || '3000',
+        10
+      );
+      var firstDelay = parseInt(
+        carousel.getAttribute('data-first-delay') || '1500',
+        10
+      );
+      var active = parseInt(
+        carousel.getAttribute('data-start') || '0',
+        10
+      ) % count;
+      var timer = null;
+      var firstTimer = null;
+      var resizeTimer = null;
+      var moved = false;
+      var dragging = false;
+      var downX = 0;
+      var dragX = 0;
+      var dragShifted = false;
+
+      var slotClasses = {
+        '0': 'center',
+        '1': 'right',
+        '-1': 'left',
+        '2': 'right-2',
+        '-2': 'left-2'
+      };
+      var stateClasses = [
+        'center',
+        'left',
+        'right',
+        'left-2',
+        'right-2'
+      ];
+
+      function isStacked() {
+        if (carousel.getAttribute('data-mobile-3d') === 'true') {
+          return false;
+        }
+        return !!(
+          window.matchMedia &&
+          window.matchMedia('(max-width: 900px)').matches
+        );
+      }
+
+      function render() {
+        cards.forEach(function (card, index) {
+          var relative = ((index - active) % count + count) % count;
+          var offset = relative > count / 2 ? relative - count : relative;
+          var stateClass = slotClasses[String(offset)];
+
+          stateClasses.forEach(function (className) {
+            card.classList.remove(className);
+          });
+
+          if (stateClass) {
+            card.classList.add(stateClass);
+          }
+
+          card.setAttribute(
+            'aria-hidden',
+            offset === 0 ? 'false' : 'true'
+          );
+        });
+
+        dots.forEach(function (dot, index) {
+          dot.classList.toggle('active', index === active);
+        });
+      }
+
+      function go(index) {
+        active = ((index % count) + count) % count;
+        render();
+      }
+
+      function next() {
+        if (!carousel.isConnected) {
+          stop();
+          return;
+        }
+        go(active + 1);
+      }
+
+      function previous() {
+        go(active - 1);
+      }
+
+      function start() {
+        if (REDUCE || isStacked() || timer || firstTimer) return;
+
+        firstTimer = window.setTimeout(function () {
+          firstTimer = null;
+          next();
+          timer = window.setInterval(next, interval);
+        }, firstDelay);
+      }
+
+      function stop() {
+        if (firstTimer) {
+          window.clearTimeout(firstTimer);
+          firstTimer = null;
+        }
+        if (timer) {
+          window.clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      function getClientX(event) {
+        if (event.touches && event.touches.length) {
+          return event.touches[0].clientX;
+        }
+        if (event.changedTouches && event.changedTouches.length) {
+          return event.changedTouches[0].clientX;
+        }
+        return event.clientX;
+      }
+
+      function handleDown(event) {
+        dragging = true;
+        moved = false;
+        downX = getClientX(event);
+        dragX = downX;
+        dragShifted = false;
+        carousel.classList.add('dragging');
+
+        if (
+          event.pointerId !== undefined &&
+          event.currentTarget.setPointerCapture
+        ) {
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }
+
+        stop();
+      }
+
+      function handleMove(event) {
+        if (!dragging) return;
+
+        var currentX = getClientX(event);
+        var totalDistance = currentX - downX;
+        var stepDistance = currentX - dragX;
+
+        if (Math.abs(totalDistance) > 8) {
+          moved = true;
+        }
+
+        if (stepDistance <= -42) {
+          next();
+          dragX = currentX;
+          dragShifted = true;
+        } else if (stepDistance >= 42) {
+          previous();
+          dragX = currentX;
+          dragShifted = true;
+        }
+
+        if (moved && event.cancelable) {
+          event.preventDefault();
+        }
+      }
+
+      function handleUp(event) {
+        if (!dragging) return;
+
+        dragging = false;
+        carousel.classList.remove('dragging');
+        var distance = getClientX(event) - downX;
+
+        if (!dragShifted && Math.abs(distance) > 42) {
+          if (distance < 0) {
+            next();
+          } else {
+            previous();
+          }
+        }
+
+        start();
+        window.setTimeout(function () {
+          moved = false;
+        }, 180);
+      }
+
+      function handleCancel() {
+        if (!dragging) return;
+        dragging = false;
+        carousel.classList.remove('dragging');
+        start();
+        window.setTimeout(function () {
+          moved = false;
+        }, 180);
+      }
+
+      cards.forEach(function (card, index) {
+        card.querySelectorAll('img').forEach(function (image) {
+          image.setAttribute('draggable', 'false');
+        });
+
+        card.addEventListener('click', function () {
+          if (moved) return;
+          stop();
+          go(index);
+          start();
+        });
+      });
+
+      dots.forEach(function (dot, index) {
+        dot.addEventListener('click', function () {
+          stop();
+          go(index);
+          start();
+        });
+      });
+
+      carousel.addEventListener('focusin', stop);
+      carousel.addEventListener('focusout', start);
+
+      var viewport =
+        carousel.querySelector('.vatos-carousel-viewport') || carousel;
+
+      if (window.PointerEvent) {
+        viewport.addEventListener('pointerdown', handleDown);
+        window.addEventListener('pointermove', handleMove);
+        window.addEventListener('pointerup', handleUp);
+        window.addEventListener('pointercancel', handleCancel);
+      } else {
+        viewport.addEventListener('touchstart', handleDown, { passive: true });
+        viewport.addEventListener('touchmove', handleMove, { passive: false });
+        viewport.addEventListener('touchend', handleUp);
+      }
+
+      window.addEventListener('resize', function () {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(function () {
+          if (isStacked()) {
+            stop();
+          } else {
+            render();
+            start();
+          }
+        }, 200);
+      });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          stop();
+        } else {
+          start();
+        }
+      });
+
+      window.addEventListener('pagehide', stop);
+      render();
+      start();
+    });
+  }
+
+  function initBusinessMarquees(scope) {
+    var root = scope || document;
+    var marquees = toArray(root.querySelectorAll('.vatos-card-marquee'));
+
+    marquees.forEach(function (marquee) {
+      if (marquee.dataset.vatosMarqueeInitialized === 'true') return;
+      marquee.dataset.vatosMarqueeInitialized = 'true';
+
+      var track = marquee.querySelector('.vatos-card-marquee-track');
+      if (!track || !track.children.length) return;
+
+      var originalCount = track.children.length;
+      var originals = toArray(track.children).map(function (element) {
+        return element.cloneNode(true);
+      });
+      var cycle = parseInt(
+        marquee.getAttribute('data-cycle') || '40000',
+        10
+      );
+      var setWidth = 0;
+      var offset = 0;
+      var lastFrame = 0;
+      var paused = false;
+      var dragging = false;
+      var visible = !('IntersectionObserver' in window);
+      var downX = 0;
+      var lastX = 0;
+      var resizeTimer = null;
+
+      function appendSet() {
+        originals.forEach(function (element) {
+          track.appendChild(element.cloneNode(true));
+        });
+      }
+
+      function applyPosition() {
+        track.style.transform =
+          'translate3d(' + offset.toFixed(2) + 'px, 0, 0)';
+      }
+
+      function wrapPosition() {
+        if (setWidth <= 0) return;
+        while (offset <= -setWidth) {
+          offset += setWidth;
+        }
+        while (offset > 0) {
+          offset -= setWidth;
+        }
+      }
+
+      function build() {
+        while (track.children.length > originalCount) {
+          track.removeChild(track.lastChild);
+        }
+
+        appendSet();
+        setWidth =
+          track.children[originalCount].offsetLeft -
+          track.children[0].offsetLeft;
+
+        var requiredWidth = marquee.clientWidth + setWidth + 400;
+        var guard = 0;
+
+        while (track.scrollWidth < requiredWidth && guard < 40) {
+          appendSet();
+          guard += 1;
+        }
+
+        offset = 0;
+        applyPosition();
+      }
+
+      function frame(timestamp) {
+        if (!marquee.isConnected) return;
+
+        if (lastFrame) {
+          var elapsed = timestamp - lastFrame;
+          if (elapsed > 100) {
+            elapsed = 16;
+          }
+
+          if (
+            visible &&
+            !paused &&
+            !dragging &&
+            !REDUCE &&
+            setWidth > 0
+          ) {
+            offset -= (setWidth / cycle) * elapsed;
+            wrapPosition();
+            applyPosition();
+          }
+        }
+
+        lastFrame = timestamp;
+        window.requestAnimationFrame(frame);
+      }
+
+      function getClientX(event) {
+        if (event.touches && event.touches.length) {
+          return event.touches[0].clientX;
+        }
+        return event.clientX;
+      }
+
+      function handleDown(event) {
+        dragging = true;
+        downX = getClientX(event);
+        lastX = downX;
+        marquee.classList.add('dragging');
+      }
+
+      function handleMove(event) {
+        if (!dragging) return;
+
+        var currentX = getClientX(event);
+        offset += currentX - lastX;
+        lastX = currentX;
+        wrapPosition();
+        applyPosition();
+      }
+
+      function handleUp() {
+        if (!dragging) return;
+        dragging = false;
+        marquee.classList.remove('dragging');
+      }
+
+      marquee.addEventListener('mouseenter', function () {
+        paused = true;
+      });
+      marquee.addEventListener('mouseleave', function () {
+        paused = false;
+      });
+
+      if (window.PointerEvent) {
+        marquee.addEventListener('pointerdown', handleDown);
+        window.addEventListener('pointermove', handleMove);
+        window.addEventListener('pointerup', handleUp);
+      } else {
+        marquee.addEventListener('touchstart', handleDown, { passive: true });
+        marquee.addEventListener('touchmove', handleMove, { passive: true });
+        window.addEventListener('touchend', handleUp);
+      }
+
+      track.addEventListener('dragstart', function (event) {
+        event.preventDefault();
+      });
+
+      if ('IntersectionObserver' in window) {
+        var visibilityObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.target === marquee) {
+              visible = entry.isIntersecting;
+            }
+          });
+        }, { threshold: 0.01 });
+
+        visibilityObserver.observe(marquee);
+      }
+
+      window.addEventListener('load', build);
+      window.addEventListener('resize', function () {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(build, 200);
+      });
+
+      build();
+      window.requestAnimationFrame(frame);
+    });
+  }
+
+  function initializeBusinessComponents(scope) {
+    initBusinessFlows(scope);
+    initBusinessCarousels(scope);
+    initBusinessMarquees(scope);
+  }
+
+  (function observeBusinessComponents() {
+    initializeBusinessComponents(document);
+
+    if (!('MutationObserver' in window)) return;
+
+    var initializeTimer = null;
+    var observer = new MutationObserver(function (mutations) {
+      var hasAddedNodes = mutations.some(function (mutation) {
+        return mutation.addedNodes && mutation.addedNodes.length > 0;
+      });
+
+      if (!hasAddedNodes) return;
+
+      window.clearTimeout(initializeTimer);
+      initializeTimer = window.setTimeout(function () {
+        normalizeAssetPaths();
+        initializeBusinessComponents(document);
+      }, 120);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
   })();
 
   /* ── History ───────────────────────────────────────────── */
