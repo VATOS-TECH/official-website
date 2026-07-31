@@ -1775,3 +1775,742 @@ body.vatos-contact-light .vatos-footer {
 }
 body.vatos-contact-light .vatos-footer .vatos-logo-text,
 body.vatos-contact-light .vatos-footer .vatos-logo-text span { color: var(--cyan); }
+
+/* ============================================================
+   BUSINESS DETAIL REDESIGN
+   ============================================================ */
+
+/* Business 상세페이지 공통 레이아웃 */
+.vatos-sub-content[data-vatos-service] .vatos-container {
+  max-width: 1440px;
+  padding-right: 48px;
+  padding-left: 48px;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-hero { padding-bottom: 60px; }
+.vatos-sub-content[data-vatos-service] .vatos-sub-hero-label {
+  font-size: 14px;
+  letter-spacing: .18em;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-hero-title {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-hero-summary {
+  max-width: 760px;
+  min-height: 3.4em;
+  font-size: 20px;
+  line-height: 1.7;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro {
+  padding: 90px 0;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro + .vatos-sub-section {
+  padding-top: 50px;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-grid {
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
+  gap: clamp(36px, 5vw, 76px);
+  align-items: center;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-main,
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-media {
+  min-width: 0;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-lead {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -1.2px;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-body {
+  max-width: 650px;
+  margin-top: 30px;
+  padding-left: 0;
+  border-left: 0;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-dot { display: none; }
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-body p {
+  font-size: 19px;
+  line-height: 1.9;
+  color: rgba(255,255,255,.64);
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-intro-body p + p {
+  margin-top: 22px;
+}
+.vatos-sub-content[data-vatos-service] .vatos-sub-section-label {
+  margin-bottom: 32px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .16em;
+}
+
+/* Business 서비스 카드 그리드 */
+.vatos-sub-content[data-vatos-service] .vatos-service-list {
+  --gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+  border-top: 0;
+}
+.vatos-sub-content[data-vatos-service] .vatos-service-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 230px;
+  height: 100%;
+  padding: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 100% 100%, rgba(35,165,179,.11), transparent 46%),
+    rgba(255,255,255,.025);
+  transition:
+    opacity .7s cubic-bezier(.2,.6,.2,1),
+    transform .7s cubic-bezier(.2,.6,.2,1),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+.vatos-sub-content[data-vatos-service] .vatos-service-item:hover {
+  border-color: rgba(35,165,179,.5);
+  background:
+    radial-gradient(circle at 100% 100%, rgba(35,165,179,.17), transparent 48%),
+    rgba(255,255,255,.04);
+  box-shadow: 0 18px 42px rgba(0,0,0,.24);
+}
+.vatos-sub-content[data-vatos-service] .vatos-service-item-num {
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--cyan);
+  opacity: 1;
+}
+.vatos-sub-content[data-vatos-service] .vatos-service-item-title {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.vatos-sub-content[data-vatos-service] .vatos-service-item-meta {
+  display: block;
+  margin-top: 8px;
+}
+.vatos-sub-content[data-vatos-service] .vatos-service-item-desc {
+  max-width: 100%;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.vatos-sub-content[data-vatos-service] .vatos-list-section {
+  padding-bottom: clamp(96px, 10vw, 130px);
+}
+
+/* License 전용 카드 크기 */
+.vatos-sub-content[data-vatos-service="license"] .vatos-service-item {
+  min-height: 250px;
+  padding: 32px;
+  border-radius: 18px;
+}
+.vatos-sub-content[data-vatos-service="license"] .vatos-service-item-num {
+  margin-bottom: 18px;
+  font-size: 22px;
+}
+.vatos-sub-content[data-vatos-service="license"] .vatos-service-item-title {
+  font-size: 22px;
+}
+.vatos-sub-content[data-vatos-service="license"] .vatos-service-item-desc {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* 3D 카드 캐러셀 */
+.vatos-carousel-3d {
+  --carousel-width: 246px;
+  --carousel-height: 366px;
+  --carousel-spread: 63%;
+  --carousel-depth: 120px;
+  --carousel-tilt: 40deg;
+  --carousel-side-scale: .94;
+  --carousel-spread-2: 104%;
+  --carousel-depth-2: 300px;
+  --carousel-tilt-2: 58deg;
+  --carousel-scale-2: .78;
+  --carousel-perspective: 1250px;
+  --carousel-duration: 1100ms;
+  --carousel-ease: cubic-bezier(.42,.04,.22,1);
+  position: relative;
+  width: 100%;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.vatos-carousel-3d.dragging { cursor: grabbing; }
+.vatos-carousel-viewport {
+  position: relative;
+  width: 100%;
+  height: 452px;
+  overflow: visible;
+  perspective: var(--carousel-perspective);
+  perspective-origin: 50% 46%;
+  touch-action: pan-y;
+}
+.vatos-carousel-ring {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.vatos-service-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--carousel-width);
+  height: var(--carousel-height);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  background: #0b1016;
+  box-shadow: 0 20px 48px rgba(0,0,0,.5);
+  backface-visibility: hidden;
+  transform: translate(-50%,-50%) translateZ(-340px) scale(.7);
+  transition:
+    transform var(--carousel-duration) var(--carousel-ease),
+    opacity var(--carousel-duration) var(--carousel-ease),
+    box-shadow .5s ease,
+    filter .5s ease;
+  will-change: transform;
+}
+.vatos-service-card.center {
+  z-index: 3;
+  opacity: 1;
+  filter: none;
+  transform: translate(-50%,-50%) translateZ(0) rotateY(0) scale(1);
+  box-shadow:
+    0 30px 64px rgba(0,0,0,.6),
+    0 0 0 1px rgba(35,165,179,.4),
+    0 0 48px rgba(35,165,179,.3);
+}
+.vatos-service-card.left {
+  z-index: 2;
+  opacity: .95;
+  filter: brightness(.9);
+  transform:
+    translate(-50%,-50%)
+    translateX(calc(-1 * var(--carousel-spread)))
+    translateZ(calc(-1 * var(--carousel-depth)))
+    rotateY(var(--carousel-tilt))
+    scale(var(--carousel-side-scale));
+}
+.vatos-service-card.right {
+  z-index: 2;
+  opacity: .95;
+  filter: brightness(.9);
+  transform:
+    translate(-50%,-50%)
+    translateX(var(--carousel-spread))
+    translateZ(calc(-1 * var(--carousel-depth)))
+    rotateY(calc(-1 * var(--carousel-tilt)))
+    scale(var(--carousel-side-scale));
+}
+.vatos-service-card.left-2 {
+  z-index: 1;
+  opacity: .6;
+  filter: brightness(.8);
+  transform:
+    translate(-50%,-50%)
+    translateX(calc(-1 * var(--carousel-spread-2)))
+    translateZ(calc(-1 * var(--carousel-depth-2)))
+    rotateY(var(--carousel-tilt-2))
+    scale(var(--carousel-scale-2));
+}
+.vatos-service-card.right-2 {
+  z-index: 1;
+  opacity: .6;
+  filter: brightness(.8);
+  transform:
+    translate(-50%,-50%)
+    translateX(var(--carousel-spread-2))
+    translateZ(calc(-1 * var(--carousel-depth-2)))
+    rotateY(calc(-1 * var(--carousel-tilt-2)))
+    scale(var(--carousel-scale-2));
+}
+.vatos-carousel-3d[data-card-count="5"] {
+  --carousel-width: 268px;
+  --carousel-height: 356px;
+  --carousel-perspective: 1450px;
+  --carousel-spread: 58%;
+  --carousel-depth: 140px;
+  --carousel-tilt: 38deg;
+  --carousel-side-scale: .9;
+  --carousel-depth-2: 330px;
+  --carousel-scale-2: .76;
+}
+.vatos-carousel-3d[data-card-count="4"] {
+  --carousel-width: 246px;
+  --carousel-height: 440px;
+  --carousel-perspective: 1400px;
+  --carousel-spread: 58%;
+  --carousel-depth: 128px;
+  --carousel-tilt: 40deg;
+  --carousel-side-scale: .92;
+}
+.vatos-carousel-3d[data-card-count="4"] .vatos-carousel-viewport {
+  height: 476px;
+}
+.vatos-carousel-3d[data-card-count="4"] .vatos-service-card {
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.vatos-carousel-3d[data-card-count="4"] .vatos-service-card.center {
+  box-shadow: none;
+}
+.vatos-carousel-3d[data-card-count="4"] .vatos-service-card.right-2 {
+  z-index: 0;
+  opacity: 0;
+  filter: brightness(.7);
+  transform: translate(-50%,-50%) translateZ(-420px) scale(.72);
+}
+.vatos-service-card-media { position: absolute; inset: 0; }
+.vatos-service-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+.vatos-carousel-3d[data-card-count="4"] .vatos-service-card-media img {
+  object-fit: contain;
+}
+.vatos-service-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6,11,17,.3) 0%,
+    rgba(6,11,17,0) 26%,
+    rgba(6,11,17,.12) 46%,
+    rgba(6,11,17,.68) 70%,
+    rgba(6,11,17,.95) 100%
+  );
+}
+.vatos-service-card-num {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: var(--cyan);
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+.vatos-service-card-body {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px 20px 22px;
+}
+.vatos-service-card-title {
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.3px;
+  color: var(--white);
+}
+.vatos-service-card-en {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.vatos-service-card-desc {
+  margin-top: 11px;
+  font-size: 13px;
+  line-height: 1.62;
+  color: rgba(255,255,255,.85);
+}
+.vatos-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+.vatos-carousel-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.22);
+  transition: background .3s ease, transform .3s ease;
+}
+.vatos-carousel-dot.active {
+  background: var(--cyan);
+  transform: scale(1.25);
+}
+.vatos-carousel-dot:hover { background: rgba(255,255,255,.45); }
+
+/* 가로 흐름 카드 마키 */
+.vatos-card-marquee {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(40px,5vw,76px);
+  overflow: hidden;
+  cursor: grab;
+}
+.vatos-card-marquee.dragging { cursor: grabbing; }
+.vatos-card-marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 24px;
+  will-change: transform;
+}
+.vatos-marquee-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(300px,25vw,360px);
+  height: 300px;
+  overflow: hidden;
+  user-select: none;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  background: #0b1016;
+  box-shadow: 0 14px 34px rgba(0,0,0,.36);
+}
+.vatos-marquee-card-media { position: absolute; inset: 0; }
+.vatos-marquee-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.vatos-marquee-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6,11,17,.28) 0%,
+    rgba(6,11,17,0) 24%,
+    rgba(6,11,17,.12) 44%,
+    rgba(6,11,17,.68) 66%,
+    rgba(6,11,17,.95) 100%
+  );
+}
+.vatos-marquee-card-num {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--cyan);
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+.vatos-marquee-card-body {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 22px 24px 24px;
+}
+.vatos-marquee-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--white);
+}
+.vatos-marquee-card-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.85);
+}
+
+/* Business 지그재그 수행 흐름 */
+.vatos-business-flow {
+  --flow-gap: clamp(28px,3.5vw,52px);
+  position: relative;
+  margin-top: clamp(24px,3vw,42px);
+}
+.vatos-business-flow-line {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(35,165,179,0) 0%,
+    rgba(35,165,179,.65) 10%,
+    rgba(35,165,179,.65) 90%,
+    rgba(35,165,179,0) 100%
+  );
+  box-shadow: 0 0 10px rgba(35,165,179,.35);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.3s cubic-bezier(.16,.84,.2,1);
+}
+.vatos-business-flow.drawn .vatos-business-flow-line {
+  transform: translateX(-50%) scaleY(1);
+}
+.vatos-business-flow-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: calc(50% - var(--flow-gap));
+  padding: clamp(4px,.7vw,10px) 0;
+}
+.vatos-business-flow-step + .vatos-business-flow-step {
+  margin-top: clamp(8px,1.4vw,18px);
+}
+.vatos-business-flow-step.left {
+  align-items: flex-end;
+  margin-right: auto;
+  text-align: right;
+}
+.vatos-business-flow-step.right {
+  align-items: flex-start;
+  margin-left: auto;
+  text-align: left;
+}
+.vatos-business-flow-step::before {
+  position: absolute;
+  top: clamp(12px,1.6vw,20px);
+  z-index: 2;
+  width: 12px;
+  height: 12px;
+  content: "";
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow:
+    0 0 0 5px rgba(35,165,179,.14),
+    0 0 14px rgba(35,165,179,.65);
+}
+.vatos-business-flow-step.left::before {
+  right: calc(-1 * var(--flow-gap) - 6px);
+}
+.vatos-business-flow-step.right::before {
+  left: calc(-1 * var(--flow-gap) - 6px);
+}
+.vatos-business-flow-media { margin: 0; }
+.vatos-business-flow-media img {
+  display: block;
+  width: clamp(172px,22vw,258px);
+  height: auto;
+  opacity: 0;
+  filter: drop-shadow(0 6px 20px rgba(35,165,179,.26));
+  transform: translateY(16px);
+  transition: opacity .9s ease .12s, transform .9s ease .12s;
+}
+.vatos-business-flow-step.visible .vatos-business-flow-media img {
+  opacity: .95;
+  transform: none;
+}
+.vatos-business-flow-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  font-weight: 800;
+  line-height: 1;
+}
+.vatos-business-flow-label {
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.vatos-business-flow-num {
+  font-size: 17px;
+  color: var(--cyan);
+}
+.vatos-business-flow-title {
+  font-size: clamp(20px,1.95vw,26px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--white);
+}
+.vatos-business-flow-desc {
+  max-width: none;
+  font-size: clamp(15px,1.15vw,17px);
+  line-height: 1.55;
+  color: rgba(255,255,255,.62);
+}
+.vatos-business-flow-step.left .vatos-business-flow-desc {
+  margin-left: auto;
+}
+
+@media (min-width: 901px) {
+  .vatos-carousel-3d { padding-left: 56px; }
+  .vatos-carousel-3d[data-card-count="5"] { padding-left: 64px; }
+}
+
+@media (max-width: 900px) {
+  .vatos-sub-content[data-vatos-service] .vatos-sub-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-service-list {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) {
+    padding-left: 0;
+  }
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) .vatos-carousel-viewport {
+    height: auto;
+    overflow: visible;
+    perspective: none;
+  }
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) .vatos-carousel-ring {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform-style: flat;
+  }
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) .vatos-service-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 260px;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) .vatos-carousel-dots {
+    display: none;
+  }
+  .vatos-carousel-3d[data-mobile-3d="true"] {
+    --carousel-width: 172px;
+    --carousel-height: 306px;
+    --carousel-perspective: 900px;
+    --carousel-spread: 56%;
+    --carousel-depth: 100px;
+    --carousel-tilt: 38deg;
+    --carousel-side-scale: .9;
+    padding-left: 0;
+  }
+  .vatos-carousel-3d[data-mobile-3d="true"] .vatos-carousel-viewport {
+    height: 392px;
+  }
+}
+
+@media (max-width: 760px) {
+  .vatos-sub-content[data-vatos-service] .vatos-container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-hero {
+    padding-bottom: 40px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-hero-title {
+    font-size: 38px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-hero-summary {
+    min-height: 0;
+    font-size: 17px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-intro {
+    padding: 60px 0;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-intro-lead {
+    font-size: 36px;
+    letter-spacing: -.8px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-intro-body {
+    margin-top: 22px;
+  }
+  .vatos-sub-content[data-vatos-service] .vatos-sub-intro-body p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  .vatos-business-flow {
+    --flow-gap: 0;
+  }
+  .vatos-business-flow-line { left: 15px; }
+  .vatos-business-flow-step,
+  .vatos-business-flow-step.left,
+  .vatos-business-flow-step.right {
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+    padding-left: 44px;
+    text-align: left;
+  }
+  .vatos-business-flow-step + .vatos-business-flow-step {
+    margin-top: 16px;
+  }
+  .vatos-business-flow-step.left::before,
+  .vatos-business-flow-step.right::before {
+    top: 14px;
+    right: auto;
+    left: 9px;
+  }
+  .vatos-business-flow-step.left .vatos-business-flow-desc {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .vatos-sub-content[data-vatos-service] .vatos-service-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .vatos-card-marquee {
+    margin-top: clamp(28px,7vw,44px);
+  }
+  .vatos-card-marquee-track { gap: 16px; }
+  .vatos-marquee-card {
+    width: clamp(248px,74vw,300px);
+    height: 268px;
+  }
+  .vatos-marquee-card-title { font-size: 20px; }
+  .vatos-marquee-card-desc { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) .vatos-service-card {
+    height: 236px;
+  }
+  .vatos-carousel-3d:not([data-mobile-3d="true"]) .vatos-service-card-title {
+    font-size: 22px;
+  }
+  .vatos-carousel-3d[data-mobile-3d="true"] {
+    --carousel-width: 150px;
+    --carousel-height: 268px;
+    --carousel-perspective: 800px;
+    --carousel-depth: 86px;
+  }
+  .vatos-carousel-3d[data-mobile-3d="true"] .vatos-carousel-viewport {
+    height: 344px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vatos-service-card { transition-duration: 1ms; }
+  .vatos-business-flow-line {
+    transform: translateX(-50%) scaleY(1) !important;
+    transition: none !important;
+  }
+  .vatos-business-flow-media img {
+    opacity: .95 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
