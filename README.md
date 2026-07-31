@@ -1,126 +1,210 @@
 # VATOS Official Website
 
-VATOS 공식 홈페이지의 정적 HTML, CSS, JavaScript 및 Oopy 연동 파일을 관리하는 저장소입니다.
+VATOS 공식 홈페이지의 정적 웹 소스입니다.
 
-홈페이지 콘텐츠는 Notion에서 작성하고 Oopy에서 렌더링하며, 공통 레이아웃과 디자인 자산은 GitHub Pages를 통해 제공합니다.
+현재 버전은 화면 구성과 주요 인터랙션을 구현한 **Alpha 버전**이며, 세부 디자인과 반응형 동작은 계속 조정될 수 있습니다.
 
-## 운영 구조
+## Project Status
 
-| 구분 | 역할 |
-| --- | --- |
-| Notion | 페이지별 콘텐츠 작성 및 관리 |
-| Oopy | Notion 콘텐츠 렌더링, Clean URL 및 도메인 제공 |
-| GitHub | 홈페이지 소스와 변경 이력 관리 |
-| GitHub Pages | CSS, JavaScript, 이미지, Header, Footer 파일 제공 |
+| 항목 | 내용 |
+|---|---|
+| 상태 | Alpha |
+| 기준일 | 2026-07-31 |
+| 저장소 | [VATOS-TECH/official-website](https://github.com/VATOS-TECH/official-website) |
 
-## 디렉터리 구조
+## Tech Stack
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- GSAP
+- Pretendard
+
+별도의 프레임워크, 패키지 설치 또는 빌드 과정 없이 실행되는 정적 웹사이트입니다.
+
+## Source Architecture
+
+- 각 HTML 파일이 해당 페이지의 문서 구조를 가집니다.
+- 공통 스타일과 페이지별 스타일은 `assets/css/vatos-style.css`에서 관리합니다.
+- 공통 UI와 페이지별 인터랙션은 `assets/js/vatos-interact.js`에서 관리합니다.
+- 메인 페이지 애니메이션에는 GSAP을 사용합니다.
+- `header.html`과 `footer.html`은 공통 레이아웃 소스입니다.
+
+## Directory Structure
 
 ```text
-official-website/
-├─ index.html
-├─ contact.html
-├─ header.html
-├─ footer.html
-├─ about/
-├─ business/
-├─ crew/
-├─ insights/
-└─ assets/
-   ├─ css/
-   │  └─ vatos-style.css
-   ├─ js/
-   │  ├─ oopy-loader.js
-   │  └─ vatos-interact.js
-   ├─ images/
-   ├─ files/
-   └─ vendor/
-      └─ gsap.min.js
+vatos-official-website/
+├── index.html
+├── contact.html
+├── header.html
+├── footer.html
+├── about/
+│   ├── company.html
+│   ├── history.html
+│   └── location.html
+├── business/
+│   ├── business-license.html
+│   ├── business-operations-technical-support.html
+│   ├── business-performance-consulting.html
+│   ├── business-migration-conversion.html
+│   └── business-training.html
+├── crew/
+│   └── culture.html
+├── insights/
+│   ├── tech-insights.html
+│   └── insight_0.html ~ insight_14.html
+└── assets/
+    ├── css/
+    │   └── vatos-style.css
+    ├── js/
+    │   ├── oopy-loader.js
+    │   └── vatos-interact.js
+    ├── vendor/
+    │   └── gsap.min.js
+    ├── images/
+    └── files/
+        └── vatos-company-profile.pdf
 ```
 
-## 주요 파일
+## Main Files
 
 | 파일 | 역할 |
-| --- | --- |
-| `vatos-style.css` | 공통 레이아웃과 페이지별 디자인 |
-| `vatos-interact.js` | 메뉴, 인트로, 타이핑, 스크롤, 슬라이드 등 화면 동작 |
-| `oopy-loader.js` | Oopy에서 Header, Footer와 필요한 JavaScript를 호출하는 초기화 파일 |
-| `header.html` | 공통 PC 메뉴와 모바일 햄버거 메뉴 |
+|---|---|
+| `assets/css/vatos-style.css` | 전체 페이지의 공통·페이지별·반응형 스타일 |
+| `assets/js/vatos-interact.js` | 공통 UI와 페이지별 인터랙션 |
+| `assets/js/oopy-loader.js` | 공통 레이아웃과 스크립트의 동적 초기화 |
+| `assets/vendor/gsap.min.js` | 메인 화면 애니메이션 라이브러리 |
+| `header.html` | 공통 Header와 Navigation |
 | `footer.html` | 공통 Footer |
-| `gsap.min.js` | 메인 Hero 문구 애니메이션에 사용하는 외부 라이브러리 |
 
-## Oopy 설정
+## Pages
 
-### Head
+| 분류 | 페이지 |
+|---|---|
+| Main | Home |
+| About VATOS | Company, History, Location |
+| Business Areas | License, Operations & Technical Support, Performance Consulting, Migration & Conversion, Training |
+| Crew | Culture |
+| Insights | Tech Insights, Insight 상세 게시글 |
+| Contact | 서비스 문의 |
 
-Oopy HTML 편집기의 `<head>` 영역에 다음 내용을 설정합니다.
+## Interaction Features
 
-```html
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="https://vatos-tech.github.io/official-website/assets/css/vatos-style.css?v=0.1">
+`vatos-interact.js`는 대상 요소가 존재할 때만 해당 기능을 초기화합니다.
 
-<style>
-.page-title {
-  display: none !important;
-}
+- Header 스크롤 상태
+- Desktop Dropdown Navigation
+- Mobile Navigation
+- Anchor Smooth Scroll
+- 공통 Scroll Reveal
+- Motion Mask
+- 메인 Intro
+- 메인 Hero Typing
+- Business Areas 스크롤 전환
+- 서브페이지 Hero 애니메이션
+- 강조 문구 애니메이션
+- 서비스 목록 순차 등장
+- Process와 Flow 애니메이션
+- History Timeline
+- 3D Card Carousel
+- Card Marquee
+- Tech Insights Pagination
+- Contact Form
+- Location 주소 복사
 
-.notion-page-content.width.padding {
-  width: 100% !important;
-  max-width: none !important;
-  padding: 0 !important;
-}
+`prefers-reduced-motion` 설정이 활성화된 환경에서는 일부 자동 애니메이션을 줄이거나 비활성화합니다.
 
-section[aria-label^="Notifications"] {
-  display: none !important;
-}
+## CSS and Class Rules
 
-html body div.css-wru17g.ej0hkt126 {
-  display: none !important;
-}
-</style>
+프로젝트에서 관리하는 클래스는 외부 클래스와 구분할 수 있도록 `vatos-` 접두어를 사용합니다.
+
+```css
+.vatos-header
+.vatos-sub-hero
+.vatos-service-item
+.vatos-carousel-3d
 ```
 
-### Body
+상태 클래스는 요소 클래스 뒤에 간단한 형태로 사용합니다.
 
-Oopy HTML 편집기의 `<body>` 영역에는 초기화 파일만 호출합니다.
-
-```html
-<script src="https://vatos-tech.github.io/official-website/assets/js/oopy-loader.js?v=0.1"></script>
+```css
+.vatos-slider-item.active
+.vatos-motion-reveal.visible
+.vatos-sub-hero.ready
+.vatos-business-flow.drawn
 ```
 
-`oopy-loader.js`는 다음 순서로 실행됩니다.
+페이지 구분은 Body 또는 콘텐츠 최상위 요소의 클래스를 기준으로 합니다.
 
-1. `header.html`, `footer.html` 호출
-2. 공통 레이아웃의 assets 경로 보정
-3. 현재 페이지 유형 판별 및 body class 지정
-4. 메인 페이지에서만 GSAP 호출
-5. `vatos-interact.js` 호출
+```html
+<body class="vatos-page-main">
+<body class="vatos-page-sub">
+<main class="vatos-sub-content" data-vatos-service="license">
+```
 
-## 수정 및 배포
+## Asset Paths
 
-1. 로컬에서 HTML, CSS, JavaScript 수정
-2. 로컬 웹 서버에서 화면과 개발자 도구 오류 확인
-3. GitHub 저장소에 변경사항 반영
-4. GitHub Pages 배포 완료 확인
-5. Oopy 화면에서 최종 확인
+루트 HTML과 하위 폴더 HTML은 상대경로의 깊이가 다릅니다.
 
-## 경로 및 관리 규칙
+### Root page
 
-- 파일과 폴더 이름은 영문 소문자와 하이픈을 사용합니다.
-- 공통 스타일은 `vatos-style.css`에서 관리합니다.
-- 화면 동작은 `vatos-interact.js`에서 관리합니다.
-- Oopy 전용 초기화 기능은 `oopy-loader.js`에서만 관리합니다.
-- Oopy 공통 Header와 Footer의 내부 페이지 링크는 운영 도메인의 Clean URL을 사용합니다.
-- 이미지, PDF 등 assets 경로는 GitHub Pages 주소를 기준으로 보정합니다.
-- 외부 라이브러리는 `assets/vendor`에서 별도로 관리합니다.
+```html
+<link rel="stylesheet" href="assets/css/vatos-style.css">
+<script src="assets/js/vatos-interact.js"></script>
+```
 
-## 확인 사항
+### Sub page
 
-- Oopy에서 생성하는 클래스명은 서비스 업데이트에 따라 변경될 수 있습니다.
-- 우피 기본 메뉴가 다시 표시되면 `<head>`의 메뉴 숨김 선택자를 확인합니다.
-- `header.html`과 `vatos-interact.js`는 공통 Header ID인 `vatosHeader`를 사용합니다.
-- 메인 페이지의 GSAP 호출을 제거하면 Hero 보조 문구 애니메이션 표현이 달라질 수 있습니다.
+```html
+<link rel="stylesheet" href="../assets/css/vatos-style.css">
+<script src="../assets/js/vatos-interact.js"></script>
+```
 
-## Copyright
+## Local Development
 
-© 2026 VATOS Co., Ltd. All rights reserved.
+브라우저에서 파일을 직접 여는 것보다 VS Code Live Server와 같은 로컬 서버 사용을 권장합니다.
+
+```text
+http://127.0.0.1:5500/
+```
+
+확인 순서는 다음과 같습니다.
+
+1. 저장소를 내려받습니다.
+2. 프로젝트 루트를 VS Code에서 엽니다.
+3. Live Server로 `index.html`을 실행합니다.
+4. 변경한 페이지를 PC와 모바일 너비에서 확인합니다.
+5. Console 오류와 Network의 404 응답을 확인합니다.
+
+## Update Checklist
+
+### HTML 수정
+
+- 기존 `vatos-` 클래스 명명 규칙을 유지했는가
+- 루트와 하위 폴더의 상대경로가 올바른가
+- 이미지에 적절한 `alt`가 있는가
+
+### CSS 수정
+
+- 기존 공통 스타일과 중복되지 않는가
+- 특정 페이지 스타일의 범위가 충분히 제한되어 있는가
+- 모바일과 `prefers-reduced-motion`을 함께 확인했는가
+
+### JavaScript 수정
+
+- 대상 요소가 없을 때 안전하게 종료하는가
+- 동일 컴포넌트가 중복 초기화되지 않는가
+- 이벤트와 Timer가 불필요하게 중복 등록되지 않는가
+
+## Alpha Notes
+
+- 본 버전은 세부 디자인 조정 전 기준 소스입니다.
+- 디자인과 인터랙션은 운영 검토 과정에서 변경될 수 있습니다.
+- 공통 스타일과 인터랙션은 각각 단일 CSS·JavaScript 파일을 중심으로 관리합니다.
+- 신규 기능 반영 후에는 관련 페이지의 PC·모바일 화면을 함께 검증해야 합니다.
+
+## License
+
+이 저장소의 소스와 디자인 자산은 VATOS 공식 홈페이지 운영을 위한 내부 자산입니다.
+
+외부 배포, 복제 및 상업적 사용을 허용하지 않습니다.
