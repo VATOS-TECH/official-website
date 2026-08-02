@@ -10,12 +10,7 @@
 
   const BASE_URL = 'https://vatos-tech.github.io/official-website';
   let pageClassTimer = null;
-  let navigationTimer = null;
   let pageObserver = null;
-
-  if ('scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-  }
 
   /* GitHub Pages URL 생성 */
   function createUrl(path) {
@@ -175,31 +170,6 @@
     }, 150);
   }
 
-  /* 페이지 이동 시 우피와 브라우저 스크롤을 상단으로 초기화 */
-  function resetPageScroll() {
-    const scrollContainer = document.querySelector('.notion-scroller');
-
-    if (scrollContainer) {
-      scrollContainer.scrollTop = 0;
-      scrollContainer.scrollLeft = 0;
-    }
-
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    window.scrollTo(0, 0);
-  }
-
-  /* 우피 React 렌더링 전후에 스크롤과 페이지 클래스를 갱신 */
-  function handlePageNavigation() {
-    resetPageScroll();
-    window.clearTimeout(navigationTimer);
-
-    navigationTimer = window.setTimeout(function () {
-      resetPageScroll();
-      applyPageClass();
-    }, 180);
-  }
-
   /* 우피의 React 화면 변경 감지 */
   function observeOopyPageChanges() {
     if (pageObserver) {
@@ -213,8 +183,8 @@
       });
 
       if (hasContentChange) {
-        schedulePageClassUpdate();
-      }
+          applyPageClass();
+        }
     });
 
     pageObserver.observe(document.body, {
@@ -225,19 +195,14 @@
 
   /* 브라우저 이전 및 다음 페이지 이동 감지 */
   function observeHistoryNavigation() {
-    window.addEventListener('popstate', handlePageNavigation);
+    window.addEventListener('popstate', schedulePageClassUpdate);
 
     ['pushState', 'replaceState'].forEach(function (methodName) {
       const originalMethod = window.history[methodName];
 
       window.history[methodName] = function () {
-        const previousUrl = window.location.href;
         const result = originalMethod.apply(this, arguments);
-
-        if (window.location.href !== previousUrl) {
-          handlePageNavigation();
-        }
-
+        schedulePageClassUpdate();
         return result;
       };
     });
@@ -285,9 +250,9 @@
   /* VATOS 페이지 초기화 */
   async function initializeVatosPage() {
     try {
-      resetPageScroll();
+      const pageType = applyPageClass();
 
-      const result = await Promise.all([
+const result = await Promise.all([
         fetchHtml('header.html'),
         fetchHtml('footer.html')
       ]);
@@ -295,7 +260,7 @@
       insertHeader(result[0]);
       insertFooter(result[1]);
 
-      const pageType = applyPageClass();
+      
 
       /* 메인 페이지에서만 GSAP 호출 */
       if (pageType === 'main') {
