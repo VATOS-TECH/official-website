@@ -349,25 +349,69 @@
     });
   })();
 
+  /* ── 문의 메일 ───────────────────────────────────────── */
+
   (function initContactForm() {
-    var form = document.getElementById('contactForm');
-    if (!form) return;
-    var button = form.querySelector('.vatos-btn-submit');
+  var form = document.getElementById('contactForm');
+  if (!form) return;
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (!button) return;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-      var original = button.textContent;
-      button.disabled = true;
-      button.textContent = '접수되었습니다. 감사합니다!';
-      window.setTimeout(function () {
-        button.disabled = false;
-        button.textContent = original;
-        form.reset();
-      }, 2600);
-    });
-  })();
+    var formData = new FormData(form);
+    var name = String(formData.get('name') || '').trim();
+    var company = String(formData.get('company') || '').trim();
+    var email = String(formData.get('email') || '').trim();
+    var phone = String(formData.get('phone') || '').trim();
+    var inquiryType = String(formData.get('inquiry_type') || '').trim();
+    var message = String(formData.get('message') || '').trim();
+
+    var subject =
+      '[VATOS 서비스 문의] ' +
+      inquiryType +
+      ' | ' +
+      company;
+
+    var body = [
+      '안녕하세요.',
+      '',
+      company + '의 ' + name + '입니다.',
+      inquiryType + ' 관련하여 VATOS 홈페이지를 통해 문의드립니다.',
+      '아래 내용을 확인하시어 담당자 회신 부탁드립니다.',
+      '',
+      '────────────────────',
+      '문의 내용',
+      '────────────────────',
+      '문의 유형 : ' + inquiryType,
+      '',
+      message || '(작성 내용 없음)',
+      '',
+      '',
+      '────────────────────',
+      '문의자 정보',
+      '────────────────────',
+      '성함 : ' + name,
+      '회사명 : ' + company,
+      '이메일 : ' + email,
+      '연락처 : ' + phone,
+      '',
+      '확인 후 회신 부탁드립니다.',
+      '',
+      '감사합니다.'
+    ].join('\r\n');
+
+    var mailtoUrl =
+      'mailto:sales@vatos.co.kr' +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailtoUrl;
+
+    window.setTimeout(function () {
+      form.reset();
+    }, 300);
+  });
+})();
 
   /* ── 메인 페이지 ───────────────────────────────────────── */
   (function initMainPage() {
@@ -976,20 +1020,6 @@
       var dots = toArray(
         carousel.querySelectorAll('.vatos-carousel-dot')
       );
-      var content = carousel.querySelector(
-        '.vatos-performance-coverflow-content'
-      );
-      var contentNumber = content
-        ? content.querySelector('.vatos-performance-coverflow-num')
-        : null;
-      var contentTitle = content
-        ? content.querySelector('.vatos-performance-coverflow-title')
-        : null;
-      var contentDescription = content
-        ? content.querySelector('.vatos-performance-coverflow-desc')
-        : null;
-      var hoverActivate =
-        carousel.getAttribute('data-hover-activate') === 'true';
       var count = cards.length;
       if (count < 2) return;
 
@@ -1013,7 +1043,6 @@
       var downX = 0;
       var dragX = 0;
       var dragShifted = false;
-      var contentFrame = null;
 
       var slotClasses = {
         '0': 'center',
@@ -1063,30 +1092,6 @@
         dots.forEach(function (dot, index) {
           dot.classList.toggle('active', index === active);
         });
-
-        if (content) {
-          var activeCard = cards[active];
-          content.classList.remove('visible');
-          if (contentFrame) {
-            window.cancelAnimationFrame(contentFrame);
-          }
-          contentFrame = window.requestAnimationFrame(function () {
-            if (contentNumber) {
-              contentNumber.textContent =
-                activeCard.getAttribute('data-number') || '';
-            }
-            if (contentTitle) {
-              contentTitle.textContent =
-                activeCard.getAttribute('data-title') || '';
-            }
-            if (contentDescription) {
-              contentDescription.textContent =
-                activeCard.getAttribute('data-description') || '';
-            }
-            content.classList.add('visible');
-            contentFrame = null;
-          });
-        }
       }
 
       function go(index) {
@@ -1223,14 +1228,6 @@
           go(index);
           start();
         });
-
-        if (hoverActivate) {
-          card.addEventListener('mouseenter', function () {
-            if (dragging) return;
-            stop();
-            go(index);
-          });
-        }
       });
 
       dots.forEach(function (dot, index) {
@@ -1243,9 +1240,6 @@
 
       carousel.addEventListener('focusin', stop);
       carousel.addEventListener('focusout', start);
-      if (hoverActivate) {
-        carousel.addEventListener('mouseleave', start);
-      }
 
       var viewport =
         carousel.querySelector('.vatos-carousel-viewport') || carousel;
@@ -1459,10 +1453,105 @@
     });
   }
 
+  function initPerformanceHoverGalleries(scope) {
+    var root = scope || document;
+    var galleries = toArray(
+      root.querySelectorAll('.vatos-performance-hover-gallery')
+    );
+
+    galleries.forEach(function (gallery) {
+      if (gallery.dataset.vatosHoverGalleryInitialized === 'true') return;
+      gallery.dataset.vatosHoverGalleryInitialized = 'true';
+
+      var cards = toArray(
+        gallery.querySelectorAll('.vatos-performance-hover-card')
+      );
+      var content = gallery.querySelector(
+        '.vatos-performance-hover-content'
+      );
+      var number = content
+        ? content.querySelector('.vatos-performance-hover-num')
+        : null;
+      var title = content
+        ? content.querySelector('.vatos-performance-hover-title')
+        : null;
+      var description = content
+        ? content.querySelector('.vatos-performance-hover-desc')
+        : null;
+      if (!cards.length || !content) return;
+
+      var defaultIndex = parseInt(
+        gallery.getAttribute('data-default-index') || '0',
+        10
+      );
+      if (defaultIndex < 0 || defaultIndex >= cards.length) {
+        defaultIndex = 0;
+      }
+      var contentFrame = null;
+
+      function activate(index) {
+        var card = cards[index];
+        if (!card) return;
+
+        cards.forEach(function (item, itemIndex) {
+          var active = itemIndex === index;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+
+        content.classList.remove('visible');
+        if (contentFrame) {
+          window.cancelAnimationFrame(contentFrame);
+        }
+        contentFrame = window.requestAnimationFrame(function () {
+          if (number) {
+            number.textContent = card.getAttribute('data-number') || '';
+          }
+          if (title) {
+            title.textContent = card.getAttribute('data-title') || '';
+          }
+          if (description) {
+            description.textContent =
+              card.getAttribute('data-description') || '';
+          }
+          content.classList.add('visible');
+          contentFrame = null;
+        });
+      }
+
+      cards.forEach(function (card, index) {
+        card.querySelectorAll('img').forEach(function (image) {
+          image.setAttribute('draggable', 'false');
+        });
+        card.addEventListener('mouseenter', function () {
+          activate(index);
+        });
+        card.addEventListener('focus', function () {
+          activate(index);
+        });
+        card.addEventListener('click', function () {
+          activate(index);
+        });
+      });
+
+      gallery.addEventListener('mouseleave', function () {
+        activate(defaultIndex);
+      });
+      gallery.addEventListener('focusout', function (event) {
+        if (!gallery.contains(event.relatedTarget)) {
+          activate(defaultIndex);
+        }
+      });
+
+      activate(defaultIndex);
+    });
+  }
+
   function initializeBusinessComponents(scope) {
     initBusinessFlows(scope);
     initBusinessCarousels(scope);
     initBusinessMarquees(scope);
+    initPerformanceHoverGalleries(scope);
   }
 
   (function observeBusinessComponents() {
