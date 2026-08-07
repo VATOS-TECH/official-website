@@ -8,10 +8,11 @@
   window.__VATOS_OOPY_INITIALIZED__ = true;
 
   const BASE_URL = 'https://vatos-tech.github.io/official-website';
-  const SCROLL_RESET_DELAYS = [0, 80, 180, 350, 700, 1200];
 
   let currentPageUrl = getPageUrl();
   let pageClassTimer = null;
+  let routeScrollResetPending = false;
+  let routeScrollResetRaf = null;
 
   if ('scrollRestoration' in window.history) {
     window.history.scrollRestoration = 'manual';
@@ -57,9 +58,21 @@
     });
   }
 
-  function resetPageScrollAfterNavigation() {
-    SCROLL_RESET_DELAYS.forEach(function (delay) {
-      window.setTimeout(resetPageScroll, delay);
+
+  function finishRouteScrollReset() {
+    if (!routeScrollResetPending || routeScrollResetRaf !== null) {
+      return;
+    }
+
+    routeScrollResetRaf = window.requestAnimationFrame(function () {
+      routeScrollResetRaf = null;
+
+      if (!routeScrollResetPending) {
+        return;
+      }
+
+      resetPageScroll();
+      routeScrollResetPending = false;
     });
   }
 
@@ -221,52 +234,12 @@
     }
 
     currentPageUrl = nextPageUrl;
+    routeScrollResetPending = true;
 
-    resetPageScrollAfterNavigation();
+    resetPageScroll();
     requestPageClassUpdate();
 
     return true;
-  }
-
-  function observeInternalLinkClicks() {
-    document.addEventListener('click', function (event) {
-      if (
-        event.defaultPrevented ||
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey
-      ) {
-        return;
-      }
-
-      const link = event.target.closest('a[href]');
-
-      if (!link) {
-        return;
-      }
-
-      let targetUrl;
-
-      try {
-        targetUrl = new URL(link.href, window.location.href);
-      } catch (error) {
-        return;
-      }
-
-      if (targetUrl.origin !== window.location.origin) {
-        return;
-      }
-
-      const targetPageUrl = targetUrl.pathname + targetUrl.search;
-
-      if (targetPageUrl === getPageUrl()) {
-        return;
-      }
-
-      resetPageScrollAfterNavigation();
-    }, true);
   }
 
   function observeHistoryNavigation() {
@@ -296,7 +269,13 @@
         return;
       }
 
-      if (!handleRouteChange()) {
+      const routeChanged = handleRouteChange();
+
+      if (routeScrollResetPending) {
+        finishRouteScrollReset();
+      }
+
+      if (!routeChanged) {
         requestPageClassUpdate();
       }
     });
@@ -347,7 +326,7 @@
 
   async function initializeVatosPage() {
     try {
-      resetPageScrollAfterNavigation();
+      resetPageScroll();
 
       const pageType = applyPageClass();
 
@@ -365,11 +344,9 @@
 
       await loadScript('assets/js/vatos-interact.js', 'vatos-interact');
 
-      observeInternalLinkClicks();
       observeHistoryNavigation();
       observeOopyPageChanges();
 
-      resetPageScrollAfterNavigation();
     } catch (error) {
       console.error('[VATOS Initialize]', error);
     }
@@ -378,7 +355,7 @@
   resetPageScroll();
 
   window.addEventListener('pageshow', function () {
-    resetPageScrollAfterNavigation();
+    resetPageScroll();
   });
 
   if (document.readyState === 'complete') {
