@@ -886,17 +886,17 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
   padding: clamp(128px, 15vw, 148px) 0 clamp(54px, 6vw, 68px);
 }
 .vatos-sub-hero-label {
-  font-size: 12px; letter-spacing: 2.5px; font-weight: 600;
+  font-size: 14px; letter-spacing: 2.5px; font-weight: 600;
   color: var(--cyan); text-transform: uppercase; margin-bottom: 12px;
 }
 /* 모든 상세페이지(회사소개/연혁/오시는길/Business Areas 5개/Tech Insights/Culture) 공통 —
    바토스 문화 페이지의 제목 영역 크기·배치를 기준으로 통일 */
 .vatos-sub-hero-title {
-  font-size: clamp(28px, 3.2vw, 42px); font-weight: 700; line-height: 1.22;
+  font-size: clamp(28px, 3.2vw, 54px); font-weight: 700; line-height: 1.22;
   letter-spacing: -0.5px; color: var(--white); margin-top: 8px; margin-bottom: 0;
 }
 .vatos-sub-hero-summary {
-  font-size: clamp(14.5px, 1.15vw, 16px); line-height: 1.85; font-weight: 400;
+  font-size: clamp(14.5px, 1.15vw, 20px); line-height: 1.85; font-weight: 400;
   color: rgba(255,255,255,0.62); max-width: 740px; margin-top: 18px;
 }
 
