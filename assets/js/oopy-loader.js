@@ -11,8 +11,6 @@
 
   let currentPageUrl = getPageUrl();
   let pageClassTimer = null;
-  let routeScrollResetPending = false;
-  let routeScrollResetRaf = null;
 
   if ('scrollRestoration' in window.history) {
     window.history.scrollRestoration = 'manual';
@@ -59,22 +57,6 @@
   }
 
 
-  function finishRouteScrollReset() {
-    if (!routeScrollResetPending || routeScrollResetRaf !== null) {
-      return;
-    }
-
-    routeScrollResetRaf = window.requestAnimationFrame(function () {
-      routeScrollResetRaf = null;
-
-      if (!routeScrollResetPending) {
-        return;
-      }
-
-      resetPageScroll();
-      routeScrollResetPending = false;
-    });
-  }
 
   function createUrl(path) {
     return BASE_URL + '/' + path.replace(/^\/+/, '');
@@ -234,7 +216,6 @@
     }
 
     currentPageUrl = nextPageUrl;
-    routeScrollResetPending = true;
 
     resetPageScroll();
     requestPageClassUpdate();
@@ -255,34 +236,6 @@
 
         return result;
       };
-    });
-  }
-
-  function observeOopyPageChanges() {
-    const observer = new MutationObserver(function (mutations) {
-      const hasContentChange = mutations.some(function (mutation) {
-        return mutation.type === 'childList' &&
-          (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0);
-      });
-
-      if (!hasContentChange) {
-        return;
-      }
-
-      const routeChanged = handleRouteChange();
-
-      if (routeScrollResetPending) {
-        finishRouteScrollReset();
-      }
-
-      if (!routeChanged) {
-        requestPageClassUpdate();
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
     });
   }
 
@@ -326,8 +279,6 @@
 
   async function initializeVatosPage() {
     try {
-      resetPageScroll();
-
       const pageType = applyPageClass();
 
       const result = await Promise.all([
@@ -345,18 +296,12 @@
       await loadScript('assets/js/vatos-interact.js', 'vatos-interact');
 
       observeHistoryNavigation();
-      observeOopyPageChanges();
 
     } catch (error) {
       console.error('[VATOS Initialize]', error);
     }
   }
 
-  resetPageScroll();
-
-  window.addEventListener('pageshow', function () {
-    resetPageScroll();
-  });
 
   if (document.readyState === 'complete') {
     window.setTimeout(initializeVatosPage, 300);
