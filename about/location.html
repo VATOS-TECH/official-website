@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Insights - VATOS</title>
+<title>Location - VATOS</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../assets/css/vatos-style.css">
 </head>
-<body class="vatos-page-sub vatos-page-insights">
+<body class="vatos-page-sub">
 <header class="vatos-header">
   <div class="vatos-header-inner">
     <a href="../index.html" class="vatos-logo" data-vatos-skip-intro><img src="https://vatos-tech.github.io/official-website/assets/images/vatos-logo-mark.png" alt="VATOS logo" class="vatos-logo-mark"><span class="vatos-logo-text">VAT<span>OS</span></span></a>
 
     <nav class="vatos-nav">
       <div class="vatos-nav-item">
-        <a href="#" class="vatos-nav-link" data-menu="about">About VATOS
+        <a href="#" class="vatos-nav-link current" data-menu="about">About VATOS
           <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
         </a>
         <div class="vatos-dropdown">
@@ -27,7 +27,7 @@
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">History</span><span class="vatos-dropdown-subtitle">연혁</span></span>
           </a>
-          <a href="../about/location.html" class="vatos-dropdown-item">
+          <a href="../about/location.html" class="vatos-dropdown-item current">
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Location</span><span class="vatos-dropdown-subtitle">오시는 길</span></span>
           </a>
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="vatos-nav-item">
-        <a href="#" class="vatos-nav-link current" data-menu="crew">Crew
+        <a href="#" class="vatos-nav-link" data-menu="crew">Crew
           <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
         </a>
         <div class="vatos-dropdown">
@@ -74,7 +74,7 @@
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Culture</span><span class="vatos-dropdown-subtitle">바토스 문화</span></span>
           </a>
-          <a href="../insights/tech-insights.html" class="vatos-dropdown-item current">
+          <a href="../insights/tech-insights.html" class="vatos-dropdown-item">
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-2.8-2.8L7 14"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Tech Insights</span><span class="vatos-dropdown-subtitle">기술 인사이트</span></span>
           </a>
@@ -91,7 +91,7 @@
   <div class="vatos-mobile-nav-section-label">ABOUT VATOS</div>
   <a href="../about/company.html" class="vatos-mobile-nav-sub">Company 회사소개</a>
   <a href="../about/history.html" class="vatos-mobile-nav-sub">History 연혁</a>
-  <a href="../about/location.html" class="vatos-mobile-nav-sub">Location 오시는 길</a>
+  <a href="../about/location.html" class="vatos-mobile-nav-sub current">Location 오시는 길</a>
   <div class="vatos-mobile-nav-divider"></div>
   <div class="vatos-mobile-nav-section-label">BUSINESS AREAS</div>
   <a href="../business/business-license.html" class="vatos-mobile-nav-sub">License 라이선스</a>
@@ -103,113 +103,55 @@
   <div class="vatos-mobile-nav-section-label">CREW</div>
   <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="vatos-mobile-nav-sub" target="_blank" rel="noopener noreferrer">VATOS Log</a>
   <a href="../crew/culture.html" class="vatos-mobile-nav-sub">Culture 바토스 문화</a>
-  <a href="../insights/tech-insights.html" class="vatos-mobile-nav-sub current">Tech Insights 기술 인사이트</a>
+  <a href="../insights/tech-insights.html" class="vatos-mobile-nav-sub">Tech Insights 기술 인사이트</a>
   <div class="vatos-mobile-nav-divider"></div>
   <a href="../contact.html" class="vatos-mobile-nav-link" style="color:var(--cyan);">서비스 문의하기 →</a>
 </div>
 
-<!-- 오로라 광택 배경 (카드 뒤로 은은하게 비침) -->
-<div class="vatos-insights-bg" aria-hidden="true">
-  <div class="vatos-insights-bg-base"></div>
-  <div class="vatos-insights-bg-ribbon"></div>
-  <div class="vatos-insights-bg-fade"></div>
-</div>
+<main class="vatos-sub-content">
 
-<main class="vatos-insights-main">
-
+  <!-- 1) HERO -->
   <section class="vatos-sub-hero">
     <div class="vatos-container">
-      <div class="vatos-sub-hero-label">Tech Insights</div>
-      <h1 class="vatos-sub-hero-title">기술 인사이트</h1>
-      <p class="vatos-sub-hero-summary">데이터베이스 환경과 시스템 운영에 필요한 기술 인사이트를 확인해 보세요!</p>
+      <div class="vatos-sub-hero-label">ABOUT VATOS</div>
+      <h1 class="vatos-sub-hero-title">오시는 길</h1>
+      <p class="vatos-sub-hero-summary"></p>
     </div>
   </section>
 
-  <section class="vatos-insights-list-sec">
+  <!-- 2) 찾아오시는 길 -->
+  <section class="vatos-sub-section" style="padding-top:0">
     <div class="vatos-container">
-      <div class="vatos-insights-list">
-        <a href="https://www.vatos.co.kr/techlog_14" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">14</span>
-          <h3 class="vatos-insights-card-title">마치며: 데이터가 아니라 의미를 옮기는 일</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_13" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">13</span>
-          <h3 class="vatos-insights-card-title">통계 정보: 옵티마이저가 같은 SQL을 다르게 해석하는 이유</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_12" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">12</span>
-          <h3 class="vatos-insights-card-title">내부 로직: 시스템 안에 사는 코드가 가장 옮기기 어렵다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_11" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">11</span>
-          <h3 class="vatos-insights-card-title">인덱스: 인덱스는 구조가 아니라 해석 대상이다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_10" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">10</span>
-          <h3 class="vatos-insights-card-title">식별자 채번: 같은 번호가 두 번 찍히는 사고가 가장 자주 나는 곳</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_9" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">09</span>
-          <h3 class="vatos-insights-card-title">제약조건과 DEFAULT: 데이터의 의미는 어디에서 결정되는가</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_8" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">08</span>
-          <h3 class="vatos-insights-card-title">저장구조: 같은 테이블이 같은 모양으로 놓이지 않는다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_7" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">07</span>
-          <h3 class="vatos-insights-card-title">사용자, 스키마, 권한: 같은 단어가 다른 구조를 가리킨다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_6" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">06</span>
-          <h3 class="vatos-insights-card-title">숫자형 타입 변환: 당신의 스키마를 설계한 건 당신이 아니다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_5" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">05</span>
-          <h3 class="vatos-insights-card-title">날짜형 데이터, 타입보다 데이터와 SQL을 먼저 보아야 합니다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_4" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">04</span>
-          <h3 class="vatos-insights-card-title">LOB 변환은 타입 치환이 아니다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_3" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">03</span>
-          <h3 class="vatos-insights-card-title">CHAR/N 타입 변환의 전략</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_2" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">02</span>
-          <h3 class="vatos-insights-card-title">숫자를 옮기지 말고 재설계하라: VARCHAR 변환 전략</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_1" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">01</span>
-          <h3 class="vatos-insights-card-title">Character Set: 마이그레이션의 첫 번째 관문</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_0" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">00</span>
-          <h3 class="vatos-insights-card-title">이기종 데이터베이스 마이그레이션, 메타데이터 변환이 성패를 가른다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
+      <div class="vatos-location-grid">
+        <div class="vatos-location-map vatos-motion-reveal">
+          <a href="https://map.kakao.com/link/search/서울특별시 성동구 뚝섬로1길 63 영창디지털타워" target="_blank" rel="noopener noreferrer">
+            <img src="https://vatos-tech.github.io/official-website/assets/images/vatos-map.png" alt="VATOS 서울 본사 위치 지도">
+          </a>
+        </div>
+        <div class="vatos-location-card vatos-motion-reveal vatos-motion-delay-1">
+          <div class="vatos-location-label">본사</div>
+          <div class="vatos-location-name">
+            <span class="vatos-location-name-pin"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            VATOS
+          </div>
+          <div class="vatos-location-addr-row">
+            <span class="vatos-location-addr vatos-copy-address">서울특별시 성동구 뚝섬로1길 63, 영창디지털타워 <span class="vatos-no-wrap">401-3호</span></span>
+            <button type="button" class="vatos-location-copy-btn" aria-label="주소 복사">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+            <span class="vatos-location-copy-toast">주소가 복사되었습니다.</span>
+          </div>
+          <div class="vatos-location-item"><div class="vatos-location-item-label">대표번호</div><div class="vatos-location-item-value">010-6787-7223</div></div>
+          <div class="vatos-location-item"><div class="vatos-location-item-label">이메일</div><div class="vatos-location-item-value">sales@vatos.co.kr</div></div>
+          <div class="vatos-location-item">
+            <div class="vatos-location-item-label">대중교통</div>
+            <div class="vatos-location-transit">
+              <div class="vatos-transit-row"><span class="vatos-subway-badge vatos-line-2">2호선</span><span class="vatos-transit-text">뚝섬역 도보 약 2분</span></div>
+            </div>
+          </div>
+          <a href="https://map.kakao.com/link/search/서울특별시 성동구 뚝섬로1길 63 영창디지털타워" target="_blank" rel="noopener noreferrer" class="vatos-location-kakao-link">지도에서 보기 →</a>
+        </div>
       </div>
-
-      <nav class="vatos-nav vatos-insights-pagination" id="insightPagination" aria-label="Tech Insights 페이지">
-        <button type="button" class="vatos-page-btn vatos-page-nav" data-goto="prev" aria-label="이전">←</button>
-        <button type="button" class="vatos-page-btn active" data-goto="1">1</button>
-        <button type="button" class="vatos-page-btn vatos-page-nav" data-goto="next" aria-label="다음">→</button>
-      </nav>
     </div>
   </section>
 

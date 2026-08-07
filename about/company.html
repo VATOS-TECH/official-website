@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Insights - VATOS</title>
+<title>Company - VATOS</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../assets/css/vatos-style.css">
 </head>
-<body class="vatos-page-sub vatos-page-insights">
+<body class="vatos-page-sub">
 <header class="vatos-header">
   <div class="vatos-header-inner">
     <a href="../index.html" class="vatos-logo" data-vatos-skip-intro><img src="https://vatos-tech.github.io/official-website/assets/images/vatos-logo-mark.png" alt="VATOS logo" class="vatos-logo-mark"><span class="vatos-logo-text">VAT<span>OS</span></span></a>
 
     <nav class="vatos-nav">
       <div class="vatos-nav-item">
-        <a href="#" class="vatos-nav-link" data-menu="about">About VATOS
+        <a href="#" class="vatos-nav-link current" data-menu="about">About VATOS
           <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
         </a>
         <div class="vatos-dropdown">
-          <a href="../about/company.html" class="vatos-dropdown-item">
+          <a href="../about/company.html" class="vatos-dropdown-item current">
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Company</span><span class="vatos-dropdown-subtitle">회사소개</span></span>
           </a>
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="vatos-nav-item">
-        <a href="#" class="vatos-nav-link current" data-menu="crew">Crew
+        <a href="#" class="vatos-nav-link" data-menu="crew">Crew
           <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
         </a>
         <div class="vatos-dropdown">
@@ -74,7 +74,7 @@
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Culture</span><span class="vatos-dropdown-subtitle">바토스 문화</span></span>
           </a>
-          <a href="../insights/tech-insights.html" class="vatos-dropdown-item current">
+          <a href="../insights/tech-insights.html" class="vatos-dropdown-item">
             <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-2.8-2.8L7 14"/></svg></span>
             <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Tech Insights</span><span class="vatos-dropdown-subtitle">기술 인사이트</span></span>
           </a>
@@ -89,7 +89,7 @@
 
 <div class="vatos-mobile-nav" id="mobileNav">
   <div class="vatos-mobile-nav-section-label">ABOUT VATOS</div>
-  <a href="../about/company.html" class="vatos-mobile-nav-sub">Company 회사소개</a>
+  <a href="../about/company.html" class="vatos-mobile-nav-sub current">Company 회사소개</a>
   <a href="../about/history.html" class="vatos-mobile-nav-sub">History 연혁</a>
   <a href="../about/location.html" class="vatos-mobile-nav-sub">Location 오시는 길</a>
   <div class="vatos-mobile-nav-divider"></div>
@@ -103,113 +103,72 @@
   <div class="vatos-mobile-nav-section-label">CREW</div>
   <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="vatos-mobile-nav-sub" target="_blank" rel="noopener noreferrer">VATOS Log</a>
   <a href="../crew/culture.html" class="vatos-mobile-nav-sub">Culture 바토스 문화</a>
-  <a href="../insights/tech-insights.html" class="vatos-mobile-nav-sub current">Tech Insights 기술 인사이트</a>
+  <a href="../insights/tech-insights.html" class="vatos-mobile-nav-sub">Tech Insights 기술 인사이트</a>
   <div class="vatos-mobile-nav-divider"></div>
   <a href="../contact.html" class="vatos-mobile-nav-link" style="color:var(--cyan);">서비스 문의하기 →</a>
 </div>
 
-<!-- 오로라 광택 배경 (카드 뒤로 은은하게 비침) -->
-<div class="vatos-insights-bg" aria-hidden="true">
-  <div class="vatos-insights-bg-base"></div>
-  <div class="vatos-insights-bg-ribbon"></div>
-  <div class="vatos-insights-bg-fade"></div>
-</div>
+<main class="vatos-sub-content">
 
-<main class="vatos-insights-main">
-
+  <!-- 1) HERO -->
   <section class="vatos-sub-hero">
     <div class="vatos-container">
-      <div class="vatos-sub-hero-label">Tech Insights</div>
-      <h1 class="vatos-sub-hero-title">기술 인사이트</h1>
-      <p class="vatos-sub-hero-summary">데이터베이스 환경과 시스템 운영에 필요한 기술 인사이트를 확인해 보세요!</p>
+      <div class="vatos-sub-hero-label">ABOUT VATOS</div>
+      <h1 class="vatos-sub-hero-title">회사소개</h1>
+      <p class="vatos-sub-hero-summary">바토스는 Oracle을 비롯한 다양한 DB 환경에서 컨설팅, 운영, 기술지원을 제공하는 DB 전문 기업입니다.</p>
     </div>
   </section>
 
-  <section class="vatos-insights-list-sec">
+  <!-- 2) 회사 소개 문구 -->
+  <section class="vatos-sub-section vatos-sub-intro">
     <div class="vatos-container">
-      <div class="vatos-insights-list">
-        <a href="https://www.vatos.co.kr/techlog_14" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">14</span>
-          <h3 class="vatos-insights-card-title">마치며: 데이터가 아니라 의미를 옮기는 일</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_13" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">13</span>
-          <h3 class="vatos-insights-card-title">통계 정보: 옵티마이저가 같은 SQL을 다르게 해석하는 이유</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_12" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">12</span>
-          <h3 class="vatos-insights-card-title">내부 로직: 시스템 안에 사는 코드가 가장 옮기기 어렵다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_11" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">11</span>
-          <h3 class="vatos-insights-card-title">인덱스: 인덱스는 구조가 아니라 해석 대상이다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_10" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">10</span>
-          <h3 class="vatos-insights-card-title">식별자 채번: 같은 번호가 두 번 찍히는 사고가 가장 자주 나는 곳</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_9" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">09</span>
-          <h3 class="vatos-insights-card-title">제약조건과 DEFAULT: 데이터의 의미는 어디에서 결정되는가</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_8" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">08</span>
-          <h3 class="vatos-insights-card-title">저장구조: 같은 테이블이 같은 모양으로 놓이지 않는다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_7" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">07</span>
-          <h3 class="vatos-insights-card-title">사용자, 스키마, 권한: 같은 단어가 다른 구조를 가리킨다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_6" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">06</span>
-          <h3 class="vatos-insights-card-title">숫자형 타입 변환: 당신의 스키마를 설계한 건 당신이 아니다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_5" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">05</span>
-          <h3 class="vatos-insights-card-title">날짜형 데이터, 타입보다 데이터와 SQL을 먼저 보아야 합니다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_4" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">04</span>
-          <h3 class="vatos-insights-card-title">LOB 변환은 타입 치환이 아니다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_3" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">03</span>
-          <h3 class="vatos-insights-card-title">CHAR/N 타입 변환의 전략</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_2" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">02</span>
-          <h3 class="vatos-insights-card-title">숫자를 옮기지 말고 재설계하라: VARCHAR 변환 전략</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_1" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">01</span>
-          <h3 class="vatos-insights-card-title">Character Set: 마이그레이션의 첫 번째 관문</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-        <a href="https://www.vatos.co.kr/techlog_0" class="vatos-insights-card">
-          <span class="vatos-insights-card-num">00</span>
-          <h3 class="vatos-insights-card-title">이기종 데이터베이스 마이그레이션, 메타데이터 변환이 성패를 가른다</h3>
-          <span class="vatos-insights-card-link">자세히 보기 <span class="vatos-link-arrow">→</span></span>
-        </a>
-      </div>
+      <p class="vatos-sub-intro-lead vatos-motion-reveal">더 편한 IT 세상을 함께 만들어 나가는<br>데이터베이스 전문 기업</p>
+    </div>
+  </section>
 
-      <nav class="vatos-nav vatos-insights-pagination" id="insightPagination" aria-label="Tech Insights 페이지">
-        <button type="button" class="vatos-page-btn vatos-page-nav" data-goto="prev" aria-label="이전">←</button>
-        <button type="button" class="vatos-page-btn active" data-goto="1">1</button>
-        <button type="button" class="vatos-page-btn vatos-page-nav" data-goto="next" aria-label="다음">→</button>
-      </nav>
+  <!-- 3) 기업 이념 -->
+  <section class="vatos-sub-section vatos-service-section" style="padding-top:0; padding-bottom:clamp(40px, 6vw, 64px)">
+    <div class="vatos-container">
+      <div class="vatos-sub-section-label vatos-motion-reveal">기업 이념</div>
+      <div class="vatos-feature-list">
+        <div class="vatos-feature-row">
+          <div class="vatos-feature-row-media vatos-motion-reveal">
+            <img src="https://vatos-tech.github.io/official-website/assets/images/company-principle-01.jpg" alt="햇살이 비치는 나무 사이로 올려다본 도심 빌딩 — 건강한 기업">
+          </div>
+          <div class="vatos-feature-row-body vatos-motion-reveal vatos-motion-delay-1">
+            <div class="vatos-feature-row-num">01</div>
+            <h3 class="vatos-feature-row-title">건강한 기업이 되겠습니다.</h3>
+            <div class="vatos-feature-row-desc">
+              <p>투입 요소를 최소화하면서도 커다란 성과를 창출할 수 있도록 열정적으로 공부하고 전방위적인 혁신과 개선에 의한 점진적인 성장을 통해 건강한 회사를 만들겠습니다. 도전하며 성장해 온 과정에서 체득한 위기 극복의 DNA를 더욱 강화하겠습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="vatos-feature-row vatos-feature-row-reverse">
+          <div class="vatos-feature-row-media vatos-motion-reveal">
+            <img src="https://vatos-tech.github.io/official-website/assets/images/company-principle-02.jpg" alt="야경을 배경으로 마주 서서 논의하는 바토스 구성원들 — 건전한 기업 문화">
+          </div>
+          <div class="vatos-feature-row-body vatos-motion-reveal vatos-motion-delay-1">
+            <div class="vatos-feature-row-num">02</div>
+            <h3 class="vatos-feature-row-title">건전한 기업 문화를 만들겠습니다.</h3>
+            <div class="vatos-feature-row-desc">
+              <p>회사의 핵심은 사람입니다. 사람이 건전해야 회사도 건강합니다. 회사의 핵심가치를 함께 수호하고 상대에 대한 이해와 배려, 협력을 통해 신뢰를 깊이 하며 함께 발전하는 건전한 기업 문화를 조성하여 많은 이들로부터 사랑과 존경을 받는 기업을 만들겠습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="vatos-feature-row">
+          <div class="vatos-feature-row-media vatos-motion-reveal">
+            <img src="https://vatos-tech.github.io/official-website/assets/images/company-principle-03.jpg" alt="데이터 대시보드가 띄워진 야간 오피스 데스크 — 늘 탐구하고 성장하는 기업">
+          </div>
+          <div class="vatos-feature-row-body vatos-motion-reveal vatos-motion-delay-1">
+            <div class="vatos-feature-row-num">03</div>
+            <h3 class="vatos-feature-row-title">늘 탐구하는 기업, 성장하는 기업이 되겠습니다.</h3>
+            <div class="vatos-feature-row-desc">
+              <p>즐거운 곳에서 우리의 꿈인 엔지니어링 선도 기업으로 한 걸음 더 나아가기 위하여 열정적인 사람들과 함께 모여 새로운 것을 탐구하겠습니다.</p>
+              <p>우리는 점진적인 탐구자세로 새로운 데이터베이스 기술을 연구하고 이를 바탕으로 고객들에게 최상의 서비스를 제공하고, 엔지니어링 분야를 선도하는 기업이 되겠습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
