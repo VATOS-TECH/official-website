@@ -1711,7 +1711,7 @@ body.vatos-contact-light .vatos-nav-link:hover {
   color: var(--text-dark);
   background: var(--gray-100);
 }
-body.vatos-contact-light .vatos-btn-contact-header { color: var(--text-dark); }
+body.vatos-contact-light .vatos-btn-contact-header { color: var(--text-dark); border-color: transparent;}
 body.vatos-contact-light .vatos-hamburger span { background: var(--text-dark); }
 
 /* Top introduction: --surface-white */
