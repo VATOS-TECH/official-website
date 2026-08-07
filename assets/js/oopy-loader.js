@@ -12,6 +12,7 @@
   let pageClassTimer = null;
   let pageObserver = null;
   let previousPageUrl = window.location.pathname + window.location.search;
+  let scrollResetUntil = 0;
 
   /* 브라우저가 이전 스크롤 위치를 자동 복원하지 않도록 설정 */
   if ('scrollRestoration' in window.history) {
@@ -41,8 +42,10 @@
       resetPageScroll();
     });
 
-    window.setTimeout(resetPageScroll, 120);
-    window.setTimeout(resetPageScroll, 300);
+    /* Oopy/Notion이 페이지 렌더 이후 이전 위치를 다시 적용하는 경우까지 방지 */
+    [60, 120, 250, 500, 800].forEach(function (delay) {
+      window.setTimeout(resetPageScroll, delay);
+    });
   }
 
   /* GitHub Pages URL 생성 */
@@ -215,9 +218,20 @@
           (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0);
       });
 
-      if (hasContentChange) {
-          applyPageClass();
-        }
+      if (!hasContentChange) {
+        return;
+      }
+
+      applyPageClass();
+
+      /*
+       * Oopy/Notion은 URL 변경 뒤 React DOM을 교체하면서
+       * 이전 scrollTop을 다시 적용할 수 있다.
+       * URL이 방금 변경된 상태라면 실제 DOM 변경 시점에도 최상단을 재적용한다.
+       */
+      if (Date.now() < scrollResetUntil) {
+        resetPageScroll();
+      }
     });
 
     pageObserver.observe(document.body, {
@@ -238,6 +252,7 @@
       }
 
       previousPageUrl = currentPageUrl;
+      scrollResetUntil = Date.now() + 1200;
       schedulePageClassUpdate();
       schedulePageScrollReset();
     }
