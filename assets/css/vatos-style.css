@@ -571,7 +571,6 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
 
 /* Shared section typography */
   /* ── SECTION COMMON ── */
-  .vatos-contact { padding: 96px 0; }
   .vatos-section-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
   .vatos-section-label {
     font-family: var(--font-body);
@@ -592,73 +591,127 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
   .vatos-section-head { margin-bottom: 56px; }
 
 
-/* Contact */
-  /* ── CONTACT (다른 다크 상세페이지와 동일한 디자인 시스템으로 통일) ── */
-  body.vatos-page-contact { background: var(--navy-dark); }
-  .vatos-contact { background: var(--navy-dark); }
-  .vatos-contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-  .vatos-contact-info .vatos-section-label { color: var(--cyan); }
-  .vatos-contact-info .vatos-section-title { margin-bottom: 30px; color: #fff; }
-  .vatos-contact-info p { font-size:15.5px; color:rgba(255,255,255,0.62); line-height:1.85; margin-bottom:36px; }
-  .vatos-contact-details { display: flex; flex-direction: column; gap: 18px; margin-bottom:40px; }
-  .vatos-contact-detail { display:flex; align-items:center; gap:14px; }
-  .vatos-contact-detail-icon {
-    width:40px; height:40px; border-radius:8px; background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center;
-    flex-shrink: 0;
-  }
-  .vatos-contact-detail-icon svg { width:17px; height:17px; stroke:var(--cyan); fill:none; stroke-width:1.7; }
-  .vatos-contact-detail-text { display: flex; flex-direction: column; justify-content: center; }
-  .vatos-contact-detail-text h5 { font-size:12px; color:rgba(255,255,255,0.42); margin:0 0 2px; line-height: 1.3; }
-  .vatos-contact-detail-text p { font-size:14px; color:#fff; font-weight:500; margin:0; line-height: 1.4; }
-  /* 문의하기 위치 — 우편번호 한 줄, 주소 한 줄로 분리 표시 */
-  .vatos-contact-detail-text .vatos-contact-addr { line-height: 1.6; }
-  .vatos-contact-detail-text .vatos-contact-postal { display: block; }
-  .vatos-contact-detail-text .vatos-contact-addr-line { display: block; }
-  @media (min-width: 769px) {
-    .vatos-contact-detail-text .vatos-contact-addr-line { white-space: nowrap; }
-  }
-  .vatos-contact-type-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .vatos-contact-type {
-    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.14); border-radius:8px;
-    padding:18px 16px; cursor:pointer; transition:border-color .25s ease, background .25s ease; text-align:center;
-  }
-  .vatos-contact-type:hover { border-color:var(--cyan); background:rgba(255,255,255,0.05); }
-  .vatos-contact-type-icon { font-size:22px; margin-bottom:6px; }
-  .vatos-contact-type h5 { font-size:13px; font-weight:700; color:#fff; }
-  .vatos-contact-type p { font-size:11.5px; color:rgba(255,255,255,0.42); margin-top:2px; }
+/* Contact — 밝은 테마가 기본값이며 JS 테마 전환에 의존하지 않는다. */
+:is(body.vatos-page-contact, body:has(.vatos-contact)) {
+  --surface-white: #FFFFFF;
+  --surface-page: #F5F7F9;
+  --dark-navy: #192F55;
+  background: var(--surface-page);
+  color: var(--text-dark);
+}
 
-  .vatos-contact-form {
-    background: rgba(255,255,255,0.03); border-radius:14px; padding:40px 36px;
-    border:1px solid rgba(255,255,255,0.12);
-  }
-  .vatos-contact-form-title { font-size:18px; font-weight:700; color:#fff; margin-bottom:24px; }
-  .vatos-form-group { margin-bottom:20px; }
-  .vatos-form-group label { display:block; font-size:13px; font-weight:700; color:rgba(255,255,255,0.75); margin-bottom:7px; }
-  .vatos-form-group label .vatos-req { color: var(--cyan); }
-  .vatos-form-group input, .vatos-form-group select, .vatos-form-group textarea {
-    width:100%; padding:12px 14px; border:1px solid rgba(255,255,255,0.14); border-radius:6px;
-    font-size:14px; color:#fff; font-family: var(--font-body);
-    background: rgba(255,255,255,0.03);
-    transition: border-color .25s ease, background .25s ease, box-shadow .25s ease; outline:none;
-  }
-  .vatos-form-group input::placeholder, .vatos-form-group textarea::placeholder { color: rgba(255,255,255,0.32); }
-  .vatos-form-group select { color: rgba(255,255,255,0.85); }
-  .vatos-form-group select option { background: var(--navy-dark); color: #fff; }
-  .vatos-form-group input:focus, .vatos-form-group select:focus, .vatos-form-group textarea:focus {
-    border-color: var(--cyan); background:rgba(255,255,255,0.05);
-    box-shadow: 0 0 0 3px rgba(42,163,176,0.16);
-  }
-  .vatos-form-group textarea { min-height:110px; resize:vertical; }
-  .vatos-form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .vatos-btn-submit {
-    width:100%; background:transparent; color:#fff;
-    font-size:14.5px; font-weight:700; padding:15px;
-    border:1px solid var(--cyan); border-radius:999px; cursor:pointer;
-    transition: background .25s ease, color .25s ease;
-    font-family: var(--font-body); letter-spacing:0.3px;
-  }
-  .vatos-btn-submit:hover { background:var(--cyan); color:var(--navy-dark); }
+/* Oopy의 공통 다크 배경보다 Contact 밝은 배경을 우선 적용 */
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .notion-scroller,
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .notion-page-content {
+  background: var(--surface-page) !important;
+  color: var(--text-dark);
+}
+
+/* Contact 페이지의 상단바는 처음부터 밝은 테마 */
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-header {
+  background: rgba(255,255,255,0.88);
+  border-color: var(--gray-200);
+  box-shadow: 0 6px 24px rgba(11,27,61,0.06);
+}
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-header.scrolled {
+  background: rgba(255,255,255,0.94);
+  border-color: var(--gray-200);
+  box-shadow: 0 8px 32px rgba(11,27,61,0.12);
+}
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-logo-text,
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-logo-text span { color: var(--text-dark); }
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-nav-link { color: var(--text-mid); }
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-nav-link:hover {
+  color: var(--text-dark);
+  background: var(--gray-100);
+}
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-btn-contact-header {
+  color: var(--text-dark);
+  border-color: transparent;
+}
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-hamburger span { background: var(--text-dark); }
+
+/* Contact 상단 소개 */
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-page-hero {
+  background: var(--surface-white);
+  border-bottom-color: var(--gray-200);
+}
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-page-hero::before { display: none; }
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-page-hero h1 { color: var(--text-dark); }
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-page-hero p { color: var(--text-muted); }
+
+/* Contact 본문/폼 */
+.vatos-contact {
+  padding: 96px 0;
+  background: #F5F7F9;
+}
+.vatos-contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.vatos-contact-info .vatos-section-label { color: var(--cyan); }
+.vatos-contact-info .vatos-section-title { margin-bottom: 30px; color: var(--text-dark); }
+.vatos-contact-info > p { font-size:15.5px; color:var(--text-muted); line-height:1.85; margin-bottom:36px; }
+.vatos-contact-details { display: flex; flex-direction: column; gap: 18px; margin-bottom:40px; }
+.vatos-contact-detail { display:flex; align-items:center; gap:14px; }
+.vatos-contact-detail-icon {
+  width:40px; height:40px; border-radius:8px;
+  background:#FFFFFF; border:1px solid var(--gray-200);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.vatos-contact-detail-icon svg { width:17px; height:17px; stroke:var(--cyan); fill:none; stroke-width:1.7; }
+.vatos-contact-detail-text { display:flex; flex-direction:column; justify-content:center; }
+.vatos-contact-detail-text h5 { font-size:12px; color:var(--text-muted); margin:0 0 2px; line-height:1.3; }
+.vatos-contact-detail-text p { font-size:14px; color:var(--text-dark); font-weight:500; margin:0; line-height:1.4; }
+.vatos-contact-detail-text .vatos-contact-addr { line-height:1.6; }
+.vatos-contact-detail-text .vatos-contact-postal { display:block; }
+.vatos-contact-detail-text .vatos-contact-addr-line { display:block; }
+@media (min-width: 769px) {
+  .vatos-contact-detail-text .vatos-contact-addr-line { white-space:nowrap; }
+}
+
+.vatos-contact-form {
+  background:#FFFFFF; border-radius:14px; padding:40px 36px;
+  border:1px solid var(--gray-200);
+  box-shadow:0 8px 28px rgba(11,27,61,0.05);
+}
+.vatos-contact-form-title { font-size:18px; font-weight:700; color:var(--text-dark); margin-bottom:24px; }
+.vatos-form-group { margin-bottom:20px; }
+.vatos-form-group label { display:block; font-size:13px; font-weight:700; color:var(--text-mid); margin-bottom:7px; }
+.vatos-form-group label .vatos-req { color:var(--cyan); }
+.vatos-form-group input,
+.vatos-form-group select,
+.vatos-form-group textarea {
+  width:100%; padding:12px 14px; border:1px solid var(--gray-200); border-radius:6px;
+  font-size:14px; color:var(--text-dark); font-family:var(--font-body);
+  background:#F5F7F9;
+  transition:border-color .25s ease, background .25s ease, box-shadow .25s ease; outline:none;
+}
+.vatos-form-group input::placeholder,
+.vatos-form-group textarea::placeholder { color:var(--gray-400); }
+.vatos-form-group select { color:var(--text-mid); }
+.vatos-form-group select option { background:#FFFFFF; color:var(--text-dark); }
+.vatos-form-group input:focus,
+.vatos-form-group select:focus,
+.vatos-form-group textarea:focus {
+  border-color:var(--cyan); background:#FFFFFF;
+  box-shadow:0 0 0 3px rgba(42,163,176,0.16);
+}
+.vatos-form-group textarea { min-height:110px; resize:vertical; }
+.vatos-form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.vatos-btn-submit {
+  width:100%; background:var(--cyan); color:#FFFFFF;
+  font-size:14.5px; font-weight:700; padding:15px;
+  border:1px solid var(--cyan); border-radius:999px; cursor:pointer;
+  transition:background .25s ease, color .25s ease;
+  font-family:var(--font-body); letter-spacing:0.3px;
+}
+.vatos-btn-submit:hover { background:var(--cyan-dark); color:#FFFFFF; }
+
+/* Contact에서도 Footer 자체는 기존 다크 테마 유지 */
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-footer {
+  background:var(--dark-navy);
+  border-top-color:rgba(255,255,255,0.08);
+}
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-footer .vatos-logo-text,
+:is(body.vatos-page-contact, body:has(.vatos-contact)) .vatos-footer .vatos-logo-text span { color:var(--cyan); }
 
 
 /* Multipage foundations */
@@ -1680,101 +1733,6 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   .vatos-insights-card:hover, .vatos-insights-card.visible:hover { transform: none; }
   .vatos-insights-list { transition: none; }
 }
-
-/* ============================================================
-   CONTACT PAGE — light surface overrides
-   `vatos-page-contact` 범위 안에서만 적용되어 다른 페이지에는 영향이 없다.
-   ============================================================ */
-body.vatos-contact-light {
-  --surface-white: #FFFFFF;
-  --surface-page: #F5F7F9;
-  --dark-navy: #192F55;
-  background: var(--surface-page);
-  color: var(--text-dark);
-}
-
-/* Header on the white contact hero */
-body.vatos-contact-light .vatos-header {
-  background: rgba(255,255,255,0.88);
-  border-color: var(--gray-200);
-  box-shadow: 0 6px 24px rgba(11,27,61,0.06);
-}
-body.vatos-contact-light .vatos-header.scrolled {
-  background: rgba(255,255,255,0.94);
-  border-color: var(--gray-200);
-  box-shadow: 0 8px 32px rgba(11,27,61,0.12);
-}
-body.vatos-contact-light .vatos-logo-text,
-body.vatos-contact-light .vatos-logo-text span { color: var(--text-dark); }
-body.vatos-contact-light .vatos-nav-link { color: var(--text-mid); }
-body.vatos-contact-light .vatos-nav-link:hover {
-  color: var(--text-dark);
-  background: var(--gray-100);
-}
-body.vatos-contact-light .vatos-btn-contact-header { color: var(--text-dark); border-color: transparent;}
-body.vatos-contact-light .vatos-hamburger span { background: var(--text-dark); }
-
-/* Top introduction: --surface-white */
-body.vatos-contact-light .vatos-page-hero {
-  background: var(--surface-white);
-  border-bottom-color: var(--gray-200);
-}
-body.vatos-contact-light .vatos-page-hero::before { display: none; }
-body.vatos-contact-light .vatos-page-hero h1 { color: var(--text-dark); }
-body.vatos-contact-light .vatos-page-hero p { color: var(--text-muted); }
-
-/* Contact details and form: --surface-page */
-body.vatos-contact-light .vatos-contact { background: var(--surface-page); }
-body.vatos-contact-light .vatos-contact-info .vatos-section-title,
-body.vatos-contact-light .vatos-contact-detail-text p { color: var(--text-dark); }
-body.vatos-contact-light .vatos-contact-detail-text h5 { color: var(--text-muted); }
-body.vatos-contact-light .vatos-contact-detail-icon {
-  background: var(--surface-white);
-  border-color: var(--gray-200);
-}
-body.vatos-contact-light .vatos-contact-form {
-  background: var(--surface-white);
-  border-color: var(--gray-200);
-  box-shadow: 0 8px 28px rgba(11,27,61,0.05);
-}
-body.vatos-contact-light .vatos-contact-form-title { color: var(--text-dark); }
-body.vatos-contact-light .vatos-form-group label { color: var(--text-mid); }
-body.vatos-contact-light .vatos-form-group input,
-body.vatos-contact-light .vatos-form-group select,
-body.vatos-contact-light .vatos-form-group textarea {
-  color: var(--text-dark);
-  background: var(--surface-page);
-  border-color: var(--gray-200);
-}
-body.vatos-contact-light .vatos-form-group input::placeholder,
-body.vatos-contact-light .vatos-form-group textarea::placeholder { color: var(--gray-400); }
-body.vatos-contact-light .vatos-form-group select { color: var(--text-mid); }
-body.vatos-contact-light .vatos-form-group select option {
-  background: var(--surface-white);
-  color: var(--text-dark);
-}
-body.vatos-contact-light .vatos-form-group input:focus,
-body.vatos-contact-light .vatos-form-group select:focus,
-body.vatos-contact-light .vatos-form-group textarea:focus {
-  background: var(--surface-white);
-  border-color: var(--cyan);
-}
-body.vatos-contact-light .vatos-btn-submit {
-  background: var(--cyan);
-  color: var(--surface-white);
-}
-body.vatos-contact-light .vatos-btn-submit:hover {
-  background: var(--cyan-dark);
-  color: var(--surface-white);
-}
-
-/* Footer: --dark-navy */
-body.vatos-contact-light .vatos-footer {
-  background: var(--dark-navy);
-  border-top-color: rgba(255,255,255,0.08);
-}
-body.vatos-contact-light .vatos-footer .vatos-logo-text,
-body.vatos-contact-light .vatos-footer .vatos-logo-text span { color: var(--cyan); }
 
 /* ============================================================
    BUSINESS DETAIL REDESIGN
