@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사용자, 스키마, 권한: 같은 단어가 다른 구조를 가리킨다 - VATOS</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../assets/css/vatos-style.css">
+</head>
+<body>
+<header class="vatos-header">
+  <div class="vatos-header-inner">
+    <a href="../index.html" class="vatos-logo" data-vatos-skip-intro><img src="../assets/images/vatos-logo-mark.png" alt="VATOS logo" class="vatos-logo-mark"><span class="vatos-logo-text">VAT<span>OS</span></span></a>
+
+    <nav class="vatos-nav">
+      <!-- About VATOS -->
+      <div class="vatos-nav-item">
+        <a href="#" class="vatos-nav-link" data-menu="about">
+          About VATOS
+          <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="vatos-dropdown">
+          <a href="../about/company.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Company</span><span class="vatos-dropdown-subtitle">회사소개</span></span>
+          </a>
+          <a href="../about/history.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">History</span><span class="vatos-dropdown-subtitle">연혁</span></span>
+          </a>
+          <a href="../about/location.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Location</span><span class="vatos-dropdown-subtitle">오시는 길</span></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Business Areas -->
+      <div class="vatos-nav-item">
+        <a href="#" class="vatos-nav-link" data-menu="business">
+          Business Areas
+          <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="vatos-dropdown vatos-dropdown-wide">
+          <a href="../business/business-license.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">License</span><span class="vatos-dropdown-subtitle">라이선스</span></span>
+          </a>
+          <a href="../business/business-operations-technical-support.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Operations &amp; Technical Support</span><span class="vatos-dropdown-subtitle">운영 &amp; 기술지원</span></span>
+          </a>
+          <a href="../business/business-performance-consulting.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Performance Consulting</span><span class="vatos-dropdown-subtitle">성능 컨설팅</span></span>
+          </a>
+          <a href="../business/business-migration-conversion.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Migration &amp; Conversion</span><span class="vatos-dropdown-subtitle">마이그레이션 &amp; 전환</span></span>
+          </a>
+          <a href="../business/business-training.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Training</span><span class="vatos-dropdown-subtitle">교육</span></span>
+          </a>
+        </div>
+      </div>
+      <!-- Crew -->
+      <div class="vatos-nav-item">
+        <a href="#" class="vatos-nav-link active" data-menu="crew">
+          Crew
+          <span class="vatos-arrow"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+        </a>
+        <div class="vatos-dropdown">
+          <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="vatos-dropdown-item" target="_blank" rel="noopener noreferrer">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">VATOS Log</span><span class="vatos-dropdown-subtitle">바토스 블로그</span></span>
+          </a>
+          <a href="../crew/culture.html" class="vatos-dropdown-item">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Culture</span><span class="vatos-dropdown-subtitle">바토스 문화</span></span>
+          </a>
+          <a href="../insights/tech-insights.html" class="vatos-dropdown-item active">
+            <span class="vatos-dropdown-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-2.8-2.8L7 14"/></svg></span>
+            <span class="vatos-dropdown-text"><span class="vatos-dropdown-label">Tech Insights</span><span class="vatos-dropdown-subtitle">기술 인사이트</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <a href="../contact.html" class="vatos-btn-contact-header">서비스 문의하기</a>
+    <div class="vatos-hamburger" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="vatos-mobile-nav" id="mobileNav">
+  <div class="vatos-mobile-nav-section-label">ABOUT VATOS</div>
+  <a href="#" class="vatos-mobile-nav-link" data-menu="about" style="padding-left:28px; font-size:14px;">About VATOS</a>
+  <a href="../about/company.html" class="vatos-mobile-nav-sub">Company</a>
+  <a href="../about/history.html" class="vatos-mobile-nav-sub">History</a>
+  <a href="../about/location.html" class="vatos-mobile-nav-sub">Location</a>
+  <div class="vatos-mobile-nav-divider"></div>
+  <a href="#" class="vatos-mobile-nav-link" data-menu="business" style="padding-left:28px; font-size:14px;">Business Areas</a>
+  <a href="../business/business-license.html" class="vatos-mobile-nav-sub">License</a>
+  <a href="../business/business-operations-technical-support.html" class="vatos-mobile-nav-sub">Operations &amp; Technical Support</a>
+  <a href="../business/business-performance-consulting.html" class="vatos-mobile-nav-sub">Performance Consulting</a>
+  <a href="../business/business-migration-conversion.html" class="vatos-mobile-nav-sub">Migration &amp; Conversion</a>
+  <a href="../business/business-training.html" class="vatos-mobile-nav-sub">Training</a>
+  <div class="vatos-mobile-nav-divider"></div>
+  <a href="#" class="vatos-mobile-nav-link active" data-menu="crew" style="padding-left:28px; font-size:14px;">Crew</a>
+  <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" class="vatos-mobile-nav-sub" target="_blank" rel="noopener noreferrer">VATOS Log</a>
+  <a href="../crew/culture.html" class="vatos-mobile-nav-sub">Culture</a>
+  <a href="../insights/tech-insights.html" class="vatos-mobile-nav-sub active">Tech Insights 기술 인사이트</a>
+  <div class="vatos-mobile-nav-divider"></div>
+</div>
+
+<!-- ARTICLE HERO -->
+<section class="vatos-article-hero">
+  <div class="vatos-section-inner">
+    <a href="https://www.vatos.co.kr/techlog" class="vatos-article-back-link vatos-article-back-top">← Tech Insights</a>
+    <div class="vatos-section-label">TECH INSIGHTS</div>
+    <h1>사용자, 스키마, 권한: 같은 단어가 다른 구조를 가리킨다</h1>
+    <p class="vatos-article-summary">이기종 DB마다 다른 사용자·스키마·권한 개념을 어떻게 대응·이관해야 하는지 정리합니다.</p>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<section class="vatos-article-wrap">
+  <div class="vatos-section-inner">
+  <article class="vatos-article-content">
+      <p>이기종 마이그레이션에서 사용자와 권한 이관은 종종 작업의 뒷자리로 밀립니다. "DDL이 끝나면 USER 만들고 GRANT 좀 정리하면 되는 일"이라는 인식 때문입니다. 그런데 실제로 작업을 시작하면 가장 먼저 막히는 곳도 이 영역입니다.</p>
+      <p>이유는 단순합니다. <strong>USER, SCHEMA, ROLE이라는 같은 단어가 DB마다 다른 구조를 가리키기 때문입니다.</strong> Oracle의 USER는 계정이자 스키마이자 저장 단위이고, PostgreSQL의 ROLE은 계정일 수도 권한 묶음일 수도 있으며, MySQL의 DATABASE는 곧 SCHEMA입니다. 단어 하나가 양쪽에서 다른 것을 의미하기 때문에, 어느 쪽으로 옮기든 1:1 매핑은 성립하지 않습니다.</p>
+      <p>이 글은 양방향, 즉 Oracle → 오픈소스와 오픈소스 → Oracle을 모두 다룹니다. 어느 방향이든 USER를 그대로 옮기는 작업이 아니라, <strong>각 USER가 실제로 어떤 역할을 하고 있는지 먼저 분해하고, 타겟 DB의 묶음 방식에 맞춰 다시 조립하는 작업</strong>이 필요합니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>세 DB의 USER, SCHEMA, ROLE — 같은 단어, 다른 구조</h3>
+      <div class="vatos-article-table-wrap"><table><thead><tr><th>개념</th><th>Oracle</th><th>PostgreSQL</th><th>MySQL</th></tr></thead><tbody><tr><td>접속 주체</td><td>USER</td><td>ROLE (LOGIN 속성)</td><td><code>'user'@'host'</code></td></tr><tr><td>권한 묶음</td><td>ROLE</td><td>ROLE (NOLOGIN 속성)</td><td>ROLE (8.0+)</td></tr><tr><td>스키마(네임스페이스)</td><td>USER ≡ SCHEMA</td><td>SCHEMA</td><td>DATABASE ≡ SCHEMA</td></tr><tr><td>객체 컨테이너 계층</td><td>(CDB →) PDB → SCHEMA</td><td>CLUSTER → DATABASE → SCHEMA</td><td>INSTANCE → DATABASE</td></tr><tr><td>SQL상 객체 식별</td><td>SCHEMA.OBJECT</td><td>SCHEMA.OBJECT (동일 DATABASE 내)</td><td>DATABASE.OBJECT</td></tr><tr><td>무자격 객체 참조</td><td>SYNONYM (PUBLIC/PRIVATE)</td><td>search_path</td><td><code>USE database</code></td></tr></tbody></table></div>
+      <p>표에서 "객체 컨테이너 계층"과 "SQL상 객체 식별"을 분리한 이유는, 두 축이 같지 않기 때문입니다. PostgreSQL은 한 CLUSTER 안에 여러 DATABASE가 존재하지만, SQL 안에서 다른 DATABASE의 객체를 <code>database.schema.object</code>로 참조할 수는 없습니다. cross-database 조회 자체가 불가능하고, 필요하다면 dblink 또는 postgres_fdw로 우회해야 합니다. MySQL은 반대로 한 INSTANCE 안의 모든 DATABASE를 <code>database.table</code> 자격으로 직접 조회할 수 있습니다.</p>
+      <p>Oracle은 11g까지는 한 DATABASE 안에 모든 USER/SCHEMA가 존재하는 단일 구조였지만, <strong>12c부터 Multitenant 아키텍처가 도입되어 한 CDB(Container Database) 안에 여러 PDB(Pluggable Database)가 존재할 수 있게 되었습니다.</strong> PDB는 PostgreSQL의 DATABASE에 가까운 격리 단위로 동작합니다. 19c 이후로는 CDB 구성이 사실상 표준이고, 멀티테넌트 환경의 PDB 단위 격리는 이관 시 중요한 매핑 후보가 됩니다.</p>
+      <p>이 표가 보여주는 것은 명칭의 차이가 아닙니다. <strong>세 DB가 "사용자라는 개념"을 서로 다른 방식으로 쪼개고 묶어두었다는 사실입니다.</strong> Oracle은 USER 안에 계정, 스키마, 저장 단위를 묶었고 ROLE은 별도의 권한 묶음으로 두었습니다. PostgreSQL은 USER와 GROUP을 ROLE 하나로 통합하면서 스키마는 따로 떼어 냈습니다. MySQL은 DATABASE와 SCHEMA를 통합하면서, 사용자는 호스트와 결합된 형태로 별도 관리합니다. 어느 쪽으로 옮기든, 한 DB에서 묶여 있던 것을 풀어내고 다른 DB의 묶음에 다시 끼워 넣어야 합니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>USER를 옮기기 전에, USER의 실체를 먼저 분류해야 한다</h3>
+      <p>이관의 시작은 타겟 DB의 어떤 객체를 만들지가 아니라, <strong>소스 DB의 USER가 실제로 어떤 역할을 하고 있는지 분류</strong>하는 것입니다. 이 분류 없이 USER를 1:1로 옮기면, 권한 묶음으로만 쓰이던 계정이 접속 가능한 사용자가 되거나, 사람이 접속하던 계정이 권한이 없는 빈 컨테이너가 됩니다.</p>
+      <p>Oracle USER는 보통 다음 네 가지 역할 중 하나 또는 복수에 해당합니다.</p>
+      <p>첫째, <strong>실제 접속하는 사람 또는 애플리케이션 계정</strong>입니다. 자신의 객체를 가질 수도 있고, 다른 스키마의 객체에만 접근할 수도 있습니다.</p>
+      <p>둘째, <strong>객체 소유자 역할의 스키마 컨테이너</strong>입니다. 직접 접속하지 않고 객체만 보관합니다. 운영 환경에서는 패스워드를 잠가두거나(<code>ACCOUNT LOCK</code>) 강한 패스워드 정책을 적용해 접속을 차단합니다.</p>
+      <p>셋째, <strong>권한 묶음 역할</strong>입니다. Oracle에는 ROLE이 있지만, 일부 조직은 통제 편의 때문에 USER 단위로 권한을 모아두고 다른 USER에게 객체 권한을 GRANT 합니다. 형태는 USER지만 실질적으로는 ROLE입니다.</p>
+      <p>넷째, <strong>레거시로 남아 있는 사용 중단 계정</strong>입니다. 객체도 없고 GRANT만 일부 남아 있는 경우입니다.</p>
+      <p>이 분류가 끝나야 타겟 DB에서 어떤 객체로 만들지 결정할 수 있습니다. 첫째는 LOGIN 가능한 USER 또는 ROLE로, 둘째는 NOLOGIN ROLE이나 객체 소유자 전용 ROLE로, 셋째는 권한 묶음 ROLE로 분해되고, 넷째는 이관 대상에서 제외하는 것이 자연스러운 선택입니다. 모든 USER를 타겟의 USER로 옮기는 것이 아니라, <strong>USER의 실제 역할에 맞는 객체 종류를 다시 골라주는 작업</strong>입니다.</p>
+      <p>역방향도 마찬가지입니다. PostgreSQL ROLE은 LOGIN 여부, INHERIT 여부, 다른 ROLE의 멤버 여부 조합에 따라 역할이 다릅니다. MySQL은 사용자가 호스트와 결합된 단위로 식별되어 같은 사용자명이라도 접속 경로별로 별개의 USER가 존재할 수 있습니다. 이 차이를 무시하고 Oracle USER로 통합하면, 분리되어 있던 권한 경계가 사라집니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>Oracle → 오픈소스: USER를 분해해야 한다</h3>
+      <p>분류가 끝났다면 타겟 DB의 구조에 맞춰 분해 전략을 세웁니다. 타겟이 PostgreSQL인지 MySQL인지에 따라 결정 사항이 다릅니다.</p>
+      <p><strong>타겟이 PostgreSQL인 경우</strong>, 가장 먼저 결정해야 할 것은 Oracle의 다중 USER를 PostgreSQL의 어느 단위로 흡수할지입니다.</p>
+      <p>단일 DATABASE 안의 다중 SCHEMA로 흡수하는 방식이 일반적입니다. Oracle의 cross-schema 조회 패턴을 그대로 유지할 수 있고, 백업과 운영이 단일 DATABASE 단위로 통합됩니다. 권한은 SCHEMA 단위로 통제하되, 객체 소유자 ROLE을 별도로 두고 접속 계정 ROLE에 권한을 GRANT 하는 방식으로 구성합니다. 즉 Oracle의 "USER 1개"가 PostgreSQL에서는 "SCHEMA 1개 + 객체 소유자 ROLE 1개 + 접속 계정 ROLE 1개"로 분해되는 패턴입니다.</p>
+      <p>다중 DATABASE 전략은 USER 또는 업무 단위별로 DATABASE를 분리하는 방식입니다. 격리는 가장 강하지만 <strong>DATABASE 간 직접 조회가 불가능</strong>하므로, dblink나 postgres_fdw로 우회해야 하고 트랜잭션 일관성이 깨집니다. <strong>다만 소스 Oracle이 이미 12c+ CDB/PDB 구조에서 PDB 단위로 격리되어 운영되고 있었다면, 이 전략이 자연스러운 선택지입니다.</strong> Oracle PDB와 PostgreSQL DATABASE는 컨테이너 격리 측면에서 가장 가까운 매핑이고, PDB 단위로 분리되어 있던 cross-PDB 의존성이 거의 없는 시스템이라면 PostgreSQL에서 다중 DATABASE 구조로 이어 가는 것이 운영 모델 변경을 최소화합니다.</p>
+      <div class="vatos-article-table-wrap"><table><thead><tr><th>기준</th><th>단일 DB / 다중 SCHEMA</th><th>다중 DATABASE</th></tr></thead><tbody><tr><td>cross-schema 조회</td><td>가능</td><td>불가능 (dblink/FDW 필요)</td></tr><tr><td>백업·복구 단위</td><td>DATABASE 통합</td><td>각 DATABASE 개별</td></tr><tr><td>권한 격리</td><td>SCHEMA 단위 통제 필요</td><td>DATABASE 단위로 자연 격리</td></tr><tr><td>운영 부담</td><td>권한 설계 복잡</td><td>DATABASE 수만큼 증가</td></tr><tr><td>적합한 소스 형태</td><td>비-CDB 또는 단일 PDB 운영</td><td>다중 PDB 분리 운영</td></tr></tbody></table></div>
+      <p><strong>타겟이 MySQL인 경우</strong>, MySQL에는 SCHEMA가 별도 객체로 존재하지 않습니다. DATABASE가 곧 SCHEMA입니다. Oracle USER 하나는 MySQL DATABASE 하나에 대응되고, 그 안의 객체는 모두 같은 DATABASE 아래에 놓입니다. cross-database 조회는 <code>database.table</code> 형식으로 가능하지만, PostgreSQL SCHEMA처럼 search_path로 묶을 수 있는 단위가 없어 무자격 객체명에 의존하던 SQL은 모두 자격을 붙이거나 USE 후 실행되어야 합니다.</p>
+      <p>MySQL에서 사용자는 <code>'user'@'host'</code> 형식으로 정의되며, 호스트가 다르면 사용자명이 같아도 별개의 USER로 취급되고 권한도 독립적으로 관리됩니다. Oracle에서 sqlnet.ora의 <code>TCP.INVITED_NODES</code>나 Connection Manager로 분리하던 접속 통제가 MySQL에서는 USER 정의 자체로 흡수됩니다. 따라서 Oracle USER 하나를 MySQL로 옮길 때, 어느 접속 경로를 허용할지를 USER 정의 시점에 함께 결정해야 합니다.</p>
+      <p>MySQL ROLE은 8.0부터 지원되지만 활성화가 명시적입니다. 세션마다 <code>SET ROLE</code>을 호출하거나 <code>activate_all_roles_on_login</code>을 켜야 합니다. Oracle의 DEFAULT ROLE 동작(뒤에서 다룸)을 그대로 가져가려면 이 설정을 함께 검토해야 합니다. 5.x에서 올라오는 환경이라면 ROLE 자체가 없으므로, 권한 묶음을 USER 사이에 반복 GRANT 하던 패턴을 ROLE 기반으로 재정리하는 기회로 삼을 수 있습니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>오픈소스 → Oracle: ROLE과 SCHEMA를 다시 묶어야 한다</h3>
+      <p>역방향은 반대의 작업입니다. 분리되어 있던 ROLE과 SCHEMA를 Oracle의 USER라는 단위로 다시 묶어야 합니다.</p>
+      <p><strong>PostgreSQL → Oracle</strong> 방향에서 가장 자주 부딪히는 문제는 ROLE과 SCHEMA의 소유 관계입니다. PostgreSQL에서는 한 ROLE이 여러 SCHEMA의 객체를 소유할 수 있고, 한 SCHEMA 안에 여러 ROLE 소유의 객체가 섞일 수도 있습니다. Oracle에서는 객체 소유자가 곧 SCHEMA이기 때문에, 이 다대다 관계를 분해해야 합니다.</p>
+      <p>가장 단순한 방식은 PostgreSQL의 SCHEMA를 Oracle USER로 매핑하는 것입니다. SCHEMA가 5개라면 Oracle USER 5개를 만들고, 각 SCHEMA의 객체를 해당 USER로 옮깁니다. 그런데 이 매핑은 객체 소유자가 누구냐와 별개로 이루어집니다. PostgreSQL에서 객체 소유자였던 ROLE은 Oracle에서는 별도의 USER 또는 ROLE로 두고, 접속과 권한만 부여하는 형태로 분리합니다.</p>
+      <p>PostgreSQL의 LOGIN 가능 ROLE은 Oracle USER로, NOLOGIN ROLE은 Oracle ROLE로 옮기는 것이 자연스럽습니다. 한 ROLE이 LOGIN 가능하면서 다른 ROLE의 멤버로 권한을 받는 경우, Oracle에서는 USER + GRANT ROLE 조합으로 재현됩니다.</p>
+      <p>또 하나의 함정은 search_path입니다. PostgreSQL에서 무자격 객체명에 의존하던 SQL은 Oracle에서 SYNONYM이나 명시적 SCHEMA 자격으로 다시 작성해야 합니다. ROLE 단위 또는 DATABASE 단위로 설정되어 있던 search_path 기본값이 무엇이었는지를 먼저 추출하고, 그 의도를 Oracle SYNONYM 정책으로 번역해야 합니다. PostgreSQL이 다중 DATABASE 구조였다면 Oracle 12c+의 PDB 단위로 매핑하는 것이 격리 의도를 가장 잘 보존합니다.</p>
+      <p><strong>MySQL → Oracle</strong> 방향에서는 DATABASE를 Oracle의 어떤 단위로 받을지가 첫 결정입니다. MySQL DATABASE는 Oracle USER에 대응시키는 것이 일반적입니다. DATABASE = SCHEMA이고 Oracle에서는 USER = SCHEMA이기 때문입니다. 그런데 MySQL에서 같은 사용자명이 여러 호스트 정의로 분리되어 서로 다른 권한을 갖고 있었다면, Oracle USER 하나로 합치는 순간 그 분리가 사라집니다. 분리를 유지하려면 별도 USER로 쪼개거나, Oracle Listener의 <code>TCP.INVITED_NODES</code>/<code>TCP.EXCLUDED_NODES</code>, Database Vault Connect Command Rule 같은 접속 단계 통제로 옮겨야 합니다.</p>
+      <p>MySQL ROLE은 8.0 이상에서만 존재하므로 소스 버전에 따라 권한 묶음의 표현 방식이 다릅니다. 5.x에서는 같은 권한 묶음이 여러 USER에 반복 GRANT 되어 있는 경우가 많고, 이 패턴은 Oracle로 옮길 때 ROLE로 통합하는 정리 기회가 됩니다. 8.0 ROLE이라면 Oracle ROLE에 자연스럽게 대응됩니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>무자격 객체 참조 — SYNONYM ↔ search_path ↔ USE</h3>
+      <p>세 DB는 "객체 이름만 적었을 때 어디서 찾을지"를 모두 다른 방식으로 결정합니다.</p>
+      <p>Oracle은 SYNONYM으로 해결합니다. <code>CREATE PUBLIC SYNONYM EMP FOR HR.EMP</code>로 정의하면 모든 USER가 <code>SELECT * FROM EMP</code>로 접근할 수 있습니다. PRIVATE SYNONYM은 USER별로 자기만의 별칭을 두는 방식입니다.</p>
+      <p>PostgreSQL은 search_path로 결정합니다. 세션, ROLE, DATABASE 단위로 검색 순서를 설정하고, 무자격 객체명은 이 순서대로 SCHEMA를 훑어가며 찾습니다.</p>
+      <p>MySQL은 <code>USE database</code> 명령이나 <code>database.table</code> 자격 표기로 결정합니다. SCHEMA 검색 경로 같은 개념이 없어 컨텍스트 전환이 명시적입니다.</p>
+      <p>방향에 따라 신경 써야 할 지점이 다릅니다.</p>
+      <p><strong>Oracle → PostgreSQL/MySQL</strong> 방향에서는 SYNONYM을 어떻게 대체할지가 핵심입니다. PostgreSQL은 search_path와 VIEW의 조합으로 부분적으로 재현 가능하지만, SECURITY DEFINER 함수의 search_path가 의도하지 않은 SCHEMA를 가리킬 경우 권한 상승 취약점이 될 수 있어 함수 정의 시 <code>SET search_path</code> 절을 명시하는 운영 규칙이 함께 필요합니다. MySQL은 search_path 자체가 없으므로 모든 SQL이 <code>database.table</code> 자격을 갖추거나 USE 후 실행되는 구조로 바뀌어야 합니다. SYNONYM에 의존하던 SQL이 광범위하다면, MySQL 이관은 SQL 재작성 범위가 PostgreSQL 이관보다 훨씬 큽니다.</p>
+      <p><strong>PostgreSQL/MySQL → Oracle</strong> 방향에서는 반대로 search_path와 USE에 의존하던 SQL을 SYNONYM이나 명시적 SCHEMA 자격으로 전환해야 합니다. PostgreSQL의 경우 search_path가 ROLE/DATABASE 단위로 어떻게 설정되어 있었는지 그 의도를 먼저 추출해야 하고, MySQL의 경우 애플리케이션이 어떤 DATABASE를 USE 하고 있었는지를 파악해야 Oracle에서 SYNONYM 정책을 설계할 수 있습니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>권한 모델 — GRANT의 의미가 같지 않다</h3>
+      <p>세 DB 모두 ROLE 활성화 메커니즘 자체는 존재합니다. 차이는 <strong>기본 동작이 자동이냐 명시냐</strong>, 그리고 <strong>권한 누적이 inherit 기반이냐 활성화 기반이냐</strong>에 있습니다.</p>
+      <p>Oracle에서 USER에 ROLE을 GRANT 하면 그 ROLE은 기본적으로 DEFAULT ROLE이 되어 로그인 시 자동 활성화됩니다. 별도 호출 없이 권한을 행사할 수 있습니다. 다만 <code>ALTER USER ... DEFAULT ROLE NONE</code> 또는 명시적으로 NON-DEFAULT로 부여된 ROLE, 그리고 <code>IDENTIFIED BY password</code>가 걸린 보호된 ROLE은 세션 안에서 <code>SET ROLE</code> 호출이 필요합니다. 실무에서 대부분의 ROLE이 DEFAULT로 운영되기 때문에 자동 활성화처럼 느껴질 뿐, 활성화 메커니즘 자체는 PostgreSQL/MySQL과 동일하게 존재합니다.</p>
+      <p>PostgreSQL의 ROLE은 더 일반화된 개념입니다. ROLE은 USER일 수도 GROUP일 수도 있고, 다른 ROLE을 멤버로 가질 수 있습니다. 멤버 ROLE이 부모 권한을 자동으로 행사할지는 <code>INHERIT</code> / <code>NOINHERIT</code> 속성에 따라 갈립니다. <strong>기본값은 INHERIT이라 부모 ROLE의 권한이 자동으로 누적됩니다.</strong> NOINHERIT로 정의된 ROLE의 멤버만 <code>SET ROLE</code>을 호출해야 권한을 사용할 수 있습니다. 또한 PostgreSQL에는 <code>DEFAULT PRIVILEGES</code>가 있어, 특정 ROLE이 앞으로 만들 객체에 대한 권한을 미리 정의할 수 있습니다.</p>
+      <p>MySQL 8.0의 ROLE은 GRANT 받은 시점에는 비활성 상태가 기본입니다. 세션마다 <code>SET ROLE</code>을 호출하거나 <code>activate_all_roles_on_login</code>을 켜야 합니다. 권한은 <code>*.*</code>, <code>db.*</code>, <code>db.table</code>, <code>db.table(col)</code> 네 단계로 부여됩니다.</p>
+      <p>차이를 한 표로 정리하면 다음과 같습니다.</p>
+      <div class="vatos-article-table-wrap"><table><thead><tr><th>항목</th><th>Oracle</th><th>PostgreSQL</th><th>MySQL 8.0+</th></tr></thead><tbody><tr><td>ROLE 자동 활성화 기본값</td><td>DEFAULT ROLE은 자동</td><td>INHERIT면 자동</td><td>비활성 (전역 설정으로 자동화 가능)</td></tr><tr><td>명시적 활성화 필요 조건</td><td>NON-DEFAULT / password 보호 ROLE</td><td>NOINHERIT ROLE</td><td>항상 (기본값 기준)</td></tr><tr><td>활성화 명령</td><td><code>SET ROLE</code></td><td><code>SET ROLE</code></td><td><code>SET ROLE</code></td></tr><tr><td>미래 객체 자동 권한</td><td>(별도 기능 없음)</td><td>DEFAULT PRIVILEGES</td><td>(별도 기능 없음)</td></tr></tbody></table></div>
+      <p>이관 시 자주 발생하는 사고는 방향에 따라 다릅니다.</p>
+      <p><strong>Oracle → 오픈소스</strong>에서 가장 흔한 사고는 PostgreSQL의 DEFAULT PRIVILEGES를 설정하지 않아, 이관 후 새로 만들어지는 객체에 권한이 자동 부여되지 않는 경우입니다. 운영 안정화 후 "왜 이 ROLE이 새 테이블을 못 보는가"라는 질문이 반복되는 이유가 여기 있습니다. Oracle은 새 객체에 대한 GRANT를 매번 명시적으로 부여하는 운영 관행이라 이 자동화 메커니즘 자체가 누락되는 경우가 많습니다. MySQL로 옮기는 경우에는 ROLE 활성화 기본값 차이로, GRANT 했는데 권한이 작동하지 않는 케이스가 나타납니다.</p>
+      <p>Oracle 시스템 권한(<code>SELECT ANY TABLE</code>, <code>INSERT ANY TABLE</code> 등) 대응은 타겟 버전에 따라 달라집니다. <strong>PostgreSQL 14부터는 <code>pg_read_all_data</code>, <code>pg_write_all_data</code> 같은 predefined role이 도입되어, 한 줄 GRANT로 모든 SCHEMA의 데이터 접근 권한을 부여할 수 있습니다.</strong> 13 이하 버전에서는 SCHEMA별로 명시적 GRANT를 반복하거나 이벤트 트리거로 자동 부여해야 했습니다. 다만 14 이상에서도 <code>CREATE ANY TABLE</code> 같은 DDL ANY에 해당하는 predefined role은 존재하지 않으므로, 운영 계정의 객체 생성 권한은 슈퍼유저 권한 또는 이벤트 트리거로 보완해야 합니다. MySQL은 <code>*.*</code> 수준의 GRANT가 ANY 권한에 해당합니다.</p>
+      <p><strong>오픈소스 → Oracle</strong>에서는 반대 문제가 생깁니다. PostgreSQL DEFAULT PRIVILEGES로 자동 부여되던 권한은 Oracle에 직접 대응되는 기능이 없어, 객체 생성 트리거나 운영 절차로 보완해야 합니다. PostgreSQL의 컬럼 단위 GRANT는 Oracle에서도 가능하지만 운영 관행상 흔하지 않아 검토 누락이 자주 발생합니다. PostgreSQL의 INHERIT/NOINHERIT 차이는 Oracle의 DEFAULT/NON-DEFAULT ROLE 설정으로 부분적으로 재현할 수 있지만, ROLE 멤버십을 SET ROLE로 동적으로 전환하던 PostgreSQL 패턴을 Oracle로 그대로 옮기기는 어렵습니다. 세션 내 권한 전환이 자주 발생하던 시스템이라면 권한 모델 재설계가 필요합니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>데이터 딕셔너리 의존 코드 — 운영 자동화의 사각지대</h3>
+      <p>USER와 권한 이관에서 가장 자주 누락되는 영역이 데이터 딕셔너리 의존 코드입니다.</p>
+      <p>세 DB의 카탈로그 구조는 모두 다릅니다. Oracle은 <code>DBA_*</code>, <code>ALL_*</code>, <code>USER_*</code> 뷰를 제공하고, 12c+ CDB 환경에서는 <code>CDB_*</code> 뷰가 추가되어 PDB 전체를 조회할 수 있습니다. PostgreSQL은 <code>information_schema</code>(SQL 표준)와 <code>pg_catalog</code>(고유)를 함께 제공하며, MySQL은 <code>information_schema</code>, <code>performance_schema</code>, 그리고 <code>mysql</code> 시스템 스키마를 제공합니다.</p>
+      <p>이름이 비슷한 컬럼이라도 의미가 다르고, 각 DB 고유 정보 중 일부는 표준 information_schema에 존재하지 않아 각 DB의 고유 카탈로그로 우회해야 합니다. 인덱스 크기, 테이블 통계, 시퀀스의 현재값 같은 정보는 표준 뷰에 없습니다.</p>
+      <p>방향과 관계없이 이관 순서는 같습니다. 첫째, 소스 DB의 카탈로그를 참조하는 모든 SQL을 전수 추출합니다. 둘째, 각 SQL이 어떤 정보를 가져오는지 분류합니다. 셋째, 타겟 DB의 어떤 카탈로그로 대체할지 매핑합니다. 이 작업을 이관 후로 미루면, 오픈 직후 모니터링이 작동하지 않는 사각지대가 생기고, 그 사각지대가 운영 안정화 기간 전체에 그늘을 드리웁니다.</p>
+      <hr class="vatos-article-hr">
+      <h3>결론</h3>
+      <p>사용자와 권한 이관은 GRANT 문장을 옮기는 일이 아닙니다. 소스 DB가 USER/ROLE/SCHEMA라는 단어 안에 묶어두었던 역할들을 풀어내고, 타겟 DB의 묶음 방식에 맞춰 다시 조립하는 작업입니다. 그래서 모든 USER가 타겟의 USER가 되지 않고, 모든 ROLE이 타겟의 ROLE이 되지도 않습니다. 각 객체의 실제 역할에 맞는 자리를 다시 골라주는 일입니다.</p>
+      <p>방향에 관계없이 네 가지 질문으로 수렴됩니다.</p>
+      <p>첫째, 소스 DB의 USER/ROLE 각각이 실제로 어떤 역할(접속 계정, 스키마 컨테이너, 권한 묶음, 사용 중단)을 하고 있는가.</p>
+      <p>둘째, 무자격 객체 참조에 의존하는 SQL이 어디에 얼마나 있고, 타겟 DB의 메커니즘(SYNONYM, search_path, USE)으로 어떻게 대체할 것인가.</p>
+      <p>셋째, 권한 모델의 자동 활성화 기본값, 미래 객체 권한 부여, 컨테이너 단위 격리(Oracle PDB ↔ PostgreSQL DATABASE) 같은 소스 DB의 동작을 타겟 DB에서 어떻게 재현할 것인가.</p>
+      <p>넷째, 데이터 딕셔너리에 의존하는 운영 스크립트는 얼마나 존재하고, 어떤 카탈로그로 옮길 것인가.</p>
+      <p>이 질문에 답이 나오기 전에 USER 생성 스크립트를 짜기 시작하면, 작업은 진행되지만 설계는 부재한 상태가 됩니다. 그리고 이 부재는 오픈 후 권한 사고나 운영 자동화의 공백으로 돌아옵니다.</p>
+      <p>USER가 함께 가지고 있던 또 하나의 측면, 즉 <strong>DEFAULT TABLESPACE와 객체가 실제로 어떤 물리 공간에 어떻게 놓이는지</strong>는 다음 글에서 이어서 살펴봅니다. 사용자라는 단위에서 "누구의 것인가"를 분리해 냈다면, 이제 "어디에 놓이는가"가 남습니다.</p>
+  </article>
+  <div class="vatos-article-foot">
+    <a href="https://www.vatos.co.kr/techlog" class="vatos-article-back-link">← 목록으로 돌아가기</a>
+  </div>
+  </div>
+</section>
+
+<footer class="vatos-footer">
+  <div class="vatos-footer-inner">
+    <div class="vatos-footer-top">
+      <div class="vatos-footer-brand">
+        <a href="../index.html" class="vatos-logo"><span class="vatos-logo-text">VAT<span>OS</span></span></a>
+        <p>더 편한 IT 세상을 함께 만들어 나가는<br>데이터베이스 전문 기업</p>
+        <p class="vatos-footer-address" style="margin-top:16px; font-size:12px; line-height:1.9;">서울특별시 성동구 뚝섬로1길 63, 영창디지털타워 <span class="vatos-no-wrap">401-3호</span><br>Tel: 010-6787-7223 &nbsp;|&nbsp; sales@vatos.co.kr</p>
+        <a href="../assets/files/vatos-company-profile.pdf" target="_blank" rel="noopener noreferrer" class="vatos-footer-contact-icon">
+          <span class="vatos-footer-contact-symbol"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          <span>회사소개서</span>
+        </a>
+      </div>
+      <div class="vatos-footer-col">
+        <h5>회사</h5>
+        <a href="../about/company.html">회사소개</a>
+        <a href="../about/history.html">연혁</a>
+        <a href="../about/location.html">오시는 길</a>
+      </div>
+      <div class="vatos-footer-col">
+        <h5>사업분야</h5>
+        <a href="../business/business-license.html">라이선스</a>
+        <a href="../business/business-operations-technical-support.html">운영 &amp; 기술지원</a>
+        <a href="../business/business-performance-consulting.html">성능 컨설팅</a>
+        <a href="../business/business-migration-conversion.html">마이그레이션 &amp; 전환</a>
+        <a href="../business/business-training.html">교육</a>
+      </div>
+      <div class="vatos-footer-col">
+        <h5>크루</h5>
+        <a href="https://app.notion.com/p/vatos/27e159f5b30c803490ecf1db2e742681" target="_blank" rel="noopener noreferrer">바로그</a>
+        <a href="../crew/culture.html">바토스 문화</a>
+        <a href="../insights/tech-insights.html">기술 인사이트</a>
+      </div>
+    </div>
+    <div class="vatos-footer-bottom">
+      <p>© 2026 VATOS Co., Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/vatos-interact.js"></script>
+</body>
