@@ -11,6 +11,39 @@
   const BASE_URL = 'https://vatos-tech.github.io/official-website';
   let pageClassTimer = null;
   let pageObserver = null;
+  let previousPageUrl = window.location.pathname + window.location.search;
+
+  /* 브라우저가 이전 스크롤 위치를 자동 복원하지 않도록 설정 */
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+
+  /* 페이지 이동 시 브라우저 및 Oopy 스크롤 영역을 최상단으로 초기화 */
+  function resetPageScroll() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    document.querySelectorAll('.notion-scroller').forEach(function (scroller) {
+      scroller.scrollTop = 0;
+
+      if (typeof scroller.scrollTo === 'function') {
+        scroller.scrollTo(0, 0);
+      }
+    });
+  }
+
+  /* React 렌더링 전후에 남아 있는 스크롤 복원까지 함께 제거 */
+  function schedulePageScrollReset() {
+    resetPageScroll();
+
+    window.requestAnimationFrame(function () {
+      resetPageScroll();
+    });
+
+    window.setTimeout(resetPageScroll, 120);
+    window.setTimeout(resetPageScroll, 300);
+  }
 
   /* GitHub Pages URL 생성 */
   function createUrl(path) {
@@ -193,16 +226,30 @@
     });
   }
 
-  /* 브라우저 이전 및 다음 페이지 이동 감지 */
+  /* 브라우저 및 Oopy SPA 페이지 이동 감지 */
   function observeHistoryNavigation() {
-    window.addEventListener('popstate', schedulePageClassUpdate);
+    function handleNavigation() {
+      const currentPageUrl = window.location.pathname + window.location.search;
+
+      /* 같은 페이지의 내부 상태 변경에는 스크롤을 건드리지 않음 */
+      if (currentPageUrl === previousPageUrl) {
+        schedulePageClassUpdate();
+        return;
+      }
+
+      previousPageUrl = currentPageUrl;
+      schedulePageClassUpdate();
+      schedulePageScrollReset();
+    }
+
+    window.addEventListener('popstate', handleNavigation);
 
     ['pushState', 'replaceState'].forEach(function (methodName) {
       const originalMethod = window.history[methodName];
 
       window.history[methodName] = function () {
         const result = originalMethod.apply(this, arguments);
-        schedulePageClassUpdate();
+        handleNavigation();
         return result;
       };
     });
