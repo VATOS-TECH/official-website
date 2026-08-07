@@ -158,7 +158,6 @@
     const pageClasses = [
       'vatos-page-main',
       'vatos-page-contact',
-      'vatos-contact-light',
       'vatos-page-sub',
       'vatos-page-culture',
       'vatos-page-insights',
@@ -177,10 +176,7 @@
     }
 
     if (document.querySelector('.vatos-contact')) {
-      document.body.classList.add(
-        'vatos-page-contact',
-        'vatos-contact-light'
-      );
+      document.body.classList.add('vatos-page-contact');
       return 'contact';
     }
 
