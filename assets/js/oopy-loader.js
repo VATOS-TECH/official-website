@@ -11,6 +11,8 @@
 
   let currentPageUrl = getPageUrl();
   let pageClassTimer = null;
+  let routeScrollResetPending = false;
+  let routeScrollResetRaf = null;
 
   if ('scrollRestoration' in window.history) {
     window.history.scrollRestoration = 'manual';
@@ -57,6 +59,22 @@
   }
 
 
+  function finishRouteScrollReset() {
+    if (!routeScrollResetPending || routeScrollResetRaf !== null) {
+      return;
+    }
+
+    routeScrollResetRaf = window.requestAnimationFrame(function () {
+      routeScrollResetRaf = null;
+
+      if (!routeScrollResetPending) {
+        return;
+      }
+
+      resetPageScroll();
+      routeScrollResetPending = false;
+    });
+  }
 
   function createUrl(path) {
     return BASE_URL + '/' + path.replace(/^\/+/, '');
@@ -216,6 +234,7 @@
     }
 
     currentPageUrl = nextPageUrl;
+    routeScrollResetPending = true;
 
     resetPageScroll();
     requestPageClassUpdate();
@@ -250,7 +269,13 @@
         return;
       }
 
-      if (!handleRouteChange()) {
+      const routeChanged = handleRouteChange();
+
+      if (routeScrollResetPending) {
+        finishRouteScrollReset();
+      }
+
+      if (!routeChanged) {
         requestPageClassUpdate();
       }
     });
@@ -301,6 +326,8 @@
 
   async function initializeVatosPage() {
     try {
+      resetPageScroll();
+
       const pageType = applyPageClass();
 
       const result = await Promise.all([
@@ -325,6 +352,11 @@
     }
   }
 
+  resetPageScroll();
+
+  window.addEventListener('pageshow', function () {
+    resetPageScroll();
+  });
 
   if (document.readyState === 'complete') {
     window.setTimeout(initializeVatosPage, 300);
