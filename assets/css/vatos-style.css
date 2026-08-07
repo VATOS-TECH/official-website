@@ -892,11 +892,11 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
 /* 모든 상세페이지(회사소개/연혁/오시는길/Business Areas 5개/Tech Insights/Culture) 공통 —
    바토스 문화 페이지의 제목 영역 크기·배치를 기준으로 통일 */
 .vatos-sub-hero-title {
-  font-size: clamp(28px, 3.2vw, 54px); font-weight: 700; line-height: 1.22;
+  font-size: 54px; font-weight: 700; line-height: 1.22;
   letter-spacing: -0.5px; color: var(--white); margin-top: 8px; margin-bottom: 0;
 }
 .vatos-sub-hero-summary {
-  font-size: clamp(14.5px, 1.15vw, 20px); line-height: 1.85; font-weight: 400;
+  font-size: 20px; line-height: 1.85; font-weight: 400;
   color: rgba(255,255,255,0.62); max-width: 740px; margin-top: 18px;
 }
 
@@ -1746,18 +1746,15 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
 }
 .vatos-sub-content[data-vatos-service] .vatos-sub-hero { padding-bottom: 60px; }
 .vatos-sub-content[data-vatos-service] .vatos-sub-hero-label {
-  font-size: 14px;
   letter-spacing: .18em;
 }
 .vatos-sub-content[data-vatos-service] .vatos-sub-hero-title {
-  font-size: 54px;
   font-weight: 700;
   line-height: 1.15;
 }
 .vatos-sub-content[data-vatos-service] .vatos-sub-hero-summary {
   max-width: 760px;
   min-height: 3.4em;
-  font-size: 20px;
   line-height: 1.7;
 }
 .vatos-sub-content[data-vatos-service] .vatos-sub-intro {
