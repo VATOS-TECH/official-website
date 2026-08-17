@@ -969,17 +969,12 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
 }
 .vatos-sub-intro-body p + p { margin-top: 18px; }
 
-/* 큰 핵심 문구 — 형광펜처럼 한 부분만 청록색 음영으로 강조 (1회성, 완료 후 유지) */
+/* 큰 핵심 문구 — 등장 모션이 끝난 뒤 글자색으로 강조 (1회성, 완료 후 유지) */
 .vatos-highlight {
-  background-image: linear-gradient(90deg, rgba(35,165,179,0.36), rgba(35,165,179,0.36));
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  background-position: left center;
-  padding: 0 3px; margin: 0 -3px;
-  border-radius: 3px;
-  transition: background-size 1.1s cubic-bezier(.4,0,.2,1);
+  color: inherit;
+  transition: color .45s ease;
 }
-.vatos-highlight.highlighted { background-size: 100% 100%; }
+.vatos-highlight.highlighted { color: var(--cyan); }
 
 /* Business Areas 5개 상세페이지 — 핵심 메시지 상하 여백 축소 (data-vatos-service 존재 페이지에만 적용) */
 :where(body, .vatos-sub-content)[data-vatos-service] .vatos-sub-intro { padding: clamp(48px, 7vw, 84px) 0; }
@@ -1275,7 +1270,7 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
   .vatos-stats-bar-line-fill { transition: none !important; width: 100% !important; }
   .vatos-stat { opacity: 1 !important; }
   .vatos-sub-intro-dot { transition: none !important; }
-  .vatos-highlight { transition: none !important; background-size: 100% 100% !important; }
+  .vatos-highlight { transition: none !important; }
 }
 
 
