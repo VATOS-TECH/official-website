@@ -870,7 +870,7 @@
         }
         window.setTimeout(function () {
           highlight.classList.add('highlighted');
-        }, 250);
+        }, 800);
       });
     }, { threshold: 0.5 });
   })();
