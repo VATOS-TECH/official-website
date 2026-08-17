@@ -9,6 +9,30 @@
   var BASE_URL = 'https://vatos-tech.github.io/official-website';
   document.documentElement.classList.add('vatos-js');
 
+  /* Always start a newly opened page at the top, including back/forward visits. */
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+
+  function resetPageScroll() {
+    var scrollingElement = document.scrollingElement || document.documentElement;
+
+    window.scrollTo(0, 0);
+
+    if (scrollingElement) {
+      scrollingElement.scrollTop = 0;
+      scrollingElement.scrollLeft = 0;
+    }
+
+    toArray(document.querySelectorAll('.notion-scroller')).forEach(function (scroller) {
+      scroller.scrollTop = 0;
+      scroller.scrollLeft = 0;
+    });
+  }
+
+  resetPageScroll();
+  window.addEventListener('pageshow', resetPageScroll);
+
   var REDUCE = !!(
     window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
