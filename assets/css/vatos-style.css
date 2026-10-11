@@ -2070,10 +2070,10 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
 .vatos-carousel-3d[data-card-count="4"] .vatos-service-card-media img {
   object-fit: contain;
 }
-/* License artwork includes transparent margins. Fill the card with the visible
-   artwork while preserving the source image proportions and carousel transforms. */
+/* Fit the visible License artwork within the card height, preserving its ratio.
+   Keep overflow visible so rounded borders and glow are never clipped. */
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media {
-  overflow: hidden;
+  overflow: visible;
 }
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img {
   object-fit: cover;
@@ -2082,20 +2082,20 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   transform-origin: center;
 }
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-1.webp"] {
-  --license-art-scale: 1.56;
-  --license-art-offset-y: 3.1%;
+  --license-art-scale: 1.48;
+  --license-art-offset-y: 2.8%;
 }
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-2.webp"] {
-  --license-art-scale: 1.5;
+  --license-art-scale: 1.38;
   --license-art-offset-y: -1.8%;
 }
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-3.webp"] {
-  --license-art-scale: 1.43;
-  --license-art-offset-y: .8%;
+  --license-art-scale: 1.34;
+  --license-art-offset-y: .9%;
 }
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-4.webp"] {
-  --license-art-scale: 1.46;
-  --license-art-offset-y: -1.5%;
+  --license-art-scale: 1.4;
+  --license-art-offset-y: -1.8%;
 }
 .vatos-service-card-scrim {
   position: absolute;
