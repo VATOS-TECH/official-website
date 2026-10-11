@@ -461,18 +461,19 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
   z-index: 1;
   background: var(--dark);
 }
+/* Horizontal clipping must not turn the body into a non-scrolling sticky ancestor. */
+body:has(.vatos-main-business) { overflow-x: clip; }
 .vatos-main-business-pin { height: 100vh; display: flex; align-items: center; overflow: hidden; }
 .vatos-main-business-inner { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); display: grid; grid-template-columns: 0.98fr 1.02fr; gap: clamp(30px,4vw,70px); align-items: center; }
 
-@media (min-width: 901px) {
-  .vatos-js .vatos-main-business {
-    height: var(--vatos-business-scroll-height, 600vh);
-  }
+.vatos-js .vatos-main-business {
+  height: var(--vatos-business-scroll-height, 600vh);
+}
 
-  .vatos-js .vatos-main-business-pin {
-    position: sticky;
-    top: 0;
-  }
+.vatos-js .vatos-main-business-pin {
+  position: sticky;
+  top: 0;
+  height: var(--vatos-business-viewport-height, 100vh);
 }
 
 .vatos-main-business-left { position: relative; }
@@ -537,7 +538,7 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
   .vatos-main-company-body p { font-size: clamp(13px, 1.8vw, 15px); line-height: 1.75; }
   .vatos-main-business { height: auto; min-height: 0; }
   .vatos-main-business-inner { grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr); gap: clamp(16px, 3vw, 30px); }
-  .vatos-main-business-pin { position: relative; top: auto; height: auto; padding: clamp(80px,14vw,120px) 0; }
+  .vatos-main-business-pin { padding: 24px 0; }
   .vatos-main-business-stage { height: clamp(240px, 46vw, 420px); border-radius: 12px; }
   .vatos-main-business-eyebrow { margin-bottom: 20px; font-size: 10px; letter-spacing: 1.5px; }
   .vatos-main-business-count { font-size: clamp(36px, 8vw, 72px); letter-spacing: -1px; }
