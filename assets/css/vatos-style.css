@@ -531,14 +531,30 @@ html.vatos-hero-typing-lock, html.vatos-hero-typing-lock body { overflow: hidden
 }
 
 @media (max-width: 900px) {
-  .vatos-main-company-grid { grid-template-columns: 1fr; gap: 30px; padding-bottom: 70px; }
+  .vatos-main-company-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 3vw, 30px); padding-bottom: 70px; }
+  .vatos-main-h2 { font-size: clamp(20px, 3.6vw, 32px); letter-spacing: -.5px; }
+  .vatos-main-company-body p { font-size: clamp(13px, 1.8vw, 15px); line-height: 1.75; }
   .vatos-main-business { height: auto; min-height: 0; }
-  .vatos-main-business-inner { grid-template-columns: 1fr; gap: 30px; }
+  .vatos-main-business-inner { grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr); gap: clamp(16px, 3vw, 30px); }
   .vatos-main-business-pin { position: relative; top: auto; height: auto; padding: clamp(80px,14vw,120px) 0; }
-  .vatos-main-business-stage { height: clamp(260px, 60vw, 420px); order: -1; }
-  .vatos-main-business-slides { min-height: 240px; }
-  .vatos-main-business-slide .vatos-lang-en { white-space: normal; font-size: clamp(22px, 5.5vw, 30px); }
-  .vatos-main-insights-grid { grid-template-columns: 1fr; gap: 40px; }
+  .vatos-main-business-stage { height: clamp(240px, 46vw, 420px); border-radius: 12px; }
+  .vatos-main-business-eyebrow { margin-bottom: 20px; font-size: 10px; letter-spacing: 1.5px; }
+  .vatos-main-business-count { font-size: clamp(36px, 8vw, 72px); letter-spacing: -1px; }
+  /* Let the active slide determine its height when narrow columns wrap text. */
+  .vatos-main-business-slides { min-height: 0; }
+  .vatos-main-business-slide.active { position: relative; inset: auto; }
+  .vatos-main-business-slide .vatos-lang-en { white-space: normal; overflow-wrap: anywhere; font-size: clamp(17px, 2.8vw, 25px); }
+  .vatos-main-business-slide .vatos-lang-ko { font-size: 13px; margin-top: 8px; }
+  .vatos-main-business-slide .vatos-desc { font-size: clamp(13px, 1.8vw, 15px); line-height: 1.7; margin-top: 14px; }
+  .vatos-main-business-slide .vatos-more { font-size: 12px; margin-top: 18px; }
+  .vatos-main-business-rail { gap: 6px; margin-top: 24px; }
+  .vatos-main-business-rail button { flex: 1; min-width: 0; max-width: 42px; }
+  .vatos-main-business-stage-num { left: 14px; bottom: 14px; font-size: clamp(30px, 5vw, 45px); }
+  .vatos-main-insights-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(16px, 3vw, 30px); }
+  .vatos-main-insights-title { font-size: clamp(22px, 4.8vw, 43px); letter-spacing: -1px; overflow-wrap: anywhere; }
+  .vatos-main-insights-lead { font-size: clamp(13px, 1.8vw, 15px); line-height: 1.7; margin-top: 18px; }
+  .vatos-main-insights-link { font-size: 12px; margin-top: 20px; }
+  .vatos-main-insights-figure { height: clamp(200px, 34vw, 320px); border-radius: 12px; }
 }
 
 @media (max-width: 640px) {
@@ -1802,6 +1818,9 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap);
   border-top: 0;
+}
+.vatos-sub-content[data-vatos-service="training"] .vatos-service-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .vatos-sub-content[data-vatos-service] .vatos-service-item {
   position: relative;
