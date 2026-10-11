@@ -8,6 +8,7 @@
   window.__VATOS_OOPY_INITIALIZED__ = true;
 
   const BASE_URL = 'https://vatos-tech.github.io/official-website';
+  const PAGE_CONTENT_SELECTOR = '.vatos-main-hero, .vatos-contact, .vatos-culture-bg, .vatos-insights-main, .vatos-sub-content, .vatos-sub-hero, .vatos-article-wrap, .vatos-article-content, .vatos-page-hero';
 
   let currentPageUrl = getPageUrl();
   let pageClassTimer = null;
@@ -196,8 +197,13 @@
       return 'sub';
     }
 
-    document.body.classList.add('vatos-page-article');
-    return 'article';
+    if (document.querySelector('.vatos-article-wrap, .vatos-article-content, .vatos-page-hero')) {
+      document.body.classList.add('vatos-page-article');
+      return 'article';
+    }
+
+    // VATOS Log and other native Notion pages keep their own theme.
+    return 'native';
   }
 
   function requestPageClassUpdate() {
@@ -237,6 +243,26 @@
         return result;
       };
     });
+  }
+
+  function observePageContent() {
+    // Oopy can replace page content after the history event has fired.
+    const observer = new MutationObserver(function (records) {
+      const contentChanged = records.some(function (record) {
+        return Array.from(record.addedNodes).concat(Array.from(record.removedNodes)).some(function (node) {
+          return node.nodeType === 1 && (
+            node.matches(PAGE_CONTENT_SELECTOR) ||
+            node.querySelector(PAGE_CONTENT_SELECTOR)
+          );
+        });
+      });
+
+      if (contentChanged) {
+        requestPageClassUpdate();
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   function insertHeader(html) {
@@ -280,6 +306,8 @@
   async function initializeVatosPage() {
     try {
       const pageType = applyPageClass();
+      observeHistoryNavigation();
+      observePageContent();
 
       const result = await Promise.all([
         fetchHtml('header.html'),
@@ -294,8 +322,6 @@
       }
 
       await loadScript('assets/js/vatos-interact.js', 'vatos-interact');
-
-      observeHistoryNavigation();
 
     } catch (error) {
       console.error('[VATOS Initialize]', error);
