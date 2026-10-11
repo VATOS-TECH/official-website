@@ -1923,6 +1923,11 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   user-select: none;
   -webkit-user-select: none;
 }
+/* 운영 & 기술지원 / 교육 카드 크기. 모바일 축소는 기존 미디어 쿼리에서 유지한다. */
+:where(.vatos-sub-content:is([data-vatos-service="operations"], [data-vatos-service="training"])) .vatos-carousel-3d {
+  --carousel-width: 244px;
+  --carousel-height: 364px;
+}
 .vatos-carousel-3d.dragging { cursor: grabbing; }
 .vatos-carousel-viewport {
   position: relative;
