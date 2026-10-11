@@ -2089,9 +2089,9 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   --license-art-scale: 1.38;
   --license-art-offset-y: -1.8%;
 }
-.vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-3.webp"] {
-  --license-art-scale: 1.34;
-  --license-art-offset-y: .9%;
+.vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-3.png"] {
+  --license-art-scale: 1.07;
+  --license-art-offset-y: .5%;
 }
 .vatos-sub-content[data-vatos-service="license"] .vatos-service-card-media img[src$="license-db-4.webp"] {
   --license-art-scale: 1.4;
