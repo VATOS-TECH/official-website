@@ -1820,7 +1820,9 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
   gap: var(--gap);
   border-top: 0;
 }
-.vatos-sub-content[data-vatos-service="training"] .vatos-service-list {
+/* 기술 범위 / 교육 과정 — 최대 콘텐츠 폭에서 약 660px 카드 2열. */
+.vatos-sub-content:is([data-vatos-service="operations"], [data-vatos-service="training"]) .vatos-service-list {
+  --gap: 22px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .vatos-sub-content[data-vatos-service] .vatos-service-item {
@@ -1842,6 +1844,12 @@ body.vatos-page-sub.vatos-page-insights { background: #0A0F1C; }
     transform .7s cubic-bezier(.2,.6,.2,1),
     border-color .35s ease,
     box-shadow .35s ease;
+}
+.vatos-sub-content:is([data-vatos-service="operations"], [data-vatos-service="training"]) .vatos-service-item {
+  height: auto;
+  min-height: 250px;
+  padding: 32px;
+  border-radius: 18px;
 }
 .vatos-sub-content[data-vatos-service] .vatos-service-item:hover {
   border-color: rgba(35,165,179,.5);
