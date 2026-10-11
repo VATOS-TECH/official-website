@@ -57,7 +57,8 @@ html {
   scrollbar-gutter: stable;
 }
 
-body {
+/* Apply the site canvas only to VATOS content, preserving native Notion pages. */
+body:where(:has(.vatos-main-hero, .vatos-contact, .vatos-culture-bg, .vatos-insights-main, .vatos-sub-content, .vatos-sub-hero, .vatos-article-wrap, .vatos-article-content, .vatos-page-hero)) {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -294,8 +295,8 @@ body > #vatos-layout-footer { margin-top: auto; }
    우피 기본 레이아웃과 메뉴의 기능은 유지하고 VATOS 디자인만 재정의한다.
    우피에서 생성하는 클래스가 변경되면 이 선택자만 갱신한다.
    ============================================================ */
-html body .notion-scroller,
-html body .notion-page-content {
+html body:where(:has(.vatos-main-hero, .vatos-contact, .vatos-culture-bg, .vatos-insights-main, .vatos-sub-content, .vatos-sub-hero, .vatos-article-wrap, .vatos-article-content, .vatos-page-hero)) .notion-scroller,
+html body:where(:has(.vatos-main-hero, .vatos-contact, .vatos-culture-bg, .vatos-insights-main, .vatos-sub-content, .vatos-sub-hero, .vatos-article-wrap, .vatos-article-content, .vatos-page-hero)) .notion-page-content {
   background: var(--bg-black) !important;
   color: var(--white);
 }
