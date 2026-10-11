@@ -678,20 +678,12 @@
       );
       var count = document.getElementById('baCount');
       var stageNumber = document.getElementById('baStageNum');
+      var slidesContainer = businessSection.querySelector('.vatos-main-business-slides');
       var total = images.length;
       if (!total) return;
 
-      businessSection.style.setProperty(
-        '--vatos-business-scroll-height',
-        (total + 1) * 100 + 'vh'
-      );
-
       var ticking = false;
       var scroller = null;
-
-      function isDesktop() {
-        return window.matchMedia('(min-width: 901px)').matches;
-      }
 
       function getScroller() {
         var oopyScroller =
@@ -743,7 +735,6 @@
 
       function updateByScroll() {
         ticking = false;
-        if (!isDesktop()) return;
 
         var metrics = getMetrics();
         var rect = businessSection.getBoundingClientRect();
@@ -779,7 +770,6 @@
       }
 
       function scrollToIndex(index) {
-        if (!isDesktop()) return;
         var metrics = getMetrics();
         var rect = businessSection.getBoundingClientRect();
         var distance = Math.max(
@@ -806,17 +796,34 @@
         });
       });
 
-      connectScroller();
+      function refreshLayout() {
+        connectScroller();
+        var viewportHeight = Math.max(1, getMetrics().height);
+        businessSection.style.setProperty(
+          '--vatos-business-viewport-height', viewportHeight + 'px'
+        );
+        businessSection.style.setProperty(
+          '--vatos-business-scroll-height', (total + 1) * viewportHeight + 'px'
+        );
+
+        // Reserve the tallest slide so the pinned layout stays steady on mobile.
+        if (slidesContainer) {
+          slidesContainer.style.minHeight = '';
+          var slideHeight = slides.reduce(function (height, slide) {
+            return Math.max(height, slide.scrollHeight);
+          }, 0);
+          slidesContainer.style.minHeight = slideHeight + 'px';
+        }
+        requestUpdate();
+      }
+
       activate(0);
-      requestUpdate();
-      window.addEventListener('resize', function () {
-        connectScroller();
-        requestUpdate();
-      });
-      window.addEventListener('load', function () {
-        connectScroller();
-        requestUpdate();
-      });
+      refreshLayout();
+      window.addEventListener('resize', refreshLayout);
+      window.addEventListener('load', refreshLayout);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(refreshLayout);
+      }
     })();
 
     if (REDUCE) {
